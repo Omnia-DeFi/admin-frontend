@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+
 export default NextAuth({
  providers: [
   GoogleProvider({
@@ -9,11 +10,5 @@ export default NextAuth({
  ],
  theme: {
   colorScheme: 'light',
- },
- callbacks: {
-  async jwt({ token }) {
-   token.userRole = 'admin';
-   return token;
-  },
  },
 });
