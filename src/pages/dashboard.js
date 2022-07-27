@@ -1,23 +1,34 @@
-import { signIn, signOut, useSession, getSession } from "next-auth/client";
+import { useSession, getSession } from "next-auth/client";
 import Link from "next/link";
+import SignOut from "../components/SignOut";
 import Note from "../components/Note";
+import AddNote from "../components/AddNote";
+import DeleteNote from "../components/DeleteNote";
+import UpdateNote from "../components/UpdateNote";
+
 export default function Dashboard({ data }) {
   const [session, loading] = useSession();
 
   return (
     <div>
       {data.notes.map((item) => (
-        <Note
-          key={item._id}
-          id={item._id}
-          title={item.title}
-          body={item.body}
-        />
+        <>
+          <Note
+            key={item._id}
+            id={item._id}
+            title={item.title}
+            body={item.body}
+          />
+          <UpdateNote id={item._id} />
+          <DeleteNote id={item._id} />
+        </>
       ))}
-      <button>
-        <Link href="/notes/add">Add</Link>{" "}
-      </button>
-      <button onClick={() => signOut({ callbackUrl: "/" })}>Sign out</button>
+
+      <br />
+      <br />
+      <br />
+      <AddNote />
+      <SignOut />
     </div>
   );
 }
