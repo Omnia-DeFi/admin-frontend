@@ -1,13 +1,14 @@
 import { getSession } from "next-auth/client";
-import Note from "../../../models/Note";
-import dbConnect from "../../../helpers/dbConnect";
+import { db } from "../../../db/db";
 
 export default async (req, res) => {
   const user = await getSession({ req });
-  await dbConnect();
+  await db.$connect();
   if (!user) return res.json({ error: "Not logged in" });
 
-  const note = await Note.findOne({ _id: req.query.id, user: user.id });
+  const note = await db.Note.findMany({ where: { id: req.query.id } })
+    .catch(console.error)
+    .finally(() => db.$disconnect());
 
   return res.json({ note });
 };

@@ -1,10 +1,10 @@
 export default function Specific({ data }) {
   return (
     <>
-      {data.note && (
+      {data.note[0] && (
         <div>
-          <h1>{data.note.title}</h1>
-          <p>{data.note.body}</p>
+          <h1>{data.note[0].title}</h1>
+          <p>{data.note[0].description}</p>
         </div>
       )}
     </>
