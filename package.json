@@ -1,27 +1,18 @@
 {
-  "name": "admin-frontend-next",
+  "name": "login-tutorial",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.6",
-    "@heroicons/react": "^1.0.6",
-    "@tailwindcss/forms": "^0.5.2",
-    "next": "12.2.3",
-    "next-auth": "^4.10.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.20.0",
-    "eslint-config-next": "12.2.3",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.6"
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "next": "10.2.0",
+    "next-auth": "^3.19.6",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }

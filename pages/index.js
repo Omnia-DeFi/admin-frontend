@@ -1,32 +1,34 @@
-import { useSession } from 'next-auth/react';
-import Head from 'next/head';
-import GoogleBtn from '../components/GoogleBtn';
-import Loading from '../components/Loading';
-import Navbar from '../components/Navbar';
+import { signIn, signOut, useSession } from "next-auth/client";
+import Link from "next/link";
 export default function Home() {
- const { status, data: session } = useSession();
-
- if (status === 'authenticated') {
+  const [session, loading] = useSession();
+  console.log(session);
   return (
-   <>
-    <Head>
-     <title>Admin Panel</title>
-    </Head>
-    <Navbar session={session} />
-   </>
-  );
- } else if (status === 'unauthenticated') {
-  return (
-   <>
-    <Head>
-     <title>Login</title>
-    </Head>
-    <div className='mt-72 text-center'>
-     <GoogleBtn />
+    <div>
+      {loading && <p>Loading..</p>}
+      {!session && (
+        <>
+          Not signed in <br />
+          <button
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/dashboard",
+              })
+            }
+          >
+            Sign in
+          </button>
+        </>
+      )}
+      {session && (
+        <>
+          Signed in as {session.user.name} <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
+      <Link href="/dashboard">
+        <a>Go to dashboard</a>
+      </Link>
     </div>
-   </>
   );
- } else if (status === 'loading') {
-  return <Loading />;
- }
 }
