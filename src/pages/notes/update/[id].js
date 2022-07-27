@@ -31,14 +31,14 @@ export default function Update({ data }) {
             id="title"
             name="title"
             type="text"
-            defaultValue={data.note[0].title}
+            defaultValue={data.note.title}
             autoComplete="name"
           />
           <input
             id="body"
             name="body"
             type="text"
-            defaultValue={data.note[0].description}
+            defaultValue={data.note.description}
             autoComplete="false"
           />
           <button type="submit">Update</button>
@@ -55,7 +55,7 @@ export async function getServerSideProps(context) {
     `${hostname}/api/notes/update/${context.params.id}`,
     options
   );
-  
+
   console.log("context res: ", context.params.id);
 
   const json = await res.json();
