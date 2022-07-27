@@ -1,14 +1,29 @@
 import { getSession } from "next-auth/client";
-import Note from "../../../models/Note";
-import dbConnect from "../../../helpers/dbConnect";
+import { db } from "../../../db/db";
 
 export default async (req, res) => {
   const user = await getSession({ req });
-  await dbConnect();
 
   if (user) {
     console.log("user id: " + user.id);
-    const notes = await Note.find({ user: user.id }).lean();
-    return res.json({ notes });
+
+    try {
+      await db.$connect();
+
+      const tasksdata = await db.Note.findMany({
+        select: {
+          id: true,
+          title: true,
+          description: true,
+        },
+      }).finally(() => db.$disconnect());
+
+      return res.status(201).json(tasksdata);
+    } catch (error) {
+      return res.status(400).json({ msg: "Error Fetching Tasks" });
+    }
+
+    // const notes = await Note.find({ user: user.id }).lean();
+    // return res.json({ notes });
   } else res.json({ error: "Not logged in" });
 };

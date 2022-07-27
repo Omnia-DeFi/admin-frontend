@@ -11,13 +11,13 @@ export default function Dashboard({ data }) {
 
   return (
     <div>
-      {data.notes.map((item) => (
+      {data.map((item) => (
         <>
           <Note
             key={item._id}
             id={item._id}
             title={item.title}
-            body={item.body}
+            body={item.description}
           />
           <UpdateNote id={item._id} />
           <DeleteNote id={item._id} />
