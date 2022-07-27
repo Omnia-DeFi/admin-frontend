@@ -10,7 +10,7 @@ export default async (req, res) => {
     return res.json({ error: "not logged in" });
   }
 
-  await db.Note.create({
+  await db.note.create({
     data: {
       title: req.body.title,
       description: req.body.body,

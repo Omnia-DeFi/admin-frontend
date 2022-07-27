@@ -6,7 +6,7 @@ export default async (req, res) => {
   await db.$connect();
   if (!user) return res.json({ error: "Not logged in" });
 
-  const note = await db.Note.findUnique({ where: { id: req.query.id } })
+  const note = await db.note.findUnique({ where: { id: req.query.id } })
     .catch(console.error)
     .finally(() => db.$disconnect());
 

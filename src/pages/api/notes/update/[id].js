@@ -8,14 +8,14 @@ export default async (req, res) => {
   await db.$connect();
 
   if (req.method === "GET") {
-    let note = await db.Note.findUnique({ where: { id: req.query.id } })
+    let note = await db.note.findUnique({ where: { id: req.query.id } })
       .catch(console.error)
       .finally(() => db.$disconnect());
     return res.json({ note });
   }
 
   if (req.method === "PUT") {
-    await db.Note.update({
+    await db.note.update({
       where: {
         id: req.query.id,
       },

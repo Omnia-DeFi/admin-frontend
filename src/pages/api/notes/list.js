@@ -10,7 +10,7 @@ export default async (req, res) => {
     try {
       await db.$connect();
 
-      const tasksdata = await db.Note.findMany({
+      const tasksdata = await db.note.findMany({
         select: {
           id: true,
           title: true,
