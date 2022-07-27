@@ -5,6 +5,7 @@ import Note from "../components/Note";
 import AddNote from "../components/AddNote";
 import DeleteNote from "../components/DeleteNote";
 import UpdateNote from "../components/UpdateNote";
+import { Fragment } from "react";
 
 export default function Dashboard({ data }) {
   const [session, loading] = useSession();
@@ -12,16 +13,11 @@ export default function Dashboard({ data }) {
   return (
     <div>
       {data.map((item) => (
-        <>
-          <Note
-            key={item._id}
-            id={item._id}
-            title={item.title}
-            body={item.description}
-          />
-          <UpdateNote id={item._id} />
-          <DeleteNote id={item._id} />
-        </>
+        <Fragment key={item.id}>
+          <Note id={item.id} title={item.title} body={item.description} />
+          <UpdateNote id={item.id} />
+          <DeleteNote id={item.id} />
+        </Fragment>
       ))}
 
       <br />
