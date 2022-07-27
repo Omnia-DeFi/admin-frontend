@@ -1,5 +1,5 @@
 import { getSession } from "next-auth/client";
-import db from "../../../helpers/db";
+import { db } from "../../../db/db";
 
 export default async (req, res) => {
   const user = await getSession({ req });
