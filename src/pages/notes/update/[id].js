@@ -56,8 +56,6 @@ export async function getServerSideProps(context) {
     options
   );
 
-  console.log("context res: ", context.params.id);
-
   const json = await res.json();
 
   return {
