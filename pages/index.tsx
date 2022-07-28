@@ -84,7 +84,7 @@ const Home = ({notes}: Notes) => {
 
   async function deleteNote(id: string) {
     try {
-     fetch(`http://localhost:3000/api/note/${id}`, {
+     fetch(`http://localhost:3000/api/note/delete/${id}`, {
        headers: {
          "Content-Type": "application/json",
        },
