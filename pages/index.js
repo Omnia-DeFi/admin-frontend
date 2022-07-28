@@ -1,34 +1,32 @@
-import { useRouter } from "next/router";
-import { useSession, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import Head from "next/head";
+import GoogleBtn from "../components/GoogleBtn";
+import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
+export default function Home() {
+  const { status, data: session } = useSession();
 
-const Home = () => {
- const { status, data: session } = useSession();
-
-  // console.log(session);
-
-   if (status === 'authenticated') {
-  return (
-   <>
-    <head>
-     <title>Admin Panel</title>
-    </head>
-    <div>auth</div>
-   </>
-  );
- } else if (status === 'unauthenticated') {
-  return (
-   <>
-    <head>
-     <title>Admin Panel</title>
-    </head>
-    <div>UNauth</div>
-   </>
-  );
- } else if (status === 'loading') {
-  <>
-    <div>loading</div>
-   </>
- }
+  if (status === "authenticated") {
+    return (
+      <>
+        <Head>
+          <title>Admin Panel</title>
+        </Head>
+        <Navbar session={session} />
+      </>
+    );
+  } else if (status === "unauthenticated") {
+    return (
+      <>
+        <Head>
+          <title>Login</title>
+        </Head>
+        <div className="mt-72 text-center">
+          <GoogleBtn />
+        </div>
+      </>
+    );
+  } else if (status === "loading") {
+    return <Loading />;
+  }
 }
-
-export default Home;
