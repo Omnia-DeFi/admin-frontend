@@ -9,19 +9,25 @@ export default async function handler(
 
   try {
     if (req.method === "GET") {
-      let note = await prisma.user.findUnique({
-        where: { id: userId },
-      });
+      let note = await prisma.user
+        .findUnique({
+          where: { id: userId },
+        })
+        .catch(console.error)
+        .finally(() => prisma.$disconnect());;
       return res.json({ note });
     }
 
     if (req.method === "PUT") {
-      await prisma.user.update({
-        where: {
-          id: userId,
-        },
-        data: { issuer, email },
-      });
+      await prisma.user
+        .update({
+          where: {
+            id: userId,
+          },
+          data: { issuer, email },
+        })
+        .catch(console.error)
+        .finally(() => prisma.$disconnect());;
     }
 
     res.status(200).json({ message: "Note Updated" });
