@@ -1,5 +1,7 @@
+import { signOut } from "next-auth/react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
+
 
 const navigation = [
   { name: "User", href: "#", current: true },
@@ -32,6 +34,20 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <span className="sm:ml-3">
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    <PlusIcon
+                      className="-ml-1 mr-2 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                    Add User
+                  </button>
+                </span>
+              </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
@@ -50,22 +66,18 @@ export default function Navbar() {
                         {item.name}
                       </a>
                     ))}
+                    <div className="flex object-right">
+                      <button
+                        onClick={() => signOut()}
+                        type="button"
+                        className="text-center text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                    ;
                   </div>
                 </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <span className="sm:ml-3">
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    <PlusIcon
-                      className="-ml-1 mr-2 h-5 w-5"
-                      aria-hidden="true"
-                    />
-                    Add User
-                  </button>
-                </span>
               </div>
             </div>
           </div>
@@ -88,6 +100,14 @@ export default function Navbar() {
                   {item.name}
                 </Disclosure.Button>
               ))}
+
+              <button
+                onClick={() => signOut()}
+                type="button"
+                className="text-center text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-"
+              >
+                Sign Out
+              </button>
             </div>
           </Disclosure.Panel>
         </>
@@ -95,3 +115,4 @@ export default function Navbar() {
     </Disclosure>
   );
 }
+
