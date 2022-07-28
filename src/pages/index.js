@@ -1,20 +1,14 @@
+import Router from "next/router";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import GoogleBtn from "../components/GoogleBtn";
 import Loading from "../components/Loading";
-import Navbar from "../components/Navbar";
+
 export default function Home() {
-  const { status, data: session } = useSession();
+  const { status } = useSession();
 
   if (status === "authenticated") {
-    return (
-      <>
-        <Head>
-          <title>Admin Panel</title>
-        </Head>
-        <Navbar session={session} />
-      </>
-    );
+    return Router.push("/dashboard");
   } else if (status === "unauthenticated") {
     return (
       <>
