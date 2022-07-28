@@ -1,11 +1,9 @@
 import React from "react";
 
 export default function Modal({ setShowModal, onSubmit, data }) {
-//TODO:  Replace issuer, email and id by `data` and destructurate empty string allocation
+  //TODO:  Replace issuer, email and id by `data` and destructurate empty string allocation
   const [form, setForm] = React.useState({
-    issuer: "",
-    email: "",
-    id: "",
+    ...data,
   });
 
   return (
@@ -30,28 +28,24 @@ export default function Modal({ setShowModal, onSubmit, data }) {
                   </span>
                 </button>
               </div>
-                  {/*body*/}
-                  {/* //TODO:  Replace issuer, email and id by `data` and destructurate empty string allocation */}
-                  <div className="relative p-6 flex-auto">
-                    <textarea
-                      placeholder={"Issuer"}
-                      value={form.issuer}
-                      onChange={(e) =>
-                        setForm({ ...form, issuer: e.target.value })
-                      }
-                      className="border-2 rounded border-gray-600 p-1    my-4 text-slate-500 text-lg leading-relaxed"
-                    />
-                  </div>
-                  <div className="relative p-6 flex-auto">
-                    <textarea
-                      placeholder={"Email"}
-                      value={form.email}
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
-                      className="border-2 rounded border-gray-600 p-1    my-4 text-slate-500 text-lg leading-relaxed"
-                    />
-                  </div>
+              {/*body*/}
+              {/* //TODO:  Replace issuer, email and id by `data` and destructurate empty string allocation */}
+              <div className="relative p-6 flex-auto">
+                <textarea
+                  placeholder={"Issuer"}
+                  value={form.issuer}
+                  onChange={(e) => setForm({ ...form, issuer: e.target.value })}
+                  className="border-2 rounded border-gray-600 p-1    my-4 text-slate-500 text-lg leading-relaxed"
+                />
+              </div>
+              <div className="relative p-6 flex-auto">
+                <textarea
+                  placeholder={"Email"}
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="border-2 rounded border-gray-600 p-1    my-4 text-slate-500 text-lg leading-relaxed"
+                />
+              </div>
               {/*footer*/}
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                 <button

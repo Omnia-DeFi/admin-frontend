@@ -40,7 +40,6 @@ const AddData = ({ collection, data }) => {
       {showModal ? (
         <Modal
           setShowModal={setShowModal}
-          onSubmit={method_above}
           data={data}
         />
       ) : null}
