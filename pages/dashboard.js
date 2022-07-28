@@ -4,20 +4,6 @@ import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { prisma } from "../lib/prisma";
 
-// interface Notes {
-//   notes: {
-//     id: string;
-//     title: string;
-//     content: string;
-//   }[];
-// }
-
-// interface FormData {
-//   title: string;
-//   content: string;
-//   id: string;
-// }
-
 const Dashboard = ({ notes }) => {
   const [form, setForm] = useState<FormData>({
     title: "",

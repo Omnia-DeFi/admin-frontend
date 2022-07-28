@@ -14,7 +14,7 @@ export default NextAuth({
       if (account.provider === "google") {
         return profile.email_verified && profile.email.endsWith("@omniadefi.com");
       }
-      return true; // Do different verification for other providers that don't have `email_verified`
+      return true;
     },
     async session({ session, token, user }) {
       if (token) {
