@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../prisma/prisma";
 
 const Dashboard = ({ notes }) => {
   const [form, setForm] = useState<FormData>({
