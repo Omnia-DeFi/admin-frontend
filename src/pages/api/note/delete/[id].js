@@ -4,11 +4,11 @@ export default async function handler(
   req,
   res 
 ) {
-  const noteId = req.query.id;
+  const userId = req.query.id;
 
   if (req.method === "DELETE") {
-    const note = await prisma.note.delete({
-      where: { id: noteId },
+    const note = await prisma.user.delete({
+      where: { id: userId },
     });
     res.json(note);
   } else {

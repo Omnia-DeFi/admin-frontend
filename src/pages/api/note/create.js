@@ -1,16 +1,13 @@
 import { prisma } from "../../../prisma/prisma";
 
-export default async function handler(
-  req,
-  res
-) {
-  const { title, content } = req.body;
+export default async function handler(req, res) {
+  const { issuer, email } = req.body;
 
   try {
-    await prisma.note.create({
+    await prisma.user.create({
       data: {
-        title,
-        content,
+        issuer,
+        email,
       },
     });
     res.status(200).json({ message: "Note Created" });

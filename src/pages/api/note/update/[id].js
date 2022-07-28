@@ -4,23 +4,23 @@ export default async function handler(
   req,
   res
 ) {
-  const noteId = req.query.id;
-  const { title, content } = req.body;
+  const userId = req.query.id;
+  const { issuer, email } = req.body;
 
   try {
     if (req.method === "GET") {
-      let note = await prisma.note.findUnique({
-        where: { id: noteId },
+      let note = await prisma.user.findUnique({
+        where: { id: userId },
       });
       return res.json({ note });
     }
 
     if (req.method === "PUT") {
-      await prisma.note.update({
+      await prisma.user.update({
         where: {
-          id: noteId,
+          id: userId,
         },
-        data: { title, content },
+        data: { issuer, email },
       });
     }
 
