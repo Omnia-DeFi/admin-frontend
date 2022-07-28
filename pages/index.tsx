@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useSession, signIn, signOut } from "next-auth/react";
 import { prisma } from '../lib/prisma'
 
 
@@ -22,6 +23,8 @@ const Home = ({notes}: Notes) => {
   const [form, setForm] = useState<FormData>({title: '', content: '', id: ''})
   const [exist, setExist] = useState(false)
   const router = useRouter()
+
+  const { data: session, status } = useSession();
 
   const refreshData = () => {
     router.replace(router.asPath)
@@ -105,8 +108,12 @@ const Home = ({notes}: Notes) => {
     }
   }
 
-  return (
-    <div>
+  if(status === "authenticated"){ 
+    return (
+    <>
+      <button onClick={() => signOut({ callbackUrl: "/" })}>
+				Sign Out
+			</button>
       <h1 className="text-center font-bold text-2xl mt-4">Notes</h1>
       <form onSubmit={e => {
         e.preventDefault()
@@ -142,9 +149,20 @@ const Home = ({notes}: Notes) => {
           ))}
         </ul>
       </div>
-    </div>
-  )
+    </>
+  ); 
 }
+  
+  return(
+    <div className="container">
+			<h1>Welcome!</h1>
+			<p>Please, sign in to continue</p>
+			<button onClick={() => signIn("google")}>
+				Sign in with Google
+			</button>
+		</div>
+  );
+};
 
 export default Home
 
