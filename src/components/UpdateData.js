@@ -45,9 +45,7 @@ const UpdateData = ({ collection, data, setForm, updateParentExist }) => {
       >
         Update
       </button>
-      {showModal ? (
-        <Modal setShowModal={setShowModal}  data={data} />
-      ) : null}
+      {showModal ? <Modal setShowModal={setShowModal} data={data} /> : null}
     </>
   );
 };

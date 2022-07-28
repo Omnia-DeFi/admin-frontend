@@ -2,7 +2,6 @@ import { signOut } from "next-auth/react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 
-
 const navigation = [
   { name: "User", href: "#", current: true },
   { name: "KYC", href: "#", current: false },
@@ -115,4 +114,3 @@ export default function Navbar() {
     </Disclosure>
   );
 }
-

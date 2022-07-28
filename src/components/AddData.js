@@ -1,16 +1,23 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "../components/Modal/Modal";
+import { UserContent } from "../components/Modal/UserContent";
 
-const AddData = ({ collection, data }) => {
+const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
+  const [issuer, setIssuer] = useState('');
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function create() {
+  async function create(e) {
+    e.preventDefault();
+    setLoading(true);
+    const data = {issuer, email}
     try {
       fetch(`http://localhost:3000/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -18,13 +25,17 @@ const AddData = ({ collection, data }) => {
           "Content-Type": "application/json",
         },
         method: "POST",
-      }).then(() => {
-        updateParentForm({ issuer: "", email: "", id: "" });
-        refreshData();
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refreshData();
+        });
     } catch (error) {
       console.log(error);
     }
+    setShowModal(false);
+    setLoading(false);
   }
 
   return (
@@ -32,16 +43,19 @@ const AddData = ({ collection, data }) => {
       <button
         className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
-        onClick={() => setShowAddModal(true)}
+        onClick={() => setShowModal(true)}
       >
         Add
       </button>
 
       {showModal ? (
         <Modal
+          header={"User"}
           setShowModal={setShowModal}
-          data={data}
-        />
+          onSubmit={create}
+        >
+          <UserContent email={email} issuer={issuer} setEmail={setEmail} setIssuer={setIssuer} />
+        </Modal>
       ) : null}
     </>
   );

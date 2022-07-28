@@ -11,9 +11,9 @@ export default NextAuth({
 
   callbacks: {
     async signIn({ account, profile }) {
-      if (account.provider === "google") {
-        return profile.email_verified && profile.email.endsWith("@omniadefi.com");
-      }
+      // if (account.provider === "google") {
+      //   return profile.email_verified && profile.email.endsWith("@omniadefi.com");
+      // }
       return true;
     },
     async session({ session, token, user }) {
