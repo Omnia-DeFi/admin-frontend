@@ -14,8 +14,9 @@ const DeleteDataFrom = ({ collection, data }) => {
           "Content-Type": "application/json",
         },
         method: "DELETE",
-      });
-      refreshData();
+      })
+        .then((res) => res.json())
+        .then((data) => refreshData());
     } catch (error) {
       console.log("delete: ", error);
     }

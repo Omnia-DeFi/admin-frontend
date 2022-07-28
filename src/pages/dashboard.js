@@ -32,8 +32,8 @@ const Dashboard = ({ data, collectionName }) => {
                   <p className="text-sm">{item.email}</p>
                 </div>
                 <div className="flex-2">
-                  <UpdateData collection={"item"} data={item} />
-                  <DeleteDataFrom collection={"item"} data={item} />
+                  <UpdateData collection={"user"} data={item} />
+                  <DeleteDataFrom collection={"user"} data={item} />
                 </div>
               </div>
             </li>

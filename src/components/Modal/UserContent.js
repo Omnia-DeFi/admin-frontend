@@ -1,10 +1,19 @@
 import { useEffect } from "react";
 
-export const UserContent = ({issuer, email, setEmail, setIssuer, showModal}) => {
+export const UserContent = ({
+  issuer,
+  email,
+  setEmail,
+  setIssuer,
+  showModal,
+  operation,
+}) => {
   useEffect(() => {
-    setEmail('');
-    setIssuer('');
-  }, [showModal])
+    if (operation === "add") {
+      setEmail("");
+      setIssuer("");
+    }
+  }, [showModal]);
   return (
     <div>
       <div className="relative px-6 flex-auto">
@@ -18,7 +27,7 @@ export const UserContent = ({issuer, email, setEmail, setIssuer, showModal}) => 
         />
       </div>
       <div className="relative px-6 py-4 flex-auto">
-      <label htmlFor="issuer">Email</label>
+        <label htmlFor="issuer">Email</label>
         <input
           placeholder={"Email"}
           value={email}

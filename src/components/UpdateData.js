@@ -1,42 +1,43 @@
-import { useState } from "react";
-import Modal from "./Modal";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Modal from "../components/Modal/Modal";
+import { UserContent } from "../components/Modal/UserContent";
 
-const UpdateData = ({ collection, data, setForm, updateParentExist }) => {
+const UpdateData = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.email);
+  const [issuer, setIssuer] = useState(data.issuer);
   const [showModal, setShowModal] = useState(false);
 
-  async function fetchExistingData() {
-    try {
-      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "GET",
-      }).then(() => {
-        // TODO: to complete and refactor
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const router = useRouter();
 
-  async function saveDataUpdate() {
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
+  async function saveDataUpdate(e) {
+    e.preventDefault();
+    const newData = { issuer, email };
     try {
+      console.log(data);
       fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
-        body: JSON.stringify(data),
+        body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
         },
         method: "PUT",
-      }).then(() => {
-        // TODO: to complete and refactor
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          refreshData();
+        });
     } catch (error) {
       console.log(error);
     }
+    setShowModal(false);
   }
 
   return (
-    // TODO: Show modal to update data: make the model interact with these functions
     <>
       <button
         className="bg-orange-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -45,7 +46,22 @@ const UpdateData = ({ collection, data, setForm, updateParentExist }) => {
       >
         Update
       </button>
-      {showModal ? <Modal setShowModal={setShowModal} data={data} /> : null}
+      {showModal ? (
+        <Modal
+          header={"Update"}
+          setShowModal={setShowModal}
+          data={data}
+          onSubmit={saveDataUpdate}
+        >
+          <UserContent
+            email={email}
+            issuer={issuer}
+            setEmail={setEmail}
+            setIssuer={setIssuer}
+            showModal={showModal}
+          />
+        </Modal>
+      ) : null}
     </>
   );
 };

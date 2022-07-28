@@ -5,8 +5,8 @@ import { UserContent } from "../components/Modal/UserContent";
 
 const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
-  const [issuer, setIssuer] = useState('');
-  const [email, setEmail] = useState('');
+  const [issuer, setIssuer] = useState("");
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -17,7 +17,7 @@ const AddData = ({ collection }) => {
   async function create(e) {
     e.preventDefault();
     setLoading(true);
-    const data = {issuer, email}
+    const data = { issuer, email };
     try {
       fetch(`http://localhost:3000/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -53,9 +53,16 @@ const AddData = ({ collection }) => {
           header={"User"}
           setShowModal={setShowModal}
           onSubmit={create}
-          loading={loading} 
+          loading={loading}
         >
-          <UserContent email={email} issuer={issuer} setEmail={setEmail} setIssuer={setIssuer} showModal={showModal} />
+          <UserContent
+            email={email}
+            issuer={issuer}
+            setEmail={setEmail}
+            setIssuer={setIssuer}
+            showModal={showModal}
+            operation={"add"}
+          />
         </Modal>
       ) : null}
     </>
