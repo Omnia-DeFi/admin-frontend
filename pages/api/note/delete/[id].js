@@ -1,15 +1,14 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../../lib/prisma";
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  req,
+  res 
 ) {
   const noteId = req.query.id;
 
   if (req.method === "DELETE") {
     const note = await prisma.note.delete({
-      where: { id: noteId as string },
+      where: { id: noteId },
     });
     res.json(note);
   } else {

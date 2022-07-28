@@ -1,24 +1,24 @@
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { prisma } from "../lib/prisma";
 
-interface Notes {
-  notes: {
-    id: string;
-    title: string;
-    content: string;
-  }[];
-}
+// interface Notes {
+//   notes: {
+//     id: string;
+//     title: string;
+//     content: string;
+//   }[];
+// }
 
-interface FormData {
-  title: string;
-  content: string;
-  id: string;
-}
+// interface FormData {
+//   title: string;
+//   content: string;
+//   id: string;
+// }
 
-const Home = ({ notes }: Notes) => {
+const Dashboard = ({ notes }) => {
   const [form, setForm] = useState<FormData>({
     title: "",
     content: "",
@@ -27,13 +27,11 @@ const Home = ({ notes }: Notes) => {
   const [exist, setExist] = useState(false);
   const router = useRouter();
 
-  const { data: session, status } = useSession();
-
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function create(data: FormData) {
+  async function create(data) {
     try {
       fetch("http://localhost:3000/api/note/create", {
         body: JSON.stringify(data),
@@ -50,7 +48,7 @@ const Home = ({ notes }: Notes) => {
     }
   }
 
-  async function updateNote(data: FormData) {
+  async function updateNote(data) {
     try {
       fetch(`http://localhost:3000/api/note/update/${data.id}`, {
         headers: {
@@ -67,7 +65,7 @@ const Home = ({ notes }: Notes) => {
     }
   }
 
-  async function saveUpdate(data: FormData) {
+  async function saveUpdate(data) {
     try {
       fetch(`http://localhost:3000/api/note/update/${data.id}`, {
         body: JSON.stringify(data),
@@ -84,7 +82,7 @@ const Home = ({ notes }: Notes) => {
     }
   }
 
-  async function deleteNote(id: string) {
+  async function deleteNote(id) {
     try {
       fetch(`http://localhost:3000/api/note/delete/${id}`, {
         headers: {
@@ -99,7 +97,7 @@ const Home = ({ notes }: Notes) => {
     }
   }
 
-  const handleSubmit = async (data: FormData) => {
+  const handleSubmit = async (data) => {
     try {
       exist ? saveUpdate(data) : create(data);
     } catch (error) {
@@ -107,7 +105,6 @@ const Home = ({ notes }: Notes) => {
     }
   };
 
-  if (status === "authenticated") {
     return (
       <>
         <button onClick={() => signOut({ callbackUrl: "/" })}>Sign Out</button>
@@ -170,20 +167,11 @@ const Home = ({ notes }: Notes) => {
         </div>
       </>
     );
-  }
-
-  return (
-    <div className="container">
-      <h1>Welcome!</h1>
-      <p>Please, sign in to continue</p>
-      <button onClick={() => signIn("google")}>Sign in with Google</button>
-    </div>
-  );
 };
 
-export default Home;
+export default Dashboard;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const notes = await prisma.note.findMany({
     select: {
       title: true,

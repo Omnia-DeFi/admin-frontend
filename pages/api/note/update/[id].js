@@ -1,9 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../../lib/prisma";
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+  req,
+  res
 ) {
   const noteId = req.query.id;
   const { title, content } = req.body;
@@ -11,7 +10,7 @@ export default async function handler(
   try {
     if (req.method === "GET") {
       let note = await prisma.note.findUnique({
-        where: { id: noteId as string },
+        where: { id: noteId },
       });
       return res.json({ note });
     }
@@ -19,7 +18,7 @@ export default async function handler(
     if (req.method === "PUT") {
       await prisma.note.update({
         where: {
-          id: noteId as string,
+          id: noteId,
         },
         data: { title, content },
       });
