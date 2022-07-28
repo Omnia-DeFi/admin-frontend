@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import { Header } from "./Header";
 
-export default function Modal({ setShowModal, onSubmit, header, children }) {
+export default function Modal({ setShowModal, onSubmit, header, children, loading }) {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -17,7 +17,7 @@ export default function Modal({ setShowModal, onSubmit, header, children }) {
               {/*body*/}
               {children}
               {/*footer*/}
-              <Footer setShowModal={setShowModal} />
+              <Footer setShowModal={setShowModal} loading={loading} />
             </form>
           </div>
         </div>

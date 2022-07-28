@@ -1,5 +1,10 @@
+import { useEffect } from "react";
 
-export const UserContent = ({issuer, email, setEmail, setIssuer}) => {
+export const UserContent = ({issuer, email, setEmail, setIssuer, showModal}) => {
+  useEffect(() => {
+    setEmail('');
+    setIssuer('');
+  }, [showModal])
   return (
     <div>
       <div className="relative px-6 flex-auto">

@@ -53,8 +53,9 @@ const AddData = ({ collection }) => {
           header={"User"}
           setShowModal={setShowModal}
           onSubmit={create}
+          loading={loading} 
         >
-          <UserContent email={email} issuer={issuer} setEmail={setEmail} setIssuer={setIssuer} />
+          <UserContent email={email} issuer={issuer} setEmail={setEmail} setIssuer={setIssuer} showModal={showModal} />
         </Modal>
       ) : null}
     </>
