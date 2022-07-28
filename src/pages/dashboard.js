@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { prisma } from "../prisma/prisma";
+import Head from "next/head";
+
+import Navbar from "../components/Navbar";
 
 const Dashboard = ({ notes }) => {
   const [form, setForm] = useState({
@@ -93,6 +96,11 @@ const Dashboard = ({ notes }) => {
 
   return (
     <>
+      <Head>
+        <title>Admin Panel</title>
+      </Head>
+      <Navbar />
+
       <h1 className="text-center font-bold text-2xl mt-4">User</h1>
       <form
         onSubmit={(e) => {
