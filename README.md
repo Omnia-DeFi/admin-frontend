@@ -1,5 +1,7 @@
 ## Getting Started
-### Run 
+
+### Run
+
 First, generate prisma data based on the model
 
 ```bash
@@ -14,13 +16,14 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### API
 
-### API 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/file_name_without_extension](http://localhost:3000/api/hello). <br>
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-Example:  create a new entry
+Example: create a new entry
+
 ```bash
 localhost:3000/api/note/create
 ```

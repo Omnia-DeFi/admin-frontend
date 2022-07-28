@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -8,4 +8,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   </SessionProvider>;
 }
 
-export default MyApp
+export default MyApp;
