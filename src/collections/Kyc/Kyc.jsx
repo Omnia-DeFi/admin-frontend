@@ -7,10 +7,12 @@ const Kyc = ({ collectionName, data }) => {
     <>
       <h1 className="text-center font-bold text-2xl mt-4">Kyc</h1>
       <div className="w-auto min-w-[25%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
+        <div></div>
         <AddKyc collection={collectionName} data={data} />
       </div>
-      <div className="w-auto min-w-[33%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
-        {/* <ul>
+      {data.length > 0 && (
+        <div className="w-auto min-w-[33%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
+          {/* <ul>
           {data.map((item) => (
             <li key={item.id} className="border-b border-gray-600 p-2">
               <div className="flex justify-between">
@@ -40,7 +42,8 @@ const Kyc = ({ collectionName, data }) => {
           ))}
         </ul> */}
           <KycTable data={data} />
-      </div>
+        </div>
+      )}
     </>
   );
 };

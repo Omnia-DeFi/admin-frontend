@@ -1,16 +1,16 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "../components/Modal/Modal";
-import  {DeviceContent}  from "./Modal/DeviceContent";
+import { DeviceContent } from "./Modal/DeviceContent";
 
 const AddDevice = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [type, setType] = useState('');
-  const [token, setToken] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [type, setType] = useState("");
+  const [token, setToken] = useState("");
   const router = useRouter();
 
   const refreshData = () => {

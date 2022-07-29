@@ -13,7 +13,7 @@ export default async function handler(req, res) {
             id: kycId,
           },
           data: {
-            user:{
+            user: {
               update: {
                 email,
                 issuer,
@@ -26,15 +26,15 @@ export default async function handler(req, res) {
                 type,
                 date: new Date(),
                 read,
-              }
-            }
+              },
+            },
           },
         })
         .catch(console.error)
         .finally(() => prisma.$disconnect());
     }
 
-    res.status(200).json(updatedKyc, {message: "Updated Kyc"});
+    res.status(200).json(updatedKyc, { message: "Updated Kyc" });
   } catch (error) {
     console.log("Update failure");
   }

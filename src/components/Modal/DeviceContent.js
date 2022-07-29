@@ -47,7 +47,8 @@ export const DeviceContent = ({
         />
       </div>
       <div className="relative px-6 flex-auto">
-        <input name="title"
+        <input
+          name="title"
           placeholder={"Alert Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -55,7 +56,8 @@ export const DeviceContent = ({
         />
       </div>
       <div className="relative px-6 flex-auto">
-        <input name="content"
+        <input
+          name="content"
           placeholder={"Content"}
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -63,7 +65,8 @@ export const DeviceContent = ({
         />
       </div>
       <div className="relative px-6 flex-auto">
-        <input name="type"
+        <input
+          name="type"
           placeholder={"Type"}
           value={type}
           onChange={(e) => setType(e.target.value)}
@@ -71,7 +74,8 @@ export const DeviceContent = ({
         />
       </div>
       <div className="relative px-6 flex-auto">
-        <input name="token"
+        <input
+          name="token"
           placeholder={"Token"}
           value={token}
           onChange={(e) => setToken(e.target.value)}

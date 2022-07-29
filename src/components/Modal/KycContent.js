@@ -47,7 +47,8 @@ export const KycContent = ({
       </div>
       <div className="relative px-6 flex-auto">
         <label htmlFor="title">Alert Title</label>
-        <input name="title"
+        <input
+          name="title"
           placeholder={"Alert Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -56,7 +57,8 @@ export const KycContent = ({
       </div>
       <div className="relative px-6 flex-auto">
         <label htmlFor="content">Alert Content</label>
-        <input name="content"
+        <input
+          name="content"
           placeholder={"Content"}
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -65,7 +67,8 @@ export const KycContent = ({
       </div>
       <div className="relative px-6 flex-auto">
         <label htmlFor="type">Alert Type</label>
-        <input name="type"
+        <input
+          name="type"
           placeholder={"Type"}
           value={type}
           onChange={(e) => setType(e.target.value)}

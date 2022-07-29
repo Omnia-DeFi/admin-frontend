@@ -33,7 +33,8 @@ export const UserContent = ({
       </div>
       <div className="relative px-6 py-4 flex-auto">
         <label htmlFor="email">Email</label>
-        <input name="email"
+        <input
+          name="email"
           placeholder={"Email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -42,7 +43,8 @@ export const UserContent = ({
       </div>
       <div className="relative px-6 py-4 flex-auto">
         <label htmlFor="phone-number">Phone Number</label>
-        <input name="phone-number"
+        <input
+          name="phone-number"
           placeholder={"Phone Number"}
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
@@ -51,7 +53,8 @@ export const UserContent = ({
       </div>
       <div className="relative px-6 py-4 flex-auto">
         <label htmlFor="public-address">Public Address</label>
-        <input name="public-address"
+        <input
+          name="public-address"
           placeholder={"Public Adrress"}
           value={publicAddress}
           onChange={(e) => setPublicAddress(e.target.value)}

@@ -7,8 +7,8 @@ const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [publicAddress, setPublicAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [publicAddress, setPublicAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -66,7 +66,7 @@ const AddData = ({ collection }) => {
             showModal={showModal}
             phoneNumber={phoneNumber}
             setPhoneNumber={setPhoneNumber}
-            publicAddress={publicAddress} 
+            publicAddress={publicAddress}
             setPublicAddress={setPublicAddress}
             operation={"add"}
           />

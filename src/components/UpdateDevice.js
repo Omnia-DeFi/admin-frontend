@@ -19,9 +19,9 @@ const UpdateDevice = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    console.log(data.id)
+    console.log(data.id);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true, token};
+    const newData = { issuer, email, title, content, type, read: true, token };
     try {
       console.log(newData);
       fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {

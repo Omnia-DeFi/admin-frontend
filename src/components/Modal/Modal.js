@@ -24,7 +24,11 @@ export default function Modal({
               {/*body*/}
               {children}
               {/*footer*/}
-              <Footer setShowModal={setShowModal} loading={loading} buttonName={buttonName} />
+              <Footer
+                setShowModal={setShowModal}
+                loading={loading}
+                buttonName={buttonName}
+              />
             </form>
           </div>
         </div>

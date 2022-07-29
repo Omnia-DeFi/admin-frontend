@@ -19,7 +19,7 @@ const UpdatedKyc = ({ collection, data }) => {
 
   async function saveDataUpdate(e) {
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true};
+    const newData = { issuer, email, title, content, type, read: true };
     try {
       console.log(newData);
       fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {

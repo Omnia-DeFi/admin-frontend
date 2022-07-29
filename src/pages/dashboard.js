@@ -11,8 +11,9 @@ const Dashboard = ({ data, collectionName }) => {
         <title>Admin Panel</title>
       </Head>
       <Navbar />
-
-      <User collectionName={collectionName} data={data} />
+      <div className="mt-[40px]">
+        <User collectionName={collectionName} data={data} />
+      </div>
     </>
   );
 };

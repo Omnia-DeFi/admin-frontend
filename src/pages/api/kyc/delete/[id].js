@@ -10,7 +10,7 @@ export default async function handler(req, res) {
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
-    res.json(deletedKyc, {message: "Deleted Successfully"});
+    res.json(deletedKyc, { message: "Deleted Successfully" });
   } else {
     console.log("Failure");
   }
