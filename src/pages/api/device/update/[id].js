@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   try {
     let updatedDevice;
     if (req.method === "PUT") {
-      updatedDevice = await prisma.kyc
+      updatedDevice = await prisma.device
         .update({
           where: {
             id: deviceId,

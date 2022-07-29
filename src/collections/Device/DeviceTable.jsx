@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateKyc from "../../components/UpdateKyc";
+import UpdateDevice from "../../components/UpdateDevice";
 
 const DeviceTable = ({data}) => {
   return (
@@ -39,10 +39,10 @@ const DeviceTable = ({data}) => {
               <p>{item.reciever.content}</p>
               </td>
             <td className="py-4 px-6 text-right">
-              {/* <UpdateKyc collection={"kyc"} data={item}/> */}
+              <UpdateDevice collection={"device"} data={item}/>
             </td>
             <td className="py-4 px-6 text-right">
-              <DeleteDataFrom collection={"kyc"} data={item}/>
+              <DeleteDataFrom collection={"device"} data={item}/>
             </td>
           </tr>
           </>

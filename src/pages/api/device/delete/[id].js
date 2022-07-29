@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const deviceId = req.query.id;
 
   if (req.method === "DELETE") {
-    const deletedDevice = await prisma.kyc
+    const deletedDevice = await prisma.device
       .delete({
         where: { id: deviceId },
       })
