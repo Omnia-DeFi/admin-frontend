@@ -2,7 +2,7 @@ import { prisma } from "../../../../prisma/prisma";
 
 export default async function handler(req, res) {
   const userId = req.query.id;
-  const { issuer, email } = req.body;
+  const { issuer, email, phoneNumber, publicAddress } = req.body;
 
   try {
     let updatedUser;
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
           where: {
             id: userId,
           },
-          data: { issuer, email },
+          data: { issuer, email, phone_number: phoneNumber, public_address: publicAddress },
         })
         .catch(console.error)
         .finally(() => prisma.$disconnect());

@@ -6,6 +6,8 @@ import { UserContent } from "../components/Modal/UserContent";
 const UpdateData = ({ collection, data }) => {
   const [email, setEmail] = useState(data.email);
   const [issuer, setIssuer] = useState(data.issuer);
+  const [phoneNumber, setPhoneNumber] = useState(data.phone_number);
+  const [publicAddress, setPublicAddress] = useState(data.public_address);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -16,7 +18,7 @@ const UpdateData = ({ collection, data }) => {
 
   async function saveDataUpdate(e) {
     e.preventDefault();
-    const newData = { issuer, email };
+    const newData = { issuer, email, phoneNumber, publicAddress};
     try {
       console.log(data);
       fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
@@ -57,6 +59,10 @@ const UpdateData = ({ collection, data }) => {
           <UserContent
             email={email}
             issuer={issuer}
+            setPhoneNumber={setPhoneNumber}
+            phoneNumber={phoneNumber}
+            publicAddress={publicAddress}
+            setPublicAddress={setPublicAddress}
             setEmail={setEmail}
             setIssuer={setIssuer}
             showModal={showModal}

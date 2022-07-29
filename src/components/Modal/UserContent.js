@@ -17,6 +17,8 @@ export const UserContent = ({
     if (operation === "add") {
       setEmail("");
       setIssuer("");
+      setPhoneNumber("");
+      setPublicAddress("");
     }
   }, [showModal]);
   return (
