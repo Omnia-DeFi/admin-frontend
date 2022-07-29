@@ -2,7 +2,7 @@ import { prisma } from "../prisma/prisma";
 import Head from "next/head";
 
 import Navbar from "../components/Navbar";
-import User from "../collections/User";
+import User from "../collections/User/User";
 
 const Dashboard = ({ data, collectionName }) => {
   return (
@@ -25,6 +25,8 @@ export const getServerSideProps = async () => {
       issuer: true,
       id: true,
       email: true,
+      phone_number: true,
+      public_address: true,
     },
   });
 

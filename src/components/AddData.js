@@ -7,6 +7,8 @@ const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [publicAddress, setPublicAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -17,7 +19,7 @@ const AddData = ({ collection }) => {
   async function create(e) {
     e.preventDefault();
     setLoading(true);
-    const data = { issuer, email };
+    const data = { issuer, email, phoneNumber, publicAddress };
     try {
       fetch(`http://localhost:3000/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -62,6 +64,10 @@ const AddData = ({ collection }) => {
             setEmail={setEmail}
             setIssuer={setIssuer}
             showModal={showModal}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            publicAddress={publicAddress} 
+            setPublicAddress={setPublicAddress}
             operation={"add"}
           />
         </Modal>
