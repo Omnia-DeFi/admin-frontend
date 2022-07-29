@@ -3,12 +3,12 @@ import { Disclosure } from "@headlessui/react";
 import { MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 
 const navigation = [
-  { name: "User", href: "#", current: true },
-  { name: "KYC", href: "#", current: false },
-  { name: "Device", href: "#", current: false },
-  { name: "Alert", href: "#", current: false },
-  { name: "Asset", href: "#", current: false },
-  { name: "Sub Folder", href: "#", current: false },
+  { name: "User", href: "/dashboard", current: true },
+  { name: "KYC", href: "/kyc", current: false },
+  { name: "Device", href: "/device", current: false },
+  { name: "Alert", href: "/alert", current: false },
+  { name: "Asset", href: "/asset", current: false },
+  { name: "Sub Folder", href: "/sub-folder", current: false },
 ];
 
 function classNames(...classes) {
