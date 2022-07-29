@@ -52,6 +52,7 @@ const UpdateData = ({ collection, data }) => {
           setShowModal={setShowModal}
           data={data}
           onSubmit={saveDataUpdate}
+          buttonName="Update User"
         >
           <UserContent
             email={email}

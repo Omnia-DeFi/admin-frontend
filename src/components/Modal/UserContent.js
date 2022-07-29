@@ -28,8 +28,8 @@ export const UserContent = ({
         />
       </div>
       <div className="relative px-6 py-4 flex-auto">
-        <label htmlFor="issuer">Email</label>
-        <input
+        <label htmlFor="email">Email</label>
+        <input name="email"
           placeholder={"Email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}

@@ -1,15 +1,16 @@
 import React from "react";
-import DeleteDataFrom from "../components/DeleteData";
-import UpdateData from "../components/UpdateData";
-import AddData from "../components/AddData";
+import DeleteDataFrom from "../../components/DeleteData";
+import UpdateData from "../../components/UpdateData";
+import AddData from "../../components/AddData";
 import KycTable from "./KycTable";
+import AddKyc from "../../components/AddKyc";
 
 const Kyc = ({ collectionName, data }) => {
   return (
     <>
       <h1 className="text-center font-bold text-2xl mt-4">Kyc</h1>
       <div className="w-auto min-w-[25%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
-        <AddData collection={collectionName} data={data} />
+        <AddKyc collection={collectionName} data={data} />
       </div>
       <div className="w-auto min-w-[33%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
         {/* <ul>

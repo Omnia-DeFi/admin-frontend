@@ -54,6 +54,7 @@ const AddData = ({ collection }) => {
           setShowModal={setShowModal}
           onSubmit={create}
           loading={loading}
+          buttonName={"Add User"}
         >
           <UserContent
             email={email}

@@ -1,7 +1,7 @@
 import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const { issuer, email, title, content, type, date, read } = req.body;
+  const { issuer, email, title, content, type, read } = req.body;
 
   try {
     const createdKyc = await prisma.kyc
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
               title,
               content,
               type,
-              date,
+              date: new Date(),
               read,
             },
           },
