@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
-    res.status(200).json({ message: "Note Created" });
+    res.status(200).json({ message: "User Created" });
   } catch (error) {
     console.log("Failure");
   }
