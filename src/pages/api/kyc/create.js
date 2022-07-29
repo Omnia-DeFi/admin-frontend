@@ -1,32 +1,32 @@
 import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const { issuer, email } = req.body;
+  const { issuer, email, title, content, type, date, read } = req.body;
 
   try {
-    await prisma.kyc
+    const createdKyc = await prisma.kyc
       .create({
         data: {
-          triggerer: {
-            create: {
-              data: {
-                title,
-                content,
-                type,
-                date,
-              }
-            }
-          },
           user: {
             create: {
-              data: { issuer, email}
-            }
-          }
+              email,
+              issuer,
+            },
+          },
+          triggerer: {
+            create: {
+              title,
+              content,
+              type,
+              date,
+              read,
+            },
+          },
         },
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
-    res.status(200).json({ message: "Note Created" });
+    res.status(200).json({ message: "Kyc created", createdKyc });
   } catch (error) {
     console.log("Failure");
   }

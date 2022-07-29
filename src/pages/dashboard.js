@@ -4,7 +4,6 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import User from "../collections/User";
 
-
 const Dashboard = ({ data, collectionName }) => {
   return (
     <>
