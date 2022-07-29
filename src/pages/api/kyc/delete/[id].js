@@ -1,17 +1,17 @@
 import { prisma } from "../../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const userId = req.query.id;
+  const kycId = req.query.id;
 
   if (req.method === "DELETE") {
-    const note = await prisma.user
+    const deletedKyc = await prisma.kyc
       .delete({
-        where: { id: userId },
+        where: { id: kycId },
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
-    res.json(note);
+    res.json(deletedKyc, {message: "Deleted Successfully"});
   } else {
-    console.log("Note could not be created");
+    console.log("Failure");
   }
 }
