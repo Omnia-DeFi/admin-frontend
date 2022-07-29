@@ -39,7 +39,7 @@ const DeviceTable = ({data}) => {
               <p>{item.reciever.content}</p>
               </td>
             <td className="py-4 px-6 text-right">
-              <UpdateKyc collection={"kyc"} data={item}/>
+              {/* <UpdateKyc collection={"kyc"} data={item}/> */}
             </td>
             <td className="py-4 px-6 text-right">
               <DeleteDataFrom collection={"kyc"} data={item}/>

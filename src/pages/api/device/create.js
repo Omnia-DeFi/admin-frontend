@@ -1,7 +1,7 @@
 import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const { issuer, email, title, content, type, read } = req.body;
+  const { issuer, email, title, content, type, read, token } = req.body;
 
   try {
     const createdDevice = await prisma.device

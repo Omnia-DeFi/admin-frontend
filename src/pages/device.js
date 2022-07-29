@@ -20,16 +20,17 @@ const DevicePage = ({ data, collectionName }) => {
 export default DevicePage;
 
 export const getServerSideProps = async () => {
-  const data = await prisma.kyc.findMany({
+  const data = await prisma.device.findMany({
     select: {
       id: true,
+      token: true,
       user: {
         select: {
           email: true,
           issuer: true,
         },
       },
-      triggerer: {
+      reciever: {
         select: {
           title: true,
           content: true,

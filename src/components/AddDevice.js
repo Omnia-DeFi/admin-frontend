@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "../components/Modal/Modal";
-import { KycContent } from "./Modal/KycContent";
+import  {DeviceContent}  from "./Modal/DeviceContent";
 
 const AddDevice = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
@@ -10,6 +10,7 @@ const AddDevice = ({ collection }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [type, setType] = useState('');
+  const [token, setToken] = useState('');
   const router = useRouter();
 
   const refreshData = () => {
@@ -18,7 +19,7 @@ const AddDevice = ({ collection }) => {
 
   async function create(e) {
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true };
+    const data = { issuer, email, title, content, type, read: true, token };
     try {
       fetch(`http://localhost:3000/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -55,7 +56,7 @@ const AddDevice = ({ collection }) => {
           onSubmit={create}
           buttonName="Add Kyc"
         >
-          <KycContent
+          <DeviceContent
             email={email}
             issuer={issuer}
             setEmail={setEmail}
@@ -65,6 +66,8 @@ const AddDevice = ({ collection }) => {
             content={content}
             type={type}
             setType={setType}
+            token={token}
+            setToken={setToken}
             setContent={setContent}
             showModal={showModal}
             operation={"add"}
