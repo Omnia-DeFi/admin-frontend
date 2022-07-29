@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateData from "../../components/UpdateData";
+import UpdateKyc from "../../components/UpdateKyc";
 
 const KycTable = ({data}) => {
   return (
@@ -25,6 +25,7 @@ const KycTable = ({data}) => {
         <tbody>
         {data.map(item => (
           <>
+          {console.log(data)}
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
    
             <td
@@ -39,7 +40,7 @@ const KycTable = ({data}) => {
               <p>{item.triggerer.content}</p>
               </td>
             <td className="py-4 px-6 text-right">
-              <UpdateData collection={"kyc"} data={item}/>
+              <UpdateKyc collection={"kyc"} data={item}/>
             </td>
             <td className="py-4 px-6 text-right">
               <DeleteDataFrom collection={"kyc"} data={item}/>

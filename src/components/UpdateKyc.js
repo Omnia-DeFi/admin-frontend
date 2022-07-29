@@ -1,31 +1,33 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
+import Modal from "./Modal/Modal";
 import { KycContent } from "./Modal/KycContent";
 
-const AddKyc = ({ collection }) => {
+const UpdatedKyc = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
+  const [title, setTitle] = useState(data.triggerer.title);
+  const [content, setContent] = useState(data.triggerer.content);
+  const [type, setType] = useState(data.triggerer.type);
   const [showModal, setShowModal] = useState(false);
-  const [issuer, setIssuer] = useState("");
-  const [email, setEmail] = useState("");
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [type, setType] = useState('');
+
   const router = useRouter();
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function create(e) {
+  async function saveDataUpdate(e) {
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true };
+    const newData = { issuer, email, title, content, type, read: true};
     try {
-      fetch(`http://localhost:3000/api/${collection}/create`, {
-        body: JSON.stringify(data),
+      console.log(newData);
+      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
+        body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        method: "PUT",
       })
         .then((res) => res.json())
         .then((data) => {
@@ -41,19 +43,19 @@ const AddKyc = ({ collection }) => {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-orange-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Add
+        Update
       </button>
-
       {showModal ? (
         <Modal
-          header={"Add Kyc"}
+          header={"Update Kyc"}
           setShowModal={setShowModal}
-          onSubmit={create}
-          buttonName="Add Kyc"
+          data={data}
+          onSubmit={saveDataUpdate}
+          buttonName="Update Kyc"
         >
           <KycContent
             email={email}
@@ -67,7 +69,6 @@ const AddKyc = ({ collection }) => {
             setType={setType}
             setContent={setContent}
             showModal={showModal}
-            operation={"add"}
           />
         </Modal>
       ) : null}
@@ -75,4 +76,4 @@ const AddKyc = ({ collection }) => {
   );
 };
 
-export default AddKyc;
+export default UpdatedKyc;

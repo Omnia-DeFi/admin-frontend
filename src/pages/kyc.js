@@ -22,6 +22,7 @@ export default KycPage;
 export const getServerSideProps = async () => {
   const data = await prisma.kyc.findMany({
     select: {
+      id: true,
       user: {
         select: {
           email: true,

@@ -1,7 +1,4 @@
 import React from "react";
-import DeleteDataFrom from "../../components/DeleteData";
-import UpdateData from "../../components/UpdateData";
-import AddData from "../../components/AddData";
 import KycTable from "./KycTable";
 import AddKyc from "../../components/AddKyc";
 
