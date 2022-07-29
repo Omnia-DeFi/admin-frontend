@@ -18,6 +18,9 @@ const DeviceTable = ({data}) => {
               Reciever
             </th>
             <th scope="col" className="py-3">
+              Token
+            </th>
+            <th scope="col" className="py-3">
               <span className="sr-only">Edit</span>
             </th>
           </tr>
@@ -37,6 +40,9 @@ const DeviceTable = ({data}) => {
             <td className="py-4 px-6">
               <p className="font-bold">{item.reciever.title}</p>
               <p>{item.reciever.content}</p>
+              </td>
+            <td className="py-4 px-6">
+              {item.token}
               </td>
             <td className="py-4 px-6 text-right">
               <UpdateDevice collection={"device"} data={item}/>

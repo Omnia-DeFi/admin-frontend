@@ -9,7 +9,7 @@ const Device = ({ collectionName, data }) => {
       <div className="w-auto min-w-[25%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
         <AddDevice collection={collectionName} data={data} />
       </div>
-      <div className="w-auto min-w-[33%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
+      <div className="w-auto min-w-[40%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">
           <DeviceTable data={data} />
       </div>
     </>
