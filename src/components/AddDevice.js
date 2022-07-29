@@ -51,10 +51,10 @@ const AddDevice = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Add Kyc"}
+          header={"Add Device"}
           setShowModal={setShowModal}
           onSubmit={create}
-          buttonName="Add Kyc"
+          buttonName="Add Device"
         >
           <DeviceContent
             email={email}
