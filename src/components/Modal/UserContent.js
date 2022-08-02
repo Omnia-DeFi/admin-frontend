@@ -1,0 +1,68 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+
+export const UserContent = ({
+  issuer,
+  email,
+  setEmail,
+  phoneNumber,
+  setPhoneNumber,
+  publicAddress,
+  setPublicAddress,
+  setIssuer,
+  showModal,
+  operation,
+}) => {
+  useEffect(() => {
+    if (operation === "add") {
+      setEmail("");
+      setIssuer("");
+      setPhoneNumber("");
+      setPublicAddress("");
+    }
+  }, [showModal]);
+  return (
+    <div>
+      <div className="relative px-6 flex-auto">
+        <label htmlFor="issuer">Issuer</label>
+        <input
+          name="issuer"
+          placeholder={"Issuer"}
+          value={issuer}
+          onChange={(e) => setIssuer(e.target.value)}
+          className="border-2 rounded border-gray-600 p-1 my-[8px] text-slate-500 text-lg leading-relaxed"
+        />
+      </div>
+      <div className="relative px-6 py-4 flex-auto">
+        <label htmlFor="email">Email</label>
+        <input
+          name="email"
+          placeholder={"Email"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+        />
+      </div>
+      <div className="relative px-6 py-4 flex-auto">
+        <label htmlFor="phone-number">Phone Number</label>
+        <input
+          name="phone-number"
+          placeholder={"Phone Number"}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+        />
+      </div>
+      <div className="relative px-6 py-4 flex-auto">
+        <label htmlFor="public-address">Public Address</label>
+        <input
+          name="public-address"
+          placeholder={"Public Adrress"}
+          value={publicAddress}
+          onChange={(e) => setPublicAddress(e.target.value)}
+          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+        />
+      </div>
+    </div>
+  );
+};
