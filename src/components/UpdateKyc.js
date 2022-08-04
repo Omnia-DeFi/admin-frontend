@@ -22,7 +22,7 @@ const UpdatedKyc = ({ collection, data }) => {
     const newData = { issuer, email, title, content, type, read: true };
     try {
       console.log(newData);
-      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
+      fetch(`/api/${collection}/update/${data.id}`, {
         body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",

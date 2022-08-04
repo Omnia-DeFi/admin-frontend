@@ -21,7 +21,7 @@ const UpdateData = ({ collection, data }) => {
     const newData = { issuer, email, phoneNumber, publicAddress};
     try {
       console.log(data);
-      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
+      fetch(`/api/${collection}/update/${data.id}`, {
         body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
