@@ -20,7 +20,7 @@ const AddKyc = ({ collection }) => {
     e.preventDefault();
     const data = { issuer, email, title, content, type, read: true };
     try {
-      fetch(`http://localhost:3000/api/${collection}/create`, {
+      fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
