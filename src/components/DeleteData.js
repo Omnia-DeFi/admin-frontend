@@ -9,7 +9,7 @@ const DeleteDataFrom = ({ collection, data }) => {
 
   async function deleteDataFrom() {
     try {
-      fetch(`http://localhost:3000/api/${collection}/delete/${data.id}`, {
+      fetch(`/api/${collection}/delete/${data.id}`, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -21,7 +21,7 @@ const AddData = ({ collection }) => {
     setLoading(true);
     const data = { issuer, email, phoneNumber, publicAddress };
     try {
-      fetch(`http://localhost:3000/api/${collection}/create`, {
+      fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
