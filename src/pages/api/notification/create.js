@@ -20,7 +20,7 @@ function runMiddleware(req, res, fn) {
 export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
   console.log("Boom")
-  const { userId } = req.body;
+  const { userId, type, title, content } = req.body;
 
   try {
     //Intialize NotificationBearer
@@ -31,15 +31,17 @@ export default async function handler(req, res) {
       update: {},
       create: {
         userId: userId,
-        bearerId: userId
+        bearerId: userId,
       },
-
     })
 
     //Create notification
     const notifications = await prisma.notifications.create({
       data: {
-        bearerId: userId
+        bearerId: userId,
+        type: type,
+        title: title,
+        content: content
       }
     })
     prisma.$disconnect();

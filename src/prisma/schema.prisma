@@ -85,4 +85,7 @@ model Notifications {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   bearerId           String @db.ObjectId
   bearer             NotificationsBearer @relation(fields: [bearerId], references: [bearerId])
+  type               String
+  title              String
+  content            String
 }
