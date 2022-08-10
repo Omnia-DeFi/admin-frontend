@@ -8,8 +8,6 @@ export const AlertContent = ({
   setContent,
   type,
   setType,
-  token,
-  setToken,
   showModal,
   operation,
 }) => {
@@ -18,7 +16,6 @@ export const AlertContent = ({
       setTitle("");
       setContent("");
       setType("");
-      setToken("");
     }
   }, [showModal]);
   return (
@@ -47,15 +44,6 @@ export const AlertContent = ({
           placeholder={"Type"}
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="token"
-          placeholder={"Token"}
-          value={token}
-          onChange={(e) => setToken(e.target.value)}
           className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
         />
       </div>

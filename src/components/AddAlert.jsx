@@ -8,7 +8,7 @@ const AddData = ({ collection }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [type, setType] = useState("");
-  const [token, setToken] = useState("");
+  const [read, setRead] = useState(true);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -19,7 +19,7 @@ const AddData = ({ collection }) => {
   async function create(e) {
     e.preventDefault();
     setLoading(true);
-    const data = { issuer, email, phoneNumber, publicAddress };
+    const data = { title, content, type, read: true };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -64,8 +64,6 @@ const AddData = ({ collection }) => {
             content={content}
             type={type}
             setType={setType}
-            token={token}
-            setToken={setToken}
             setContent={setContent}
             showModal={showModal}
             operation={"add"}

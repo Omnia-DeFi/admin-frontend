@@ -26,7 +26,7 @@ export const getServerSideProps = async () => {
       id: true,
       content: true,
       type: true,
-      // date: true,
+      date: true,
       read: true,
       // reciever: {
       //   select: {
@@ -39,9 +39,14 @@ export const getServerSideProps = async () => {
     },
   });
 
+  const formatData = data.map(d => {
+    d.date = d.date.toDateString();
+    return d;
+  })
+  
   return {
     props: {
-      data,
+      data: formatData,
       collectionName: "alert",
     },
   };

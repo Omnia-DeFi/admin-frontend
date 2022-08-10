@@ -1,7 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import UpdateAlert from "../../components/UpdateAlert";
-import UpdateDevice from "../../components/UpdateDevice";
 
 const AlertTable = ({ data }) => {
   return (
@@ -40,7 +39,7 @@ const AlertTable = ({ data }) => {
                 <td className="py-4 px-6">
                   <p className="font-bold">{item.type}</p>
                 </td>
-                {/* <td className="py-4 px-6">{item.token}</td> */}
+                <td className="py-4 px-6">{item.date}</td>
                 <td className="py-4 px-6 text-right">
                   <UpdateAlert collection={"device"} data={item} />
                 </td>
