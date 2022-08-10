@@ -19,7 +19,7 @@ const UpdateAlert = ({ collection, data }) => {
   async function saveDataUpdate(e) {
     console.log(data.id);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true, token };
+    const newData = { title, content, type, read: true };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -61,8 +61,6 @@ const UpdateAlert = ({ collection, data }) => {
             title={title}
             setTitle={setTitle}
             content={content}
-            token={token}
-            setToken={setToken}
             type={type}
             setType={setType}
             setContent={setContent}

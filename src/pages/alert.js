@@ -24,6 +24,7 @@ export const getServerSideProps = async () => {
   const data = await prisma.alert.findMany({
     select: {
       id: true,
+      title: true,
       content: true,
       type: true,
       date: true,

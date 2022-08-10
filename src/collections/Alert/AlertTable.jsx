@@ -41,7 +41,7 @@ const AlertTable = ({ data }) => {
                 </td>
                 <td className="py-4 px-6">{item.date}</td>
                 <td className="py-4 px-6 text-right">
-                  <UpdateAlert collection={"device"} data={item} />
+                  <UpdateAlert collection={"alert"} data={item} />
                 </td>
                 <td className="py-4 px-6 text-right">
                   <DeleteDataFrom collection={"alert"} data={item} />

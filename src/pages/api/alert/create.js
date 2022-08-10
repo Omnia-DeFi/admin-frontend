@@ -6,11 +6,13 @@ export default async function handler(req, res) {
   try {
     const createdAlert = await prisma.alert
       .create({
-        title,
-        content,
-        type,
-        date: (new Date()).toDateString(),
-        read,
+        data: {
+          title,
+          content,
+          type,
+          date: new Date(),
+          read,
+        }
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
