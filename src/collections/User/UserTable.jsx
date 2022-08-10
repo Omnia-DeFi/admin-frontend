@@ -1,8 +1,10 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
+import NotifyUser from "../../components/NotifyUser";
 import UpdateData from "../../components/UpdateData";
 
 const UserTable = ({ data }) => {
+
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400">
@@ -22,6 +24,9 @@ const UserTable = ({ data }) => {
             </th>
             <th scope="col" className="py-3">
               <span className="sr-only">Edit</span>
+            </th>
+            <th scope="col" className="py-3">
+              Notify
             </th>
           </tr>
         </thead>
@@ -43,6 +48,9 @@ const UserTable = ({ data }) => {
                 </td>
                 <td className="py-4 px-6 text-right">
                   <DeleteDataFrom collection={"user"} data={item} />
+                </td>
+                <td className="py-4 px-6 text-right">
+                  <NotifyUser userId={item.id} />
                 </td>
               </tr>
             </>

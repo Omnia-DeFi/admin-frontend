@@ -16,6 +16,7 @@ model User {
   verified_by      Kyc?
   devices          Device[]
   assets           Asset[]
+  notifications    NotificationsBearer?
 }
 
 model Kyc {
@@ -69,4 +70,22 @@ model Sub_Folder {
   folderId         String? @db.ObjectId
   folder           Sub_Folder?   @relation("SubFolders", fields: [folderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   folders          Sub_Folder[]  @relation("SubFolders")
+}
+
+
+model NotificationsBearer {
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String @db.ObjectId @unique
+  bearerId         String @unique @db.ObjectId
+  user             User  @relation(fields: [userId], references: [id])
+  notifications    Notifications[]
+}
+
+model Notifications {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  bearerId           String @db.ObjectId
+  bearer             NotificationsBearer @relation(fields: [bearerId], references: [bearerId])
+  type               String
+  title              String
+  content            String
 }
