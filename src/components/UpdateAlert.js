@@ -51,11 +51,11 @@ const UpdateAlert = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Device"}
+          header={"Update Alert"}
           setShowModal={setShowModal}
           data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Device"
+          buttonName="Update Alert"
         >
           <AlertContent
             title={title}

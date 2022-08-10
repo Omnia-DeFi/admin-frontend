@@ -52,11 +52,11 @@ const AddData = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"User"}
+          header={"Alert"}
           setShowModal={setShowModal}
           onSubmit={create}
           loading={loading}
-          buttonName={"Add User"}
+          buttonName={"Add Alert"}
         >
           <AlertContent
             title={title}
