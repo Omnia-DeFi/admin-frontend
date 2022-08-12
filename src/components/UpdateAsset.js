@@ -1,34 +1,36 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
+import Modal from "./Modal/Modal";
 import { AssetContent } from "./Modal/AssetContent";
 
-const AddAsset = ({ collection }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [email, setEmail] = useState("");
-  const [issuer, setIssuer] = useState("");
+const UpdateAsset = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
   // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(true);
-  const [alertContent, setAlertContent] = useState(true);
-  const [alertType, setAlertType] = useState(true);
+  const [alertTitle, setAlertTitle] = useState(data.sender.title);
+  const [alertContent, setAlertContent] = useState(data.sender.content);
+  const [alertType, setAlertType] = useState(data.sender.type);
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const router = useRouter();
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function create(e) {
+  async function saveDataUpdate(e) {
+    console.log(data.id);
     e.preventDefault();
-    setLoading(true);
-    const data = { email, issuer, alertTitle, alertType, read: true, alertContent };
+    const newData = { email, issuer, alertTitle, alertType, read: true, alertContent };
     try {
-      fetch(`/api/${collection}/create`, {
-        body: JSON.stringify(data),
+      console.log(newData);
+      fetch(`/api/${collection}/update/${data.id}`, {
+        body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        method: "PUT",
       })
         .then((res) => res.json())
         .then((data) => {
@@ -39,26 +41,24 @@ const AddAsset = ({ collection }) => {
       console.log(error);
     }
     setShowModal(false);
-    setLoading(false);
   }
 
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-orange-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Add
+        Update
       </button>
-
       {showModal ? (
         <Modal
           header={"Asset"}
           setShowModal={setShowModal}
-          onSubmit={create}
+          onSubmit={saveDataUpdate}
           loading={loading}
-          buttonName={"Add Asset"}
+          buttonName={"Update Asset"}
         >
           <AssetContent
             email={email}
@@ -73,7 +73,6 @@ const AddAsset = ({ collection }) => {
             setAlertType={setAlertType}
             // documents={documents}
             // setDocuments={setDocuments}
-            operation={"add"}
           />
         </Modal>
       ) : null}
@@ -81,4 +80,4 @@ const AddAsset = ({ collection }) => {
   );
 };
 
-export default AddAsset;
+export default UpdateAsset;

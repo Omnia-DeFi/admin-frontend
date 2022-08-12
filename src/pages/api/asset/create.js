@@ -13,9 +13,9 @@ export default async function handler(req, res) {
               issuer,
             }
           },
-          documents: {
-            create: documents
-          },
+          // documents: {
+          //   create: documents
+          // },
           sender: {
             create: {
               title: alertTitle,

@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import UpdateAlert from "../../components/UpdateAlert";
+import UpdateAsset from "../../components/UpdateAsset";
 
 const AssetTable = ({ data }) => {
   return (
@@ -53,10 +54,10 @@ const AssetTable = ({ data }) => {
                 <td className="py-4 px-6">{item.user.issuer}</td>
                 {/* <td className="py-4 px-6">{item.documents}</td> */}
                 <td className="py-4 px-6 text-right">
-                  <UpdateAlert collection={"alert"} data={item} />
+                  <UpdateAsset collection={"asset"} data={item} />
                 </td>
                 <td className="py-4 px-6 text-right">
-                  <DeleteDataFrom collection={"alert"} data={item} />
+                  <DeleteDataFrom collection={"asset"} data={item} />
                 </td>
               </tr>
             </>

@@ -12,13 +12,13 @@ export const AssetContent = ({
   setAlertType,
   alertContent,
   setAlertContent,
-  documents,
-  setDocuments,
+  // documents,
+  // setDocuments,
   showModal,
   operation,
 }) => {
-  const [counter, setCounter] = useState(1);
-  const [hasBeenApproved, setHasBeenApproved] = useState(false);
+  // const [counter, setCounter] = useState(1);
+  // const [hasBeenApproved, setHasBeenApproved] = useState(false);
   useEffect(() => {
     if (operation === "add") {
       setEmail("");
@@ -26,7 +26,7 @@ export const AssetContent = ({
       setAlertTitle("");
       setAlertContent("");
       setAlertType("");
-      setDocuments("");
+      // setDocuments("");
     }
   }, [showModal]);
   return (
