@@ -35,15 +35,22 @@ export const getServerSideProps = async () => {
           title: true,
           content: true,
           type: true,
+          date: true,
         }
       }
     },
   });
 
+  const formatData = data.map(d => {
+    d.sender.date = d.sender.date.toDateString();
+    return d;
+  })
+  
+
   return {
     props: {
-      data,
-      collectionName: "assets",
+      data: formatData,
+      collectionName: "asset",
     },
   };
 };
