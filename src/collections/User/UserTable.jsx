@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import NotifyUser from "../../components/NotifyUser";
@@ -51,6 +52,9 @@ const UserTable = ({ data }) => {
                 </td>
                 <td className="py-4 px-6 text-right">
                   <NotifyUser userId={item.id} />
+                </td>
+                <td>
+                  <Link className="p-2 bg-yellow-300 bg-red-gree-300" href={`/notification/${item.id}`}>Details</Link>
                 </td>
               </tr>
             </>
