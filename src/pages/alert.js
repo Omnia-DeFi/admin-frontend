@@ -2,50 +2,53 @@ import { prisma } from "../prisma/prisma";
 import Head from "next/head";
 
 import Navbar from "../components/Navbar";
-import Device from "../collections/Device/Device";
+import Alert from "../collections/Alert/Alert";
 
-const DevicePage = ({ data, collectionName }) => {
-  return (
+const AlertPage = ({ data, collectionName }) => {
+  return ( 
     <>
       <Head>
         <title>Admin Panel</title>
       </Head>
       <Navbar />
       <div className="mt-[40px]">
-        <Device collectionName={collectionName} data={data} />
+        <Alert collectionName={collectionName} data={data} />
       </div>
     </>
   );
 };
 
-export default DevicePage;
+export default AlertPage;
 
 export const getServerSideProps = async () => {
-  const data = await prisma.device.findMany({
+  const data = await prisma.alert.findMany({
     select: {
       id: true,
-      token: true,
-      user: {
-        select: {
-          email: true,
-          issuer: true,
-        },
-      },
-      reciever: {
-        select: {
-          title: true,
-          content: true,
-          type: true,
-          read: true,
-        },
-      },
+      title: true,
+      content: true,
+      type: true,
+      date: true,
+      read: true,
+      // reciever: {
+      //   select: {
+      //     title: true,
+      //     content: true,
+      //     type: true,
+      //     read: true,
+      //   },
+      // },
     },
   });
 
+  const formatData = data.map(d => {
+    d.date = d.date.toDateString();
+    return d;
+  })
+  
   return {
     props: {
-      data,
-      collectionName: "device",
+      data: formatData,
+      collectionName: "alert",
     },
   };
 };
