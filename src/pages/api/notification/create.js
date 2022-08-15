@@ -19,7 +19,6 @@ function runMiddleware(req, res, fn) {
 
 export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
-  console.log("Boom")
   const { userId, type, title, content } = req.body;
 
   try {

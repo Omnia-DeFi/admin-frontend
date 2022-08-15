@@ -3,6 +3,7 @@ import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import NotifyUser from "../../components/NotifyUser";
 import UpdateData from "../../components/UpdateData";
+import NotificationDetails from "../../components/notificationDetails";
 
 const UserTable = ({ data }) => {
 
@@ -54,7 +55,7 @@ const UserTable = ({ data }) => {
                   <NotifyUser userId={item.id} />
                 </td>
                 <td>
-                  <Link className="p-2 bg-yellow-300 bg-red-gree-300" href={`/notification/${item.id}`}>Details</Link>
+                  <NotificationDetails id={item.id} />
                 </td>
               </tr>
             </>
