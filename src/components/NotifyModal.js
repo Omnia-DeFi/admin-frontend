@@ -6,6 +6,7 @@ const NotifyModal = ({setIsOpen, userId}) => {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
     const [loading, setLoading] = useState(false)
+    const [responseMsg, setResponseMsg] = useState("")
 
     async function sendNotification(e) {
         const data = { userId, type, title, content };
@@ -22,6 +23,7 @@ const NotifyModal = ({setIsOpen, userId}) => {
           .then((res) => res.json())
           .then((data) => {
             setLoading(false)
+            setResponseMsg(data.message)
             console.log(data);
           });
     
@@ -41,8 +43,7 @@ const NotifyModal = ({setIsOpen, userId}) => {
                             <input onChange={(e)=> setContent(e.target.value)} value={content} placeholder='Content' className='w-full p-2 border-2 rounded-md' type="text" />
                         </div>
                         {
-                            loading &&
-                            <p>Submitting...</p>
+                            loading ? <p>Submitting...</p> : <p className='text-blue-400'>{responseMsg}</p>
                         }
 
                         <div className='gap-2 flex'>

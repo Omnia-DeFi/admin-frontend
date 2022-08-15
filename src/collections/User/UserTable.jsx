@@ -1,7 +1,9 @@
+import Link from "next/link";
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import NotifyUser from "../../components/NotifyUser";
 import UpdateData from "../../components/UpdateData";
+import NotificationDetails from "../../components/notificationDetails";
 
 const UserTable = ({ data }) => {
 
@@ -44,12 +46,13 @@ const UserTable = ({ data }) => {
                 <td className="py-4 px-6">{item.public_address}</td>
                 <td className="py-4 px-6 text-right">
                   <UpdateData collection={"user"} data={item} />
-                </td>
-                <td className="py-4 px-6 text-right">
                   <DeleteDataFrom collection={"user"} data={item} />
                 </td>
                 <td className="py-4 px-6 text-right">
                   <NotifyUser userId={item.id} />
+                  <NotificationDetails id={item.id} />
+                </td>
+                <td>
                 </td>
               </tr>
           ))}
