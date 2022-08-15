@@ -47,15 +47,13 @@ const UserTable = ({ data }) => {
                 <td className="py-4 px-6">{item.public_address}</td>
                 <td className="py-4 px-6 text-right">
                   <UpdateData collection={"user"} data={item} />
-                </td>
-                <td className="py-4 px-6 text-right">
                   <DeleteDataFrom collection={"user"} data={item} />
                 </td>
                 <td className="py-4 px-6 text-right">
                   <NotifyUser userId={item.id} />
+                  <NotificationDetails id={item.id} />
                 </td>
                 <td>
-                  <NotificationDetails id={item.id} />
                 </td>
               </tr>
             </>
