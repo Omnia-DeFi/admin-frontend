@@ -1,6 +1,6 @@
 import React from "react";
 import DeviceTable from "./DeviceTable";
-import AddDevice from "../../components/AddDevice";
+import AddDevice from "./AddDevice";
 
 const Device = ({ collectionName, data }) => {
   return (

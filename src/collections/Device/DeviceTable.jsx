@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateDevice from "../../components/UpdateDevice";
+import UpdateDevice from "./UpdateDevice";
 
 const DeviceTable = ({ data }) => {
   return (

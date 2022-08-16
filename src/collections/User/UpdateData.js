@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { UserContent } from "../components/Modal/UserContent";
+import Modal from "../../components/Modal/Modal";
+import { UserContent } from "../../components/Modal/UserContent";
 
 const UpdateData = ({ collection, data }) => {
   const [email, setEmail] = useState(data.email);

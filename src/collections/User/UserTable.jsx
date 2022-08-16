@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
 import NotifyUser from "../../components/NotifyUser";
-import UpdateData from "../../components/UpdateData";
+import UpdateData from "./UpdateData";
 
 const UserTable = ({ data }) => {
   return (

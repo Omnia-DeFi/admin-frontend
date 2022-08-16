@@ -1,17 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { AssetContent } from "./Modal/AssetContent";
+import Modal from "../../components/Modal/Modal";
+import { KycContent } from "../../components/Modal/KycContent";
 
-const AddAsset = ({ collection }) => {
+const AddKyc = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
-  const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
-  // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(true);
-  const [alertContent, setAlertContent] = useState(true);
-  const [alertType, setAlertType] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [type, setType] = useState("");
   const router = useRouter();
 
   const refreshData = () => {
@@ -20,15 +18,7 @@ const AddAsset = ({ collection }) => {
 
   async function create(e) {
     e.preventDefault();
-    setLoading(true);
-    const data = {
-      email,
-      issuer,
-      alertTitle,
-      alertType,
-      read: true,
-      alertContent,
-    };
+    const data = { issuer, email, title, content, type, read: true };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -46,7 +36,6 @@ const AddAsset = ({ collection }) => {
       console.log(error);
     }
     setShowModal(false);
-    setLoading(false);
   }
 
   return (
@@ -61,25 +50,23 @@ const AddAsset = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Asset"}
+          header={"Add Kyc"}
           setShowModal={setShowModal}
           onSubmit={create}
-          loading={loading}
-          buttonName={"Add Asset"}
+          buttonName="Add Kyc"
         >
-          <AssetContent
+          <KycContent
             email={email}
-            setEmail={setEmail}
             issuer={issuer}
+            setEmail={setEmail}
             setIssuer={setIssuer}
-            alertTitle={alertTitle}
-            setAlertTitle={setAlertTitle}
-            alertContent={alertContent}
-            setAlertContent={setAlertContent}
-            alertType={alertType}
-            setAlertType={setAlertType}
-            // documents={documents}
-            // setDocuments={setDocuments}
+            title={title}
+            setTitle={setTitle}
+            content={content}
+            type={type}
+            setType={setType}
+            setContent={setContent}
+            showModal={showModal}
             operation={"add"}
           />
         </Modal>
@@ -88,4 +75,4 @@ const AddAsset = ({ collection }) => {
   );
 };
 
-export default AddAsset;
+export default AddKyc;

@@ -1,13 +1,16 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { AlertContent } from "./Modal/AlertContent";
+import Modal from "../../components/Modal/Modal";
+import { AssetContent } from "../../components/Modal/AssetContent";
 
-const UpdateAlert = ({ collection, data }) => {
-  const [title, setTitle] = useState(data.title);
-  const [content, setContent] = useState(data.content);
-  const [type, setType] = useState(data.type);
-  // const [token, setToken] = useState(data.token);
+const UpdateAsset = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
+  // const [documents, setDocuments] = useState("");
+  const [alertTitle, setAlertTitle] = useState(data.sender.title);
+  const [alertContent, setAlertContent] = useState(data.sender.content);
+  const [alertType, setAlertType] = useState(data.sender.type);
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -19,7 +22,14 @@ const UpdateAlert = ({ collection, data }) => {
   async function saveDataUpdate(e) {
     console.log(data.id);
     e.preventDefault();
-    const newData = { title, content, type, read: true };
+    const newData = {
+      email,
+      issuer,
+      alertTitle,
+      alertType,
+      read: true,
+      alertContent,
+    };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -51,20 +61,25 @@ const UpdateAlert = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Alert"}
+          header={"Asset"}
           setShowModal={setShowModal}
-          data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Alert"
+          loading={loading}
+          buttonName={"Update Asset"}
         >
-          <AlertContent
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            type={type}
-            setType={setType}
-            setContent={setContent}
-            showModal={showModal}
+          <AssetContent
+            email={email}
+            setEmail={setEmail}
+            issuer={issuer}
+            setIssuer={setIssuer}
+            alertTitle={alertTitle}
+            setAlertTitle={setAlertTitle}
+            alertContent={alertContent}
+            setAlertContent={setAlertContent}
+            alertType={alertType}
+            setAlertType={setAlertType}
+            // documents={documents}
+            // setDocuments={setDocuments}
           />
         </Modal>
       ) : null}
@@ -72,4 +87,4 @@ const UpdateAlert = ({ collection, data }) => {
   );
 };
 
-export default UpdateAlert;
+export default UpdateAsset;

@@ -1,5 +1,5 @@
 import React from "react";
-import AddData from "../../components/AddData";
+import AddData from "./AddData";
 import UserTable from "./UserTable";
 
 const User = ({ collectionName, data }) => {

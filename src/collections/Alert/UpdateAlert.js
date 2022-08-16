@@ -1,15 +1,13 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { DeviceContent } from "./Modal/DeviceContent";
+import Modal from "../../components/Modal/Modal";
+import { AlertContent } from "../../components/Modal/AlertContent";
 
-const UpdateDevice = ({ collection, data }) => {
-  const [email, setEmail] = useState(data.user.email);
-  const [issuer, setIssuer] = useState(data.user.issuer);
-  const [title, setTitle] = useState(data.reciever.title);
-  const [content, setContent] = useState(data.reciever.content);
-  const [type, setType] = useState(data.reciever.type);
-  const [token, setToken] = useState(data.token);
+const UpdateAlert = ({ collection, data }) => {
+  const [title, setTitle] = useState(data.title);
+  const [content, setContent] = useState(data.content);
+  const [type, setType] = useState(data.type);
+  // const [token, setToken] = useState(data.token);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -21,7 +19,7 @@ const UpdateDevice = ({ collection, data }) => {
   async function saveDataUpdate(e) {
     console.log(data.id);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true, token };
+    const newData = { title, content, type, read: true };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -53,22 +51,16 @@ const UpdateDevice = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Device"}
+          header={"Update Alert"}
           setShowModal={setShowModal}
           data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Device"
+          buttonName="Update Alert"
         >
-          <DeviceContent
-            email={email}
-            issuer={issuer}
-            setEmail={setEmail}
-            setIssuer={setIssuer}
+          <AlertContent
             title={title}
             setTitle={setTitle}
             content={content}
-            token={token}
-            setToken={setToken}
             type={type}
             setType={setType}
             setContent={setContent}
@@ -80,4 +72,4 @@ const UpdateDevice = ({ collection, data }) => {
   );
 };
 
-export default UpdateDevice;
+export default UpdateAlert;

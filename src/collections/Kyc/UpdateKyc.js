@@ -1,32 +1,33 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { DeviceContent } from "./Modal/DeviceContent";
+import Modal from "../../components/Modal/Modal";
+import { KycContent } from "../../components/Modal/KycContent";
 
-const AddDevice = ({ collection }) => {
+const UpdatedKyc = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
+  const [title, setTitle] = useState(data.triggerer.title);
+  const [content, setContent] = useState(data.triggerer.content);
+  const [type, setType] = useState(data.triggerer.type);
   const [showModal, setShowModal] = useState(false);
-  const [issuer, setIssuer] = useState("");
-  const [email, setEmail] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [type, setType] = useState("");
-  const [token, setToken] = useState("");
+
   const router = useRouter();
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function create(e) {
+  async function saveDataUpdate(e) {
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true, token };
+    const newData = { issuer, email, title, content, type, read: true };
     try {
-      fetch(`/api/${collection}/create`, {
-        body: JSON.stringify(data),
+      console.log(newData);
+      fetch(`/api/${collection}/update/${data.id}`, {
+        body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        method: "PUT",
       })
         .then((res) => res.json())
         .then((data) => {
@@ -42,21 +43,21 @@ const AddDevice = ({ collection }) => {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-orange-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Add
+        Update
       </button>
-
       {showModal ? (
         <Modal
-          header={"Add Device"}
+          header={"Update Kyc"}
           setShowModal={setShowModal}
-          onSubmit={create}
-          buttonName="Add Device"
+          data={data}
+          onSubmit={saveDataUpdate}
+          buttonName="Update Kyc"
         >
-          <DeviceContent
+          <KycContent
             email={email}
             issuer={issuer}
             setEmail={setEmail}
@@ -66,11 +67,8 @@ const AddDevice = ({ collection }) => {
             content={content}
             type={type}
             setType={setType}
-            token={token}
-            setToken={setToken}
             setContent={setContent}
             showModal={showModal}
-            operation={"add"}
           />
         </Modal>
       ) : null}
@@ -78,4 +76,4 @@ const AddDevice = ({ collection }) => {
   );
 };
 
-export default AddDevice;
+export default UpdatedKyc;

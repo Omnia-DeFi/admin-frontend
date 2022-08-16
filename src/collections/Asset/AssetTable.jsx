@@ -1,7 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateAlert from "../../components/UpdateAlert";
-import UpdateAsset from "../../components/UpdateAsset";
+import UpdateAsset from "./UpdateAsset";
 
 const AssetTable = ({ data }) => {
   return (

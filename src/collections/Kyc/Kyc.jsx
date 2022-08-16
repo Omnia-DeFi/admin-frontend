@@ -1,6 +1,6 @@
 import React from "react";
 import KycTable from "./KycTable";
-import AddKyc from "../../components/AddKyc";
+import AddKyc from "./AddKyc";
 
 const Kyc = ({ collectionName, data }) => {
   return (

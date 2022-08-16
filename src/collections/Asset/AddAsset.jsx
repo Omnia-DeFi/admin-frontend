@@ -1,28 +1,27 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { AssetContent } from "./Modal/AssetContent";
+import Modal from "../../components/Modal/Modal";
+import { AssetContent } from "../../components/Modal/AssetContent";
 
-const UpdateAsset = ({ collection, data }) => {
-  const [email, setEmail] = useState(data.user.email);
-  const [issuer, setIssuer] = useState(data.user.issuer);
-  // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(data.sender.title);
-  const [alertContent, setAlertContent] = useState(data.sender.content);
-  const [alertType, setAlertType] = useState(data.sender.type);
-  const [loading, setLoading] = useState(false);
+const AddAsset = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
-
+  const [email, setEmail] = useState("");
+  const [issuer, setIssuer] = useState("");
+  // const [documents, setDocuments] = useState("");
+  const [alertTitle, setAlertTitle] = useState(true);
+  const [alertContent, setAlertContent] = useState(true);
+  const [alertType, setAlertType] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const refreshData = () => {
     router.replace(router.asPath);
   };
 
-  async function saveDataUpdate(e) {
-    console.log(data.id);
+  async function create(e) {
     e.preventDefault();
-    const newData = {
+    setLoading(true);
+    const data = {
       email,
       issuer,
       alertTitle,
@@ -31,13 +30,12 @@ const UpdateAsset = ({ collection, data }) => {
       alertContent,
     };
     try {
-      console.log(newData);
-      fetch(`/api/${collection}/update/${data.id}`, {
-        body: JSON.stringify(newData),
+      fetch(`/api/${collection}/create`, {
+        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
-        method: "PUT",
+        method: "POST",
       })
         .then((res) => res.json())
         .then((data) => {
@@ -48,24 +46,26 @@ const UpdateAsset = ({ collection, data }) => {
       console.log(error);
     }
     setShowModal(false);
+    setLoading(false);
   }
 
   return (
     <>
       <button
-        className="bg-orange-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Update
+        Add
       </button>
+
       {showModal ? (
         <Modal
           header={"Asset"}
           setShowModal={setShowModal}
-          onSubmit={saveDataUpdate}
+          onSubmit={create}
           loading={loading}
-          buttonName={"Update Asset"}
+          buttonName={"Add Asset"}
         >
           <AssetContent
             email={email}
@@ -80,6 +80,7 @@ const UpdateAsset = ({ collection, data }) => {
             setAlertType={setAlertType}
             // documents={documents}
             // setDocuments={setDocuments}
+            operation={"add"}
           />
         </Modal>
       ) : null}
@@ -87,4 +88,4 @@ const UpdateAsset = ({ collection, data }) => {
   );
 };
 
-export default UpdateAsset;
+export default AddAsset;
