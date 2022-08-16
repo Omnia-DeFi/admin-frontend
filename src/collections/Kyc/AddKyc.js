@@ -5,6 +5,7 @@ import { KycContent } from "../../components/Modal/KycContent";
 
 const AddKyc = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
@@ -17,6 +18,7 @@ const AddKyc = ({ collection }) => {
   };
 
   async function create(e) {
+    setLoading(true)
     e.preventDefault();
     const data = { issuer, email, title, content, type, read: true };
     try {
@@ -31,11 +33,11 @@ const AddKyc = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
   return (
     <>
@@ -52,6 +54,7 @@ const AddKyc = ({ collection }) => {
           header={"Add Kyc"}
           setShowModal={setShowModal}
           onSubmit={create}
+          loading={loading}
           buttonName="Add Kyc"
         >
           <KycContent
