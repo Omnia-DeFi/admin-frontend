@@ -21,7 +21,14 @@ const AddAsset = ({ collection }) => {
   async function create(e) {
     e.preventDefault();
     setLoading(true);
-    const data = { email, issuer, alertTitle, alertType, read: true, alertContent };
+    const data = {
+      email,
+      issuer,
+      alertTitle,
+      alertType,
+      read: true,
+      alertContent,
+    };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),

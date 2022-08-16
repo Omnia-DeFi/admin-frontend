@@ -1,7 +1,15 @@
 import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
-  const { email, issuer, documents, alertTitle, read, alertContent, alertType } = req.body;
+  const {
+    email,
+    issuer,
+    documents,
+    alertTitle,
+    read,
+    alertContent,
+    alertType,
+  } = req.body;
 
   try {
     const createdAsset = await prisma.asset
@@ -11,7 +19,7 @@ export default async function handler(req, res) {
             create: {
               email,
               issuer,
-            }
+            },
           },
           // documents: {
           //   create: documents
@@ -23,9 +31,9 @@ export default async function handler(req, res) {
               read,
               content: alertContent,
               type: alertType,
-            }
+            },
           },
-        }
+        },
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());

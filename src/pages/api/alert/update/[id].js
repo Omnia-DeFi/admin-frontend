@@ -4,7 +4,6 @@ export default async function handler(req, res) {
   const alertId = req.query.id;
   const { title, content, type, read } = req.body;
 
-
   try {
     let updatedAlert;
     if (req.method === "PUT") {
@@ -14,11 +13,11 @@ export default async function handler(req, res) {
             id: alertId,
           },
           data: {
-                title,
-                content,
-                type,
-                date: new Date(),
-                read,
+            title,
+            content,
+            type,
+            date: new Date(),
+            read,
           },
         })
         .catch(console.error)
