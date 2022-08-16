@@ -1,6 +1,6 @@
 import React from "react";
 import AlertTable from "./AlertTable";
-import AddAlert from "../../components/AddAlert";
+import AddAlert from "./AddAlert";
 
 const Alert = ({ collectionName, data }) => {
   return (

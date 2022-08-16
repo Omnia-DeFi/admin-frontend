@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
+import { FormItem } from "../Form";
 
 export const AlertContent = ({
   title,
@@ -20,33 +21,30 @@ export const AlertContent = ({
   }, [showModal]);
   return (
     <div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="title"
-          placeholder={"Alert Title"}
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Title"}
+          type={"text"}
         />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="content"
-          placeholder={"Content"}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="type"
-          placeholder={"Type"}
+        <FormItem
+          name={"type"}
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Type"}
+          type={"text"}
         />
+        
       </div>
+      <FormItem
+          name={"content"}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          label={"Alert Content"}
+          type={"text"}
+        />
     </div>
   );
 };

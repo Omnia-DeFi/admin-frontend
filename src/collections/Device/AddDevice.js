@@ -1,15 +1,17 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { AlertContent } from "./Modal/AlertContent";
+import Modal from "../../components/Modal/Modal";
+import { DeviceContent } from "../../components/Modal/DeviceContent";
 
-const AddData = ({ collection }) => {
+const AddDevice = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [issuer, setIssuer] = useState("");
+  const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [type, setType] = useState("");
-  const [read, setRead] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState("");
   const router = useRouter();
 
   const refreshData = () => {
@@ -17,9 +19,9 @@ const AddData = ({ collection }) => {
   };
 
   async function create(e) {
-    e.preventDefault();
     setLoading(true);
-    const data = { title, content, type, read: true };
+    e.preventDefault();
+    const data = { issuer, email, title, content, type, read: true, token };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -32,18 +34,17 @@ const AddData = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
-    setLoading(false);
   }
 
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -52,18 +53,24 @@ const AddData = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Alert"}
+          header={"Add Device"}
           setShowModal={setShowModal}
           onSubmit={create}
           loading={loading}
-          buttonName={"Add Alert"}
+          buttonName="Add Device"
         >
-          <AlertContent
+          <DeviceContent
+            email={email}
+            issuer={issuer}
+            setEmail={setEmail}
+            setIssuer={setIssuer}
             title={title}
             setTitle={setTitle}
             content={content}
             type={type}
             setType={setType}
+            token={token}
+            setToken={setToken}
             setContent={setContent}
             showModal={showModal}
             operation={"add"}
@@ -74,4 +81,4 @@ const AddData = ({ collection }) => {
   );
 };
 
-export default AddData;
+export default AddDevice;

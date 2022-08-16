@@ -5,12 +5,12 @@ import Navbar from "../components/Navbar";
 import Alert from "../collections/Alert/Alert";
 
 const AlertPage = ({ data, collectionName }) => {
-  return ( 
+  return (
     <>
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
+      <Navbar currentPage={"alert"} />
       <div className="mt-[40px]">
         <Alert collectionName={collectionName} data={data} />
       </div>
@@ -40,11 +40,11 @@ export const getServerSideProps = async () => {
     },
   });
 
-  const formatData = data.map(d => {
+  const formatData = data.map((d) => {
     d.date = d.date.toDateString();
     return d;
-  })
-  
+  });
+
   return {
     props: {
       data: formatData,

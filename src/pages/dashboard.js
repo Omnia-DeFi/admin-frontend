@@ -10,8 +10,8 @@ const Dashboard = ({ data, collectionName }) => {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
-      <div className="mt-[40px]">
+      <Navbar currentPage="user" />
+      <div className="my-10">
         <User collectionName={collectionName} data={data} />
       </div>
     </>

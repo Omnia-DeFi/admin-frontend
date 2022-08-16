@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { AlertContent } from "./Modal/AlertContent";
+import Modal from "../../components/Modal/Modal";
+import { KycContent } from "../../components/Modal/KycContent";
 
-const UpdateAlert = ({ collection, data }) => {
-  const [title, setTitle] = useState(data.title);
-  const [content, setContent] = useState(data.content);
-  const [type, setType] = useState(data.type);
-  // const [token, setToken] = useState(data.token);
+const UpdatedKyc = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
+  const [title, setTitle] = useState(data.triggerer.title);
+  const [content, setContent] = useState(data.triggerer.content);
+  const [type, setType] = useState(data.triggerer.type);
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -17,9 +19,9 @@ const UpdateAlert = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    console.log(data.id);
+    setLoading(true)
     e.preventDefault();
-    const newData = { title, content, type, read: true };
+    const newData = { issuer, email, title, content, type, read: true };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -33,11 +35,11 @@ const UpdateAlert = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (
@@ -51,13 +53,18 @@ const UpdateAlert = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Alert"}
+          header={"Update Kyc"}
           setShowModal={setShowModal}
           data={data}
+          loading={loading}
           onSubmit={saveDataUpdate}
-          buttonName="Update Alert"
+          buttonName="Update Kyc"
         >
-          <AlertContent
+          <KycContent
+            email={email}
+            issuer={issuer}
+            setEmail={setEmail}
+            setIssuer={setIssuer}
             title={title}
             setTitle={setTitle}
             content={content}
@@ -72,4 +79,4 @@ const UpdateAlert = ({ collection, data }) => {
   );
 };
 
-export default UpdateAlert;
+export default UpdatedKyc;

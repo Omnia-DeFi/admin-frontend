@@ -1,16 +1,16 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { DeviceContent } from "./Modal/DeviceContent";
+import Modal from "../../components/Modal/Modal";
+import { KycContent } from "../../components/Modal/KycContent";
 
-const AddDevice = ({ collection }) => {
+const AddKyc = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [type, setType] = useState("");
-  const [token, setToken] = useState("");
   const router = useRouter();
 
   const refreshData = () => {
@@ -18,8 +18,9 @@ const AddDevice = ({ collection }) => {
   };
 
   async function create(e) {
+    setLoading(true)
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true, token };
+    const data = { issuer, email, title, content, type, read: true };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -32,17 +33,16 @@ const AddDevice = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
-
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -51,12 +51,13 @@ const AddDevice = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Add Device"}
+          header={"Add Kyc"}
           setShowModal={setShowModal}
           onSubmit={create}
-          buttonName="Add Device"
+          loading={loading}
+          buttonName="Add Kyc"
         >
-          <DeviceContent
+          <KycContent
             email={email}
             issuer={issuer}
             setEmail={setEmail}
@@ -66,8 +67,6 @@ const AddDevice = ({ collection }) => {
             content={content}
             type={type}
             setType={setType}
-            token={token}
-            setToken={setToken}
             setContent={setContent}
             showModal={showModal}
             operation={"add"}
@@ -78,4 +77,4 @@ const AddDevice = ({ collection }) => {
   );
 };
 
-export default AddDevice;
+export default AddKyc;

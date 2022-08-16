@@ -5,13 +5,13 @@ import Navbar from "../components/Navbar";
 import Asset from "../collections/Asset/Asset";
 
 const AssetPage = ({ data, collectionName }) => {
-  return ( 
+  return (
     <>
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
-      <div className="mt-[40px]">
+      <Navbar currentPage="asset" />
+      <div className="my-10">
         <Asset collectionName={collectionName} data={data} />
       </div>
     </>
@@ -25,10 +25,10 @@ export const getServerSideProps = async () => {
     select: {
       id: true,
       user: {
-        select:{
+        select: {
           issuer: true,
           email: true,
-        }
+        },
       },
       sender: {
         select: {
@@ -36,16 +36,15 @@ export const getServerSideProps = async () => {
           content: true,
           type: true,
           date: true,
-        }
-      }
+        },
+      },
     },
   });
 
-  const formatData = data.map(d => {
+  const formatData = data.map((d) => {
     d.sender.date = d.sender.date.toDateString();
     return d;
-  })
-  
+  });
 
   return {
     props: {

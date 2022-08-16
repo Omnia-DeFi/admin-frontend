@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { KycContent } from "./Modal/KycContent";
+import Modal from "../../components/Modal/Modal";
+import { DeviceContent } from "../../components/Modal/DeviceContent";
 
-const UpdatedKyc = ({ collection, data }) => {
+const UpdateDevice = ({ collection, data }) => {
   const [email, setEmail] = useState(data.user.email);
   const [issuer, setIssuer] = useState(data.user.issuer);
-  const [title, setTitle] = useState(data.triggerer.title);
-  const [content, setContent] = useState(data.triggerer.content);
-  const [type, setType] = useState(data.triggerer.type);
+  const [title, setTitle] = useState(data.reciever.title);
+  const [content, setContent] = useState(data.reciever.content);
+  const [type, setType] = useState(data.reciever.type);
+  const [token, setToken] = useState(data.token);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -18,8 +19,9 @@ const UpdatedKyc = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
+    console.log(data.id);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true };
+    const newData = { issuer, email, title, content, type, read: true, token };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -51,13 +53,13 @@ const UpdatedKyc = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Kyc"}
+          header={"Update Device"}
           setShowModal={setShowModal}
           data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Kyc"
+          buttonName="Update Device"
         >
-          <KycContent
+          <DeviceContent
             email={email}
             issuer={issuer}
             setEmail={setEmail}
@@ -65,6 +67,8 @@ const UpdatedKyc = ({ collection, data }) => {
             title={title}
             setTitle={setTitle}
             content={content}
+            token={token}
+            setToken={setToken}
             type={type}
             setType={setType}
             setContent={setContent}
@@ -76,4 +80,4 @@ const UpdatedKyc = ({ collection, data }) => {
   );
 };
 
-export default UpdatedKyc;
+export default UpdateDevice;

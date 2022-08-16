@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { DeviceContent } from "./Modal/DeviceContent";
+import Modal from "../../components/Modal/Modal";
+import { AssetContent } from "../../components/Modal/AssetContent";
 
-const UpdateDevice = ({ collection, data }) => {
+const UpdateAsset = ({ collection, data }) => {
   const [email, setEmail] = useState(data.user.email);
   const [issuer, setIssuer] = useState(data.user.issuer);
-  const [title, setTitle] = useState(data.reciever.title);
-  const [content, setContent] = useState(data.reciever.content);
-  const [type, setType] = useState(data.reciever.type);
-  const [token, setToken] = useState(data.token);
+  // const [documents, setDocuments] = useState("");
+  const [alertTitle, setAlertTitle] = useState(data.sender.title);
+  const [alertContent, setAlertContent] = useState(data.sender.content);
+  const [alertType, setAlertType] = useState(data.sender.type);
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -19,9 +20,16 @@ const UpdateDevice = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    console.log(data.id);
+    setLoading(true);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true, token };
+    const newData = {
+      email,
+      issuer,
+      alertTitle,
+      alertType,
+      read: true,
+      alertContent,
+    };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -35,11 +43,11 @@ const UpdateDevice = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (
@@ -53,26 +61,25 @@ const UpdateDevice = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Device"}
+          header={"Asset"}
           setShowModal={setShowModal}
-          data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Device"
+          loading={loading}
+          buttonName={"Update Asset"}
         >
-          <DeviceContent
+          <AssetContent
             email={email}
-            issuer={issuer}
             setEmail={setEmail}
+            issuer={issuer}
             setIssuer={setIssuer}
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            token={token}
-            setToken={setToken}
-            type={type}
-            setType={setType}
-            setContent={setContent}
-            showModal={showModal}
+            alertTitle={alertTitle}
+            setAlertTitle={setAlertTitle}
+            alertContent={alertContent}
+            setAlertContent={setAlertContent}
+            alertType={alertType}
+            setAlertType={setAlertType}
+            // documents={documents}
+            // setDocuments={setDocuments}
           />
         </Modal>
       ) : null}
@@ -80,4 +87,4 @@ const UpdateDevice = ({ collection, data }) => {
   );
 };
 
-export default UpdateDevice;
+export default UpdateAsset;
