@@ -1,7 +1,7 @@
 export const Header = ({ setShowModal, header }) => {
   return (
-    <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+    <div className="flex justify-between items-start p-4 rounded-t border-b">
+      <h3 className="text-xl font-semibold text-gray-900">
         {header}
       </h3>
       <button

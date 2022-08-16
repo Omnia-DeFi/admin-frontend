@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Modal from "../../components/Modal/Modal";
+import Modal from "../../components/Modal/Modal"
 import { UserContent } from "../../components/Modal/UserContent";
 
 const UpdateData = ({ collection, data }) => {
@@ -20,7 +20,7 @@ const UpdateData = ({ collection, data }) => {
   async function saveDataUpdate(e) {
     setLoading(true)
     e.preventDefault();
-    const newData = { issuer, email, phoneNumber, publicAddress };
+    const newData = { issuer, email, phoneNumber: +phoneNumber, publicAddress };
     try {
       console.log(data);
       fetch(`/api/${collection}/update/${data.id}`, {
@@ -39,7 +39,6 @@ const UpdateData = ({ collection, data }) => {
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (

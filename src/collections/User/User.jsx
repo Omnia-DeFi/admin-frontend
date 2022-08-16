@@ -1,5 +1,6 @@
 import React from "react";
 import AddData from "./AddData";
+import UpdateData from "./UpdateData";
 import UserTable from "./UserTable";
 
 const User = ({ collectionName, data }) => {
