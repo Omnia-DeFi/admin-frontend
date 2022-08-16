@@ -41,7 +41,7 @@ const DeleteDataFrom = ({ collection, data }) => {
       </button>
       {showModal && (
       <Modal header="Are you sure" setShowModal={setShowModal} onSubmit={deleteDataFrom} loading={loading} buttonName="Delete">
-        <p>Are you sure you want to delete? </p>
+        <p className="text-left">Are you sure you want to delete? </p>
       </Modal>
       )}
     </>
