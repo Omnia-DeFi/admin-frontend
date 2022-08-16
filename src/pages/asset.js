@@ -11,7 +11,7 @@ const AssetPage = ({ data, collectionName }) => {
         <title>Admin Panel</title>
       </Head>
       <Navbar currentPage="asset" />
-      <div className="mt-[40px]">
+      <div className="my-10">
         <Asset collectionName={collectionName} data={data} />
       </div>
     </>
