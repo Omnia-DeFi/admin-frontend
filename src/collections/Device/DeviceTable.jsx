@@ -32,7 +32,7 @@ const DeviceTable = ({ data }) => {
           {data.map((item) => (
             <tr
               key={item.id}
-              className="bg-white border-b text-center dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              className="bg-white border-b text-center  hover:bg-gray-50 "
             >
               <td
                 scope="row"

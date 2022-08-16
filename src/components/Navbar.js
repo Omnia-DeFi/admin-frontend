@@ -6,8 +6,8 @@ import { useState } from "react";
 const navigation = [
   { name: "User", href: "/dashboard", current: false },
   { name: "KYC", href: "/kyc", current: false },
-  { name: "Device", href: "/device", current: false },
-  { name: "Alert", href: "/alert", current: false },
+  // { name: "Device", href: "/device", current: false },
+  // { name: "Alert", href: "/alert", current: false },
   { name: "Asset", href: "/asset", current: false },
 ];
 

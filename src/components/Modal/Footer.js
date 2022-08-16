@@ -15,7 +15,7 @@ const Footer = ({ setShowModal, buttonName, loading, onSubmit }) => {
   }, [loading]);
   
   return (
-    <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+    <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 ">
       <button
       onClick={onSubmit}
         data-modal-toggle="defaultModal"

@@ -62,7 +62,7 @@ const UserTable = ({ data }) => {
               <td className="py-4 px-2 text-right">
                 <DeleteDataFrom collection={"user"} data={item} />
               </td>
-              <td className="py-4 px-2 text-right">
+              <td className="py-4 px-2 text-left">
                 <NotifyUser userId={item.id} />
               </td>
             </tr>

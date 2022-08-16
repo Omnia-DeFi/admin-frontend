@@ -9,6 +9,7 @@ const UpdatedKyc = ({ collection, data }) => {
   const [title, setTitle] = useState(data.triggerer.title);
   const [content, setContent] = useState(data.triggerer.content);
   const [type, setType] = useState(data.triggerer.type);
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -18,6 +19,7 @@ const UpdatedKyc = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
+    setLoading(true)
     e.preventDefault();
     const newData = { issuer, email, title, content, type, read: true };
     try {
@@ -33,11 +35,11 @@ const UpdatedKyc = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (
@@ -54,6 +56,7 @@ const UpdatedKyc = ({ collection, data }) => {
           header={"Update Kyc"}
           setShowModal={setShowModal}
           data={data}
+          loading={loading}
           onSubmit={saveDataUpdate}
           buttonName="Update Kyc"
         >
