@@ -5,8 +5,10 @@ import UpdateData from "./UpdateData";
 
 const UserTable = ({ data }) => {
   return (
-    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-      <table className="table-fixed text-sm text-right text-gray-500 dark:text-gray-400">
+    <div className="overflow-x-auto relative shadow-md sm:rounded-lg"
+    >
+
+      <table className="text-sm text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr className="w-[100px]">
             <th scope="col" className="py-4 text-center">
@@ -54,7 +56,7 @@ const UserTable = ({ data }) => {
               <td className="py-4 px-6 text-center">{item.email}</td>
               <td className="py-4 px-6 text-center">{item.phone_number}</td>
               <td className="py-4 px-6 text-center">{(item.public_address)?.slice(0, 12)}....{(item.public_address)?.slice(item.public_address.length - 5)}</td>
-              <td className="py-4 px-2 text-right">
+              <td className="py-4 px-2 text-left">
                 <UpdateData collection={"user"} data={item} />
               </td>
               <td className="py-4 px-2 text-right">
