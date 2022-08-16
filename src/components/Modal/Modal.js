@@ -20,7 +20,7 @@ export default function Modal({
         <div className="relative p-4 w-full max-w-2xl h-full md:h-auto mx-auto">
           <div className="relative bg-white rounded-lg shadow">
             <form
-              onSubmit={onSubmit}
+              // onSubmit={onSubmit}
               className="mx-auto space-y-6 flex flex-col items-stretch pr-8 pl-8"
             >
               {/*header*/}
@@ -29,6 +29,7 @@ export default function Modal({
               {children}
               {/*footer*/}
               <Footer
+                 onSubmit={onSubmit}
                 setShowModal={setShowModal}
                 loading={loading}
                 buttonName={buttonName}
