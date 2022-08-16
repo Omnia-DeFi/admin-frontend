@@ -43,11 +43,7 @@ const UserTable = ({ data }) => {
             >
               <td
                 scope="row"
-<<<<<<< HEAD
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-center"
-=======
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
->>>>>>> c788936 (tailwind config fix)
               >
                 {(item.issuer).slice(0, 12)} 
                 {item.issuer.length > 17 && (
