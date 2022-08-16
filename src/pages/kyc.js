@@ -12,7 +12,7 @@ const KycPage = ({ data, collectionName }) => {
       </Head>
       <Navbar currentPage="kyc" />
 
-      <div className="mt-[40px]">
+      <div className="my-10">
         <Kyc collectionName={collectionName} data={data} />
       </div>
     </>

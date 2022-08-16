@@ -11,7 +11,7 @@ const DevicePage = ({ data, collectionName }) => {
         <title>Admin Panel</title>
       </Head>
       <Navbar currentPae="device" />
-      <div className="mt-[40px]">
+      <div className="my-10">
         <Device collectionName={collectionName} data={data} />
       </div>
     </>

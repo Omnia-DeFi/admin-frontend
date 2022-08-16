@@ -7,7 +7,7 @@ const UserTable = ({ data }) => {
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="table-fixed text-sm text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr className="w-[100px]">
             <th scope="col" className="py-4 text-center">
               Issuer
