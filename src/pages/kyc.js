@@ -10,7 +10,7 @@ const KycPage = ({ data, collectionName }) => {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
+      <Navbar currentPage="kyc" />
 
       <div className="mt-[40px]">
         <Kyc collectionName={collectionName} data={data} />

@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateAlert from "../../components/UpdateAlert";
+import UpdateAlert from "./UpdateAlert";
 
 const AlertTable = ({ data }) => {
   return (
