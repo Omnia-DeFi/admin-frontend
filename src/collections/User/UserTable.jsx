@@ -42,7 +42,14 @@ const UserTable = ({ data }) => {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-center"
               >
-                {(item.issuer).slice(0, 12)}....{(item.issuer).slice(item.issuer.length - 5)}
+                {(item.issuer).slice(0, 12)} 
+                {item.issuer.length > 17 && (
+                <>
+                  ....
+                  {(item.issuer).slice(item.issuer.length - 5)}
+                </>
+                )
+                }
               </td>
               <td className="py-4 px-6 text-center">{item.email}</td>
               <td className="py-4 px-6 text-center">{item.phone_number}</td>
