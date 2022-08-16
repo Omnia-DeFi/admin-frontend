@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
+import { FormItem } from "../Form";
+
 
 export const AssetContent = ({
   email,
@@ -31,62 +33,47 @@ export const AssetContent = ({
   }, [showModal]);
   return (
     <div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="email"
-          placeholder={"Email"}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="issuer"
-          placeholder={"Issuer"}
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"issuer"}
           value={issuer}
           onChange={(e) => setIssuer(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Issuer"}
+          type={"text"}
+        />
+        <FormItem
+          name={"email"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          label={"Email"}
+          type={"email"}
         />
       </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="title"
-          placeholder={"Alert Title"}
+
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"title"}
           value={alertTitle}
           onChange={(e) => setAlertTitle(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Title"}
+          type={"text"}
+        />
+        <FormItem
+          name={"type"}
+          value={alertType}
+          onChange={(e) => setAlertType(e.target.value)}
+          label={"Alert Type"}
+          type={"text"}
         />
       </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="content"
-          placeholder={"Content"}
+      <FormItem
+          name={"content"}
           value={alertContent}
           onChange={(e) => setAlertContent(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Content"}
+          type={"text"}
         />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="type"
-          placeholder={"Type"}
-          value={alertType}
-          onChange={(e) => setAlertType(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      {/* {documents.map((doc, index) => (
-        <div key={index} className="relative px-6 flex-auto">
-        <input
-          name="type"
-          placeholder={"Type"}
-          value={alertType}
-          onChange={(e) => setAlertType(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      ))} */}
+
     </div>
   );
 };
