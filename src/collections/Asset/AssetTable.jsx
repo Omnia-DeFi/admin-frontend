@@ -55,7 +55,14 @@ const AssetTable = ({ data }) => {
               </td>
               <td className="py-4 px-6 text-center"><p className="w-[100px]">{item.sender.date}</p></td>
               <td className="py-4 px-6 text-center">{item.user.email}</td>
-              <td className="py-4 px-6 text-center">{item.user.issuer}</td>
+              <td className="py-4 px-6 text-center">{(item.user.issuer).slice(0, 12)} 
+                {item.user.issuer.length > 17 && (
+                <>
+                  ....
+                  {(item.user.issuer).slice(item.user.issuer.length - 5)}
+                </>
+                )
+                }</td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-right">
                 <UpdateAsset collection={"asset"} data={item} />

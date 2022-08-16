@@ -33,9 +33,16 @@ const KycTable = ({ data }) => {
             >
               <td
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
               >
-                {(item.user.issuer).slice(0, 12)}....{(item.user.issuer).slice(item.user.issuer.length - 5)}
+                {(item.user.issuer).slice(0, 12)} 
+                {item.user.issuer.length > 17 && (
+                <>
+                  ....
+                  {(item.user.issuer).slice(item.user.issuer.length - 5)}
+                </>
+                )
+                }
               </td>
               <td className="py-4 px-6 text-center">{item.user.email}</td>
               <td className="py-4 px-6 text-left">
