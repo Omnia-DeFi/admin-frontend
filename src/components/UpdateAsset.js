@@ -22,7 +22,14 @@ const UpdateAsset = ({ collection, data }) => {
   async function saveDataUpdate(e) {
     console.log(data.id);
     e.preventDefault();
-    const newData = { email, issuer, alertTitle, alertType, read: true, alertContent };
+    const newData = {
+      email,
+      issuer,
+      alertTitle,
+      alertType,
+      read: true,
+      alertContent,
+    };
     try {
       console.log(newData);
       fetch(`/api/${collection}/update/${data.id}`, {

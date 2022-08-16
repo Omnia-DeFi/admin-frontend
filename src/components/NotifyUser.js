@@ -2,11 +2,11 @@ import { useState } from "react";
 import NotifyModal from "./NotifyModal";
 
 const NotifyUser = ({ userId }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const nofifyButtonHandler = () => {
-    setIsOpen(true)
-  }
+    setIsOpen(true);
+  };
 
   return (
     <>
@@ -17,10 +17,7 @@ const NotifyUser = ({ userId }) => {
       >
         Notify
       </button>
-      {
-        isOpen && 
-          <NotifyModal setIsOpen={setIsOpen} userId={userId} />
-      }
+      {isOpen && <NotifyModal setIsOpen={setIsOpen} userId={userId} />}
     </>
   );
 };

@@ -12,7 +12,7 @@ export default async function handler(req, res) {
           type,
           date: new Date(),
           read,
-        }
+        },
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());

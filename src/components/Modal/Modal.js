@@ -12,9 +12,13 @@ export default function Modal({
 }) {
   return (
     <>
-     <div id="defaultModal" tabIndex="-1" className="flex justify-center items-center mx-auto overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-    <div className="relative p-4 w-full max-w-2xl h-full md:h-auto mx-auto">
-        <div className="relative bg-white rounded-lg shadow">
+      <div
+        id="defaultModal"
+        tabIndex="-1"
+        className="flex justify-center items-center mx-auto overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+      >
+        <div className="relative p-4 w-full max-w-2xl h-full md:h-auto mx-auto">
+          <div className="relative bg-white rounded-lg shadow">
             <form
               onSubmit={onSubmit}
               className="mx-auto space-y-6 flex flex-col items-stretch pr-8 pl-8"

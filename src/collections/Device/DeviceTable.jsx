@@ -27,26 +27,29 @@ const DeviceTable = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-              <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {item.user.issuer}
-                </td>
-                <td className="py-4 px-6">{item.user.email}</td>
-                <td className="py-4 px-6">
-                  <p className="font-bold">{item.reciever.title}</p>
-                  <p>{item.reciever.content}</p>
-                </td>
-                <td className="py-4 px-6">{item.token}</td>
-                <td className="py-4 px-6 text-right">
-                  <UpdateDevice collection={"device"} data={item} />
-                </td>
-                <td className="py-4 px-6 text-right">
-                  <DeleteDataFrom collection={"device"} data={item} />
-                </td>
-              </tr>
+            <tr
+              key={item.id}
+              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <td
+                scope="row"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {item.user.issuer}
+              </td>
+              <td className="py-4 px-6">{item.user.email}</td>
+              <td className="py-4 px-6">
+                <p className="font-bold">{item.reciever.title}</p>
+                <p>{item.reciever.content}</p>
+              </td>
+              <td className="py-4 px-6">{item.token}</td>
+              <td className="py-4 px-6 text-right">
+                <UpdateDevice collection={"device"} data={item} />
+              </td>
+              <td className="py-4 px-6 text-right">
+                <DeleteDataFrom collection={"device"} data={item} />
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

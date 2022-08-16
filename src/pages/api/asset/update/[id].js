@@ -2,7 +2,15 @@ import { prisma } from "../../../../prisma/prisma";
 
 export default async function handler(req, res) {
   const assetId = req.query.id;
-  const { email, issuer, documents, alertTitle, read, alertContent, alertType } = req.body;
+  const {
+    email,
+    issuer,
+    documents,
+    alertTitle,
+    read,
+    alertContent,
+    alertType,
+  } = req.body;
 
   try {
     let updatedAsset;

@@ -18,7 +18,7 @@ const UpdateData = ({ collection, data }) => {
 
   async function saveDataUpdate(e) {
     e.preventDefault();
-    const newData = { issuer, email, phoneNumber, publicAddress};
+    const newData = { issuer, email, phoneNumber, publicAddress };
     try {
       console.log(data);
       fetch(`/api/${collection}/update/${data.id}`, {
