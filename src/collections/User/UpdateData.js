@@ -9,6 +9,7 @@ const UpdateData = ({ collection, data }) => {
   const [phoneNumber, setPhoneNumber] = useState(data.phone_number);
   const [publicAddress, setPublicAddress] = useState(data.public_address);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -17,6 +18,7 @@ const UpdateData = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
+    setLoading(true)
     e.preventDefault();
     const newData = { issuer, email, phoneNumber, publicAddress };
     try {
@@ -32,6 +34,7 @@ const UpdateData = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false)
         });
     } catch (error) {
       console.log(error);
@@ -52,20 +55,20 @@ const UpdateData = ({ collection, data }) => {
         <Modal
           header={"Update"}
           setShowModal={setShowModal}
-          data={data}
           onSubmit={saveDataUpdate}
           buttonName="Update User"
+          loading={loading}
         >
           <UserContent
             email={email}
             issuer={issuer}
-            setPhoneNumber={setPhoneNumber}
-            phoneNumber={phoneNumber}
-            publicAddress={publicAddress}
-            setPublicAddress={setPublicAddress}
             setEmail={setEmail}
             setIssuer={setIssuer}
             showModal={showModal}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            publicAddress={publicAddress}
+            setPublicAddress={setPublicAddress}
           />
         </Modal>
       ) : null}
