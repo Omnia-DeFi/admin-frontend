@@ -10,7 +10,7 @@ const AlertPage = ({ data, collectionName }) => {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
+      <Navbar currentPage={"alert"} />
       <div className="mt-[40px]">
         <Alert collectionName={collectionName} data={data} />
       </div>
