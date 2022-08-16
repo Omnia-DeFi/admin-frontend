@@ -6,9 +6,9 @@ import UpdateData from "./UpdateData";
 const UserTable = ({ data }) => {
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-      <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400">
+      <table className="table-fixed text-sm text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
+          <tr className="w-[100px]">
             <th scope="col" className="py-4 w-[100px]">
               Issuer
             </th>
@@ -37,7 +37,7 @@ const UserTable = ({ data }) => {
             >
               <td
                 scope="row"
-                className="py-4 w-[100px] px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
                 {item.issuer}
               </td>
