@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
+import { FormItem } from "../Form";
 
 export const DeviceContent = ({
   issuer,
@@ -29,59 +30,60 @@ export const DeviceContent = ({
   }, [showModal]);
   return (
     <div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="issuer"
-          placeholder={"Issuer"}
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"issuer"}
           value={issuer}
           onChange={(e) => setIssuer(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1 my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Issuer"}
+          type={"text"}
         />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          placeholder={"Email"}
+        <FormItem
+          name={"email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Email"}
+          type={"email"}
         />
       </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="title"
-          placeholder={"Alert Title"}
+
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Title"}
+          type={"text"}
         />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="content"
-          placeholder={"Content"}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
-        />
-      </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="type"
-          placeholder={"Type"}
+        <FormItem
+          name={"type"}
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Alert Type"}
+          type={"text"}
         />
+        
       </div>
-      <div className="relative px-6 flex-auto">
-        <input
-          name="token"
-          placeholder={"Token"}
+
+      
+      <div className="grid md:grid-cols-2 md:gap-6">
+      <FormItem
+          name={"content"}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          label={"Alert Content"}
+          type={"text"}
+        />
+        <FormItem
+          name={"token"}
           value={token}
           onChange={(e) => setToken(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Token"}
+          type={"text"}
         />
+        
       </div>
+
     </div>
   );
 };
