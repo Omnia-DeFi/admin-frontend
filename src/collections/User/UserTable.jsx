@@ -9,23 +9,26 @@ const UserTable = ({ data }) => {
       <table className="table-fixed text-sm text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr className="w-[100px]">
-            <th scope="col" className="py-4 w-[100px]">
+            <th scope="col" className="py-4 text-center">
               Issuer
             </th>
-            <th scope="col" className="py-3">
+            <th scope="col" className="py-3 text-center">
               Email
             </th>
-            <th scope="col" className="py-3 px-3">
+            <th scope="col" className="py-3 text-center">
               Phone Number
             </th>
-            <th scope="col" className="py-3">
+            <th scope="col" className="py-3 text-center">
               Public Address
             </th>
             <th scope="col" className="py-3">
               <span className="sr-only">Edit</span>
             </th>
             <th scope="col" className="py-3">
-              Notify
+              <span className="sr-only">Edit</span>
+            </th>
+            <th scope="col" className="py-3">
+              <span className="sr-only">Edit</span>
             </th>
           </tr>
         </thead>
@@ -33,17 +36,17 @@ const UserTable = ({ data }) => {
           {data.map((item) => (
             <tr
               key={item.id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              className="bg-white border-b  hover:bg-gray-50"
             >
               <td
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-center"
               >
-                {item.issuer}
+                {(item.issuer).slice(0, 12)}....{(item.issuer).slice(item.issuer.length - 5)}
               </td>
-              <td className="py-4 px-6">{item.email}</td>
-              <td className="py-4 px-6">{item.phone_number}</td>
-              <td className="py-4 px-6">{item.public_address}</td>
+              <td className="py-4 px-6 text-center">{item.email}</td>
+              <td className="py-4 px-6 text-center">{item.phone_number}</td>
+              <td className="py-4 px-6 text-center">{(item.public_address)?.slice(0, 12)}....{(item.public_address)?.slice(item.public_address.length - 5)}</td>
               <td className="py-4 px-6 text-right">
                 <UpdateData collection={"user"} data={item} />
               </td>
