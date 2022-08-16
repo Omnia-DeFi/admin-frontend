@@ -20,7 +20,7 @@ const UpdateAsset = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    console.log(data.id);
+    setLoading(true);
     e.preventDefault();
     const newData = {
       email,
@@ -43,11 +43,11 @@ const UpdateAsset = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (

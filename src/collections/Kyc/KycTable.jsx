@@ -29,11 +29,11 @@ const KycTable = ({ data }) => {
           {data.map((item) => (
             <tr
               key={item.id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              className="bg-white border-b hover:bg-gray-50 "
             >
               <td
                 scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap "
               >
                 {(item.user.issuer).slice(0, 12)} 
                 {item.user.issuer.length > 17 && (
@@ -52,10 +52,10 @@ const KycTable = ({ data }) => {
                 <p><span className="text-sm font-bold">Type: </span>{item.triggerer.type}</p>
                 </div>
               </td>
-              <td className="py-4 px-6 text-right">
+              <td className="py-4 px-6 text-left">
                 <UpdateKyc collection={"kyc"} data={item} />
               </td>
-              <td className="py-4 px-6 text-right">
+              <td className="py-4 px-6 text-left">
                 <DeleteDataFrom collection={"kyc"} data={item} />
               </td>
             </tr>
