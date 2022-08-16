@@ -7,7 +7,7 @@ export default function Modal({
   onSubmit,
   header,
   children,
-  loading,
+  loading, 
   buttonName,
 }) {
   return (
