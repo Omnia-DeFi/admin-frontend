@@ -11,6 +11,7 @@ const Footer = ({ setShowModal, buttonName, loading, onSubmit }) => {
     if(!loading) {
       setShowModal(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
   
   return (

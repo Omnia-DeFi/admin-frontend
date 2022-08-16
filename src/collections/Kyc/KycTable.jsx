@@ -1,6 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateKyc from "../../components/UpdateKyc";
+import UpdateKyc from "./UpdateKyc";
 
 const KycTable = ({ data }) => {
   return (

@@ -1,15 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { KycContent } from "./Modal/KycContent";
+import Modal from "../../components/Modal/Modal";
+import { UserContent } from "../../components/Modal/UserContent";
 
-const AddKyc = ({ collection }) => {
+const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [issuer, setIssuer] = useState("");
   const [email, setEmail] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [type, setType] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [publicAddress, setPublicAddress] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const refreshData = () => {
@@ -18,7 +18,8 @@ const AddKyc = ({ collection }) => {
 
   async function create(e) {
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true };
+    setLoading(true);
+    const data = { issuer, email, phoneNumber, publicAddress };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -31,11 +32,11 @@ const AddKyc = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (
@@ -50,23 +51,22 @@ const AddKyc = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Add Kyc"}
+          header={"User"}
           setShowModal={setShowModal}
           onSubmit={create}
-          buttonName="Add Kyc"
+          loading={loading}
+          buttonName={"Add User"}
         >
-          <KycContent
+          <UserContent
             email={email}
             issuer={issuer}
             setEmail={setEmail}
             setIssuer={setIssuer}
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            type={type}
-            setType={setType}
-            setContent={setContent}
             showModal={showModal}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            publicAddress={publicAddress}
+            setPublicAddress={setPublicAddress}
             operation={"add"}
           />
         </Modal>
@@ -75,4 +75,4 @@ const AddKyc = ({ collection }) => {
   );
 };
 
-export default AddKyc;
+export default AddData;

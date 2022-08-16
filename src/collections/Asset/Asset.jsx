@@ -1,5 +1,5 @@
 import React from "react";
-import AddAsset from "../../components/AddAsset";
+import AddAsset from "./AddAsset";
 import AssetTable from "./AssetTable";
 
 const Asset = ({ collectionName, data }) => {

@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { UserContent } from "../components/Modal/UserContent";
+import { AlertContent } from "../../components/Modal/AlertContent";
+import Modal from "../../components/Modal/Modal";
 
 const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
-  const [issuer, setIssuer] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [publicAddress, setPublicAddress] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [type, setType] = useState("");
+  const [read, setRead] = useState(true);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -19,7 +19,7 @@ const AddData = ({ collection }) => {
   async function create(e) {
     e.preventDefault();
     setLoading(true);
-    const data = { issuer, email, phoneNumber, publicAddress };
+    const data = { title, content, type, read: true };
     try {
       fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
@@ -32,11 +32,12 @@ const AddData = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
-          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
+    setShowModal(false);
+    setLoading(false);
   }
 
   return (
@@ -51,22 +52,20 @@ const AddData = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"User"}
+          header={"Alert"}
           setShowModal={setShowModal}
           onSubmit={create}
           loading={loading}
-          buttonName={"Add User"}
+          buttonName={"Add Alert"}
         >
-          <UserContent
-            email={email}
-            issuer={issuer}
-            setEmail={setEmail}
-            setIssuer={setIssuer}
+          <AlertContent
+            title={title}
+            setTitle={setTitle}
+            content={content}
+            type={type}
+            setType={setType}
+            setContent={setContent}
             showModal={showModal}
-            phoneNumber={phoneNumber}
-            setPhoneNumber={setPhoneNumber}
-            publicAddress={publicAddress}
-            setPublicAddress={setPublicAddress}
             operation={"add"}
           />
         </Modal>
