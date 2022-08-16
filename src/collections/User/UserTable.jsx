@@ -54,13 +54,13 @@ const UserTable = ({ data }) => {
               <td className="py-4 px-6 text-center">{item.email}</td>
               <td className="py-4 px-6 text-center">{item.phone_number}</td>
               <td className="py-4 px-6 text-center">{(item.public_address)?.slice(0, 12)}....{(item.public_address)?.slice(item.public_address.length - 5)}</td>
-              <td className="py-4 px-6 text-right">
+              <td className="py-4 px-2 text-right">
                 <UpdateData collection={"user"} data={item} />
               </td>
-              <td className="py-4 px-6 text-right">
+              <td className="py-4 px-2 text-right">
                 <DeleteDataFrom collection={"user"} data={item} />
               </td>
-              <td className="py-4 px-6 text-right">
+              <td className="py-4 px-2 text-right">
                 <NotifyUser userId={item.id} />
               </td>
             </tr>
