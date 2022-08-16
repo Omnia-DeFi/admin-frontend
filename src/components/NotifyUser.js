@@ -17,7 +17,7 @@ const NotifyUser = ({ userId }) => {
       >
         Notify
       </button>
-      {isOpen && <NotifyModal setIsOpen={setIsOpen} userId={userId} />}
+      {isOpen && <NotifyModal isOpen={isOpen} setIsOpen={setIsOpen} userId={userId} />}
     </>
   );
 };
