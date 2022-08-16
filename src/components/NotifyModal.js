@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { AlertContent } from "./Modal/AlertContent";
+import  Modal  from "./Modal/Modal";
 
-const NotifyModal = ({ setIsOpen, userId }) => {
+const NotifyModal = ({isOpen, setIsOpen, userId }) => {
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -75,6 +77,24 @@ const NotifyModal = ({ setIsOpen, userId }) => {
 
   return (
     <>
+     <Modal
+          header={"Notify"}
+          setShowModal={setIsOpen}
+          onSubmit={sendNotification}
+          buttonName="Notify User"
+          loading={loading}
+        >
+          <AlertContent
+            title={title}
+            setTitle={setTitle}
+            content={content}
+            type={type}
+            setType={setType}
+            setContent={setContent}
+            showModal={isOpen}
+            operation={"add"}
+          />
+        </Modal>
       <div className="fixed top-0 left-0 w-full flex justify-center items-center bg-black bg-opacity-50 h-full">
         <div className=" flex justify-center items-center ">
           <div className=" w-[400px] flex gap-y-2 flex-col rounded-md p-5 bg-white">
