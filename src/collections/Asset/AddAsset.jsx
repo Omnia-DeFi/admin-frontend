@@ -7,13 +7,15 @@ const AddAsset = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
-  // const [documents, setDocuments] = useState("");
   const [alertTitle, setAlertTitle] = useState(true);
   const [alertContent, setAlertContent] = useState(true);
   const [alertType, setAlertType] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [fileInput, setFileInput] = useState();
-  const [selectedFile, setSelectedFile] = useState();
+  const [AVMUrl, setAVMUrl] = useState('');
+  const [surveryProofUrl, setSurveryProofUrl] = useState('');
+  const [otherDocumentsUrls, setOtherDocumentsUrls] = useState([]);
+  const [videoUrls, setVideoUrls] = useState([]);
+  const [pictureUrls, setPictureUrls] = useState([]);
   const router = useRouter();
 
   const refreshData = () => {
@@ -80,8 +82,16 @@ const AddAsset = ({ collection }) => {
             setAlertContent={setAlertContent}
             alertType={alertType}
             setAlertType={setAlertType}
-            // documents={documents}
-            // setDocuments={setDocuments}
+            AVMUrl={AVMUrl}
+            setAVMUrl={setAVMUrl}
+            surveryProofUrl={surveryProofUrl}
+            setSurveryProofUrl={setSurveryProofUrl}
+            otherDocumentsUrls={otherDocumentsUrls}
+            setOtherDocumentsUrls={setOtherDocumentsUrls}
+            videoUrls={videoUrls}
+            setVideoUrls={setVideoUrls}
+            pictureUrls={pictureUrls}
+            setPictureUrls={setPictureUrls} 
             operation={"add"}
           />
         </Modal>

@@ -15,7 +15,9 @@ model User {
   public_address   String?
   verified_by      Kyc?
   devices          Device[]
-  assets           Asset[]
+  assets  Asset[] @relation(fields: [assetIds], references: [id])
+  assetIds String[]   @db.ObjectId
+  // assets           Asset[]
   notifications    NotificationsBearer?
 }
 
@@ -61,8 +63,10 @@ model Alert {
 
 model Asset {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  owner User @relation(fields: [ownerId], references: [id])
-  ownerId String @unique @db.ObjectId
+  // owner User @relation(fields: [ownerId], references: [id])
+  // ownerId String @unique @db.ObjectId
+  owners  User[] @relation(fields: [ownerIds], references: [id])
+  ownerIds String[]   @db.ObjectId
   title String 
   description String
   AVM String

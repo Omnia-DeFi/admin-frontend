@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { FormItem } from "../Form";
+import UploadFile from "../Form/UploadFile/UploadFile";
 
 export const AssetContent = ({
   email,
@@ -13,8 +14,16 @@ export const AssetContent = ({
   setAlertType,
   alertContent,
   setAlertContent,
-  // documents,
-  // setDocuments,
+  AVMUrl,
+  setAVMUrl,
+  surveyProofUrl,
+  setSurveryProofUrl,
+  otherDocumentsUrls,
+  setOtherDocumentsUrls,
+  videoUrls,
+  setVideoUrls,
+  pictureUrls,
+  setPictureUrls,
   showModal,
   operation,
 }) => {
@@ -72,6 +81,17 @@ export const AssetContent = ({
         label={"Alert Content"}
         type={"text"}
       />
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <UploadFile label="AVM" url={AVMUrl} setUrl={setAVMUrl} />
+        <UploadFile label="Survey Proof" url={surveyProofUrl} setUrl={setSurveryProofUrl} />
+      </div>
+
+      <div className="grid md:grid-cols-2 md:gap-6">
+      <UploadFile label="Videos" urls={videoUrls} setUrls={setVideoUrls} />
+      <UploadFile label="Pictures" urls={pictureUrls} setUrls={setPictureUrls} />
+
+      </div>
+      <UploadFile label="Other Documents" urls={otherDocumentsUrls} setUrls={setOtherDocumentsUrls} />
     </div>
   );
 };
