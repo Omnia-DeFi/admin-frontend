@@ -11,8 +11,8 @@ const AddAsset = ({ collection }) => {
   const [alertContent, setAlertContent] = useState(true);
   const [alertType, setAlertType] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [AVMUrl, setAVMUrl] = useState('');
-  const [surveryProofUrl, setSurveryProofUrl] = useState('');
+  const [AVMUrl, setAVMUrl] = useState("");
+  const [surveryProofUrl, setSurveryProofUrl] = useState("");
   const [otherDocumentsUrls, setOtherDocumentsUrls] = useState([]);
   const [videoUrls, setVideoUrls] = useState([]);
   const [pictureUrls, setPictureUrls] = useState([]);
@@ -91,7 +91,7 @@ const AddAsset = ({ collection }) => {
             videoUrls={videoUrls}
             setVideoUrls={setVideoUrls}
             pictureUrls={pictureUrls}
-            setPictureUrls={setPictureUrls} 
+            setPictureUrls={setPictureUrls}
             operation={"add"}
           />
         </Modal>

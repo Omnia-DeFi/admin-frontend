@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { FormItem } from "../Form";
+import MultiUploadFiles from "../Form/MultiUploadFiles/MultiUploadFiles";
 import UploadFile from "../Form/UploadFile/UploadFile";
 
 export const AssetContent = ({
@@ -83,15 +84,30 @@ export const AssetContent = ({
       />
       <div className="grid md:grid-cols-2 md:gap-6">
         <UploadFile label="AVM" url={AVMUrl} setUrl={setAVMUrl} />
-        <UploadFile label="Survey Proof" url={surveyProofUrl} setUrl={setSurveryProofUrl} />
+        <UploadFile
+          label="Survey Proof"
+          url={surveyProofUrl}
+          setUrl={setSurveryProofUrl}
+        />
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
-      <UploadFile label="Videos" urls={videoUrls} setUrls={setVideoUrls} />
-      <UploadFile label="Pictures" urls={pictureUrls} setUrls={setPictureUrls} />
-
+        <MultiUploadFiles
+          label="Videos"
+          urls={videoUrls}
+          setUrls={setVideoUrls}
+        />
+        <MultiUploadFiles
+          label="Pictures"
+          urls={pictureUrls}
+          setUrls={setPictureUrls}
+        />
       </div>
-      <UploadFile label="Other Documents" urls={otherDocumentsUrls} setUrls={setOtherDocumentsUrls} />
+      <MultiUploadFiles
+        label="Other Documents"
+        urls={otherDocumentsUrls}
+        setUrls={setOtherDocumentsUrls}
+      />
     </div>
   );
 };
