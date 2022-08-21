@@ -12,6 +12,8 @@ const AddAsset = ({ collection }) => {
   const [alertContent, setAlertContent] = useState(true);
   const [alertType, setAlertType] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [fileInput, setFileInput] = useState();
+  const [selectedFile, setSelectedFile] = useState();
   const router = useRouter();
 
   const refreshData = () => {
@@ -42,11 +44,11 @@ const AddAsset = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
-          setLoading(false)
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
-    };
+    }
   }
 
   return (

@@ -7,7 +7,7 @@ export default function Modal({
   onSubmit,
   header,
   children,
-  loading, 
+  loading,
   buttonName,
 }) {
   return (
@@ -29,7 +29,7 @@ export default function Modal({
               {children}
               {/*footer*/}
               <Footer
-                 onSubmit={onSubmit}
+                onSubmit={onSubmit}
                 setShowModal={setShowModal}
                 loading={loading}
                 buttonName={buttonName}

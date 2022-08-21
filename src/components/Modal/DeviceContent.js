@@ -62,12 +62,10 @@ export const DeviceContent = ({
           label={"Alert Type"}
           type={"text"}
         />
-        
       </div>
 
-      
       <div className="grid md:grid-cols-2 md:gap-6">
-      <FormItem
+        <FormItem
           name={"content"}
           value={content}
           onChange={(e) => setContent(e.target.value)}
@@ -81,9 +79,7 @@ export const DeviceContent = ({
           label={"Token"}
           type={"text"}
         />
-        
       </div>
-
     </div>
   );
 };

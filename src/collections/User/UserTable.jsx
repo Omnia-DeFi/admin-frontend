@@ -6,9 +6,7 @@ import NotificationDetails from "../../components/notificationDetails";
 
 const UserTable = ({ data }) => {
   return (
-    <div className="overflow-x-auto relative shadow-md sm:rounded-lg"
-    >
-
+    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="text-sm text-right text-gray-500">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr className="w-[100px]">
@@ -37,26 +35,25 @@ const UserTable = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr
-              key={item.id}
-              className="bg-white border-b  hover:bg-gray-50"
-            >
+            <tr key={item.id} className="bg-white border-b  hover:bg-gray-50">
               <td
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-center"
               >
-                {(item.issuer).slice(0, 12)} 
+                {item.issuer.slice(0, 12)}
                 {item.issuer.length > 17 && (
-                <>
-                  ....
-                  {(item.issuer).slice(item.issuer.length - 5)}
-                </>
-                )
-                }
+                  <>
+                    ....
+                    {item.issuer.slice(item.issuer.length - 5)}
+                  </>
+                )}
               </td>
               <td className="py-4 px-6 text-center">{item.email}</td>
               <td className="py-4 px-6 text-center">{item.phone_number}</td>
-              <td className="py-4 px-6 text-center">{(item.public_address)?.slice(0, 12)}....{(item.public_address)?.slice(item.public_address.length - 5)}</td>
+              <td className="py-4 px-6 text-center">
+                {item.public_address?.slice(0, 12)}....
+                {item.public_address?.slice(item.public_address.length - 5)}
+              </td>
               <td className="py-4 px-2 text-left">
                 <UpdateData collection={"user"} data={item} />
               </td>
@@ -65,7 +62,7 @@ const UserTable = ({ data }) => {
               </td>
               <td className="py-4 px-2 text-left">
                 <NotifyUser userId={item.id} />
-                <NotificationDetails id={item.id}/>
+                <NotificationDetails id={item.id} />
               </td>
             </tr>
           ))}

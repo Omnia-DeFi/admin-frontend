@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Modal from "../../components/Modal/Modal"
+import Modal from "../../components/Modal/Modal";
 import { UserContent } from "../../components/Modal/UserContent";
 
 const UpdateData = ({ collection, data }) => {
@@ -18,7 +18,7 @@ const UpdateData = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    setLoading(true)
+    setLoading(true);
     e.preventDefault();
     const newData = { issuer, email, phoneNumber: +phoneNumber, publicAddress };
     try {
@@ -34,7 +34,7 @@ const UpdateData = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
-          setLoading(false)
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);

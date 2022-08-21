@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar({currentPage}) {
+export default function Navbar({ currentPage }) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (

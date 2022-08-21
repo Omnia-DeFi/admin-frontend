@@ -19,7 +19,7 @@ const UpdatedKyc = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
-    setLoading(true)
+    setLoading(true);
     e.preventDefault();
     const newData = { issuer, email, title, content, type, read: true };
     try {

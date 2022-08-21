@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { FormItem } from "../Form";
 
-
 export const KycContent = ({
   issuer,
   email,
@@ -60,15 +59,14 @@ export const KycContent = ({
           label={"Alert Type"}
           type={"text"}
         />
-        
       </div>
       <FormItem
-          name={"content"}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          label={"Alert Content"}
-          type={"text"}
-        />
+        name={"content"}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        label={"Alert Content"}
+        type={"text"}
+      />
     </div>
   );
 };

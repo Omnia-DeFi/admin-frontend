@@ -18,7 +18,7 @@ const AddKyc = ({ collection }) => {
   };
 
   async function create(e) {
-    setLoading(true)
+    setLoading(true);
     e.preventDefault();
     const data = { issuer, email, title, content, type, read: true };
     try {
