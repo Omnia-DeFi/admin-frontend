@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MultiUploadFiles = ({ label, urls, setUrls }) => {
+const MultiUploadFiles = ({ label, setUrls }) => {
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFiles, setSelectedFiles] = useState("");
 

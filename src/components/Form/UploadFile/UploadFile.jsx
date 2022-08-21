@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const UploadFile = ({ label, url, setUrl, urls, setUrls }) => {
+const UploadFile = ({ label, setUrl }) => {
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
 

@@ -29,8 +29,13 @@ const AddAsset = ({ collection }) => {
     const data = {
       email,
       issuer,
-      alertTitle,
-      alertType,
+      title,
+      description,
+      AVM: AVMUrl,
+      surveryProof: surveryProofUrl,
+      otherDocuments: otherDocumentsUrls,
+      videos: videoUrls,
+      pictures: pictureUrls,
       read: true,
       alertContent,
     };
