@@ -13,8 +13,8 @@ const UploadFile = ({ label, url, setUrl, urls, setUrls }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting");
     if (!selectedFile) return;
+    alert("File added")
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
@@ -59,7 +59,7 @@ const UploadFile = ({ label, url, setUrl, urls, setUrls }) => {
         id="file_input_help"
       >
         <button
-          className="mb-4 text-gray-700 border-b-2"
+          className="mb-4 text-gray-700 hover:border-b-2"
           type="button"
           onClick={onSubmit}
         >

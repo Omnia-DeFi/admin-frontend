@@ -10,28 +10,36 @@ const MultiUploadFiles = ({ label, urls, setUrls }) => {
     setFileInputState(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     console.log("Submitting");
     if (!selectedFiles) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(selectedFiles);
-    reader.onloadend = () => {
-      uploadFile(reader.result);
-    };
-    reader.onerror = () => {
-      console.log("Error");
-    };
+    alert("File added")
+    for (const file of selectedFiles) {
+      reader(file)
+    }
   };
 
+  const reader = (file) => {
+    const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        console.log("reader rsult", reader.result)
+        uploadFile(reader.result);
+      };
+      reader.onerror = () => {
+        console.log("Error");
+      };
+  }
+
   const uploadFile = async (base64EncodedImage) => {
+    console.log("BASE", base64EncodedImage)
     try {
         await fetch('/api/upload', {
             method: 'POST',
             body: JSON.stringify({ data: base64EncodedImage }),
             headers: { 'Content-Type': 'application/json' },
-        });
-        setFileInputState('');
+        }).then(res => res.json()).then(data => setUrls(prevUrls => [...prevUrls, data.uploadedResponse.secure_url]));
     } catch (err) {
         console.error(err);
     }
@@ -59,7 +67,7 @@ const MultiUploadFiles = ({ label, urls, setUrls }) => {
         id="file_input_help"
       >
         <button
-          className="mb-4 text-gray-700 border-b-2"
+          className="mb-4 text-gray-700 hover:border-b-2"
           type="button"
           onClick={onSubmit}
         >
@@ -71,3 +79,4 @@ const MultiUploadFiles = ({ label, urls, setUrls }) => {
 };
 
 export default MultiUploadFiles;
+
