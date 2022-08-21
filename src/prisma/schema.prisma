@@ -71,7 +71,7 @@ model Asset {
   description String
   AVM String
   surveyProof String
-  otherDocuments Documents[]
+  otherDocuments String[]
   videos String[]
   pictures String[]
 }
@@ -89,12 +89,12 @@ model Asset {
 //   folders          Sub_Folder[]  @relation("SubFolders")
 // }
 
-model Documents {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  asset Asset @relation(fields: [assetId], references: [id])
-  assetId String @unique @db.ObjectId
-  hasBeenApproved Boolean
-}
+// model Documents {
+//   id String @id @default(auto()) @map("_id") @db.ObjectId
+//   asset Asset @relation(fields: [assetId], references: [id])
+//   assetId String @unique @db.ObjectId
+//   hasBeenApproved Boolean
+// }
 
 
 model NotificationsBearer {

@@ -24,31 +24,25 @@ export const getServerSideProps = async () => {
   const data = await prisma.asset.findMany({
     select: {
       id: true,
-      user: {
+      owners: {
         select: {
           issuer: true,
           email: true,
         },
       },
-      sender: {
-        select: {
-          title: true,
-          content: true,
-          type: true,
-          date: true,
-        },
-      },
+      title: true,
+      description: true,
+      AVM: true,
+      surveyProof: true,
+      otherDocuments: true,
+      videos: true,
+      pictures:true,
     },
-  });
-
-  const formatData = data.map((d) => {
-    d.sender.date = d.sender.date.toDateString();
-    return d;
   });
 
   return {
     props: {
-      data: formatData,
+      data,
       collectionName: "asset",
     },
   };

@@ -9,16 +9,14 @@ export const AssetContent = ({
   setEmail,
   issuer,
   setIssuer,
-  alertTitle,
-  setAlertTitle,
-  alertType,
-  setAlertType,
-  alertContent,
-  setAlertContent,
+  title,
+  setTitle,
+  description,
+  setDescription,
   AVMUrl,
   setAVMUrl,
   surveyProofUrl,
-  setSurveryProofUrl,
+  setSurveyProofUrl,
   otherDocumentsUrls,
   setOtherDocumentsUrls,
   videoUrls,
@@ -34,9 +32,8 @@ export const AssetContent = ({
     if (operation === "add") {
       setEmail("");
       setIssuer("");
-      setAlertTitle("");
-      setAlertContent("");
-      setAlertType("");
+      setTitle("");
+      setDescription("");
       // setDocuments("");
     }
   }, [showModal]);
@@ -62,32 +59,25 @@ export const AssetContent = ({
       <div className="grid md:grid-cols-2 md:gap-6">
         <FormItem
           name={"title"}
-          value={alertTitle}
-          onChange={(e) => setAlertTitle(e.target.value)}
-          label={"Alert Title"}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          label={"Title"}
           type={"text"}
         />
         <FormItem
-          name={"type"}
-          value={alertType}
-          onChange={(e) => setAlertType(e.target.value)}
-          label={"Alert Type"}
+          name={"description"}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          label={"Description"}
           type={"text"}
         />
       </div>
-      <FormItem
-        name={"content"}
-        value={alertContent}
-        onChange={(e) => setAlertContent(e.target.value)}
-        label={"Alert Content"}
-        type={"text"}
-      />
       <div className="grid md:grid-cols-2 md:gap-6">
         <UploadFile label="AVM" url={AVMUrl} setUrl={setAVMUrl} />
         <UploadFile
           label="Survey Proof"
           url={surveyProofUrl}
-          setUrl={setSurveryProofUrl}
+          setUrl={setSurveyProofUrl}
         />
       </div>
 

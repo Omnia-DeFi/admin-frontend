@@ -12,19 +12,22 @@ const AssetTable = ({ data }) => {
               Title
             </th>
             <th scope="col" className="py-3 text-center">
-              Content
+              Description
             </th>
             <th scope="col" className="py-3 text-center">
-              Type
+              AVM
             </th>
             <th scope="col" className="py-3 text-center">
-              Date
+              surveyProof
             </th>
             <th scope="col" className="py-3 text-center">
-              Email
+              otherDocuments
             </th>
             <th scope="col" className="py-3 text-center">
-              Issuer
+              videos
+            </th>
+            <th scope="col" className="py-3 text-center">
+              pictures
             </th>
             {/* <th scope="col" className="py-3">
               Documents
@@ -44,30 +47,37 @@ const AssetTable = ({ data }) => {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
               >
-                {item.sender.title}
+                {item.title}
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[120px]">{item.sender.content}</p>
+                <p className="w-[120px]">{item.description}</p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="font-bold">{item.sender.type}</p>
+                <p className="font-bold">{item.AVM}</p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[100px]">{item.sender.date}</p>
+                <p className="w-[100px]">{item.surveyProof}</p>
               </td>
-              <td className="py-4 px-6 text-center">{item.user.email}</td>
               <td className="py-4 px-6 text-center">
-                {item.user.issuer.slice(0, 12)}
-                {item.user.issuer.length > 17 && (
-                  <>
-                    ....
-                    {item.user.issuer.slice(item.user.issuer.length - 5)}
-                  </>
-                )}
+                
+                {item.otherDocuments.map((docu, i) => (
+                  <p key={i}>{docu}</p>
+                ))}
+                
+                </td>
+              <td className="py-4 px-6 text-center">
+              {item.videos.map((vid, i) => (
+                  <p key={i}>{vid}</p>
+                ))}
+              </td>
+              <td className="py-4 px-6 text-center">
+              {item.pictures.map((pic, i) => (
+                  <p key={i}>{pic}</p>
+                ))}
               </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-left">
-                <UpdateAsset collection={"asset"} data={item} />
+                {/* <UpdateAsset collection={"asset"} data={item} /> */}
               </td>
               <td className="py-4 px-6 text-left">
                 <DeleteDataFrom collection={"asset"} data={item} />

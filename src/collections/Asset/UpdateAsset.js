@@ -4,11 +4,11 @@ import Modal from "../../components/Modal/Modal";
 import { AssetContent } from "../../components/Modal/AssetContent";
 
 const UpdateAsset = ({ collection, data }) => {
-  const [email, setEmail] = useState(data.user.email);
-  const [issuer, setIssuer] = useState(data.user.issuer);
+  const [email, setEmail] = useState(data.owners.email);
+  const [issuer, setIssuer] = useState(data.owners.issuer);
   // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(data.sender.title);
-  const [alertContent, setAlertContent] = useState(data.sender.content);
+  const [alertTitle, setAlertTitle] = useState(data.title);
+  const [alertContent, setAlertContent] = useState(data.description);
   const [alertType, setAlertType] = useState(data.sender.type);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
