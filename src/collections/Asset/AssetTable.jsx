@@ -1,5 +1,6 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
+import UpdateAsset from "./UpdateAsset";
 
 const AssetTable = ({ data }) => {
   return (
@@ -85,8 +86,8 @@ const AssetTable = ({ data }) => {
               </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-left">
-                {/* <UpdateAsset collection={"asset"} data={item} /> */}
-              </td>
+                <UpdateAsset collection={"asset"} data={item} />
+               </td>
               <td className="py-4 px-6 text-left">
                 <DeleteDataFrom collection={"asset"} data={item} />
               </td>

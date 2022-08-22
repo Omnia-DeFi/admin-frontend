@@ -7,9 +7,13 @@ const UpdateAsset = ({ collection, data }) => {
   const [email, setEmail] = useState(data.owners.email);
   const [issuer, setIssuer] = useState(data.owners.issuer);
   // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(data.title);
-  const [alertContent, setAlertContent] = useState(data.description);
-  const [alertType, setAlertType] = useState(data.sender.type);
+  const [title, setTitle] = useState(data.title);
+  const [description, setDescription] = useState(data.description);
+  const [AVMUrl, setAVMUrl] = useState(data.AWM);
+  const [surveyProofUrl, setSurveyProofUrl] = useState(data.surveyProof);
+  const [otherDocumentsUrls, setOtherDocumentsUrls] = useState([]);
+  const [videoUrls, setVideoUrls] = useState([]);
+  const [pictureUrls, setPictureUrls] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -25,10 +29,13 @@ const UpdateAsset = ({ collection, data }) => {
     const newData = {
       email,
       issuer,
-      alertTitle,
-      alertType,
-      read: true,
-      alertContent,
+      title,
+      description,
+      AVM: AVMUrl,
+      surveyProof: surveyProofUrl,
+      otherDocuments: otherDocumentsUrls,
+      videos: videoUrls,
+      pictures: pictureUrls,
     };
     try {
       console.log(newData);
@@ -72,12 +79,20 @@ const UpdateAsset = ({ collection, data }) => {
             setEmail={setEmail}
             issuer={issuer}
             setIssuer={setIssuer}
-            alertTitle={alertTitle}
-            setAlertTitle={setAlertTitle}
-            alertContent={alertContent}
-            setAlertContent={setAlertContent}
-            alertType={alertType}
-            setAlertType={setAlertType}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            AVMUrl={AVMUrl}
+            setAVMUrl={setAVMUrl}
+            surveyProofUrl={surveyProofUrl}
+            setSurveyProofUrl={setSurveyProofUrl}
+            otherDocumentsUrls={otherDocumentsUrls}
+            setOtherDocumentsUrls={setOtherDocumentsUrls}
+            videoUrls={videoUrls}
+            setVideoUrls={setVideoUrls}
+            pictureUrls={pictureUrls}
+            setPictureUrls={setPictureUrls}
             // documents={documents}
             // setDocuments={setDocuments}
           />
