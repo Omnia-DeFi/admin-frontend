@@ -1,6 +1,5 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateAsset from "./UpdateAsset";
 
 const AssetTable = ({ data }) => {
   return (
@@ -50,29 +49,38 @@ const AssetTable = ({ data }) => {
                 {item.title}
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[120px]">{item.description}</p>
+                <p>
+                  {item.description}</p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="font-bold">{item.AVM}</p>
+                <p className="w-[100px]">
+                <a target="_blank" href={item.AVM} rel="noreferrer">Click to Open</a></p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[100px]">{item.surveyProof}</p>
+                <p className="w-[100px]">
+                <a target="_blank" href={item.surveyProof} rel="noreferrer">Click to Open</a></p>
               </td>
               <td className="py-4 px-6 text-center">
                 
                 {item.otherDocuments.map((docu, i) => (
-                  <p key={i}>{docu}</p>
+                  <p className="w-[100px]" key={i}>
+                    <a target="_blank" href={docu} rel="noreferrer">Document {i+1}</a>
+                  </p>
                 ))}
                 
                 </td>
               <td className="py-4 px-6 text-center">
               {item.videos.map((vid, i) => (
-                  <p key={i}>{vid}</p>
+                  <p className="w-[100px]" key={i}>
+                  <a target="_blank" href={vid} rel="noreferrer">Video {i+1}</a>
+                </p>
                 ))}
               </td>
               <td className="py-4 px-6 text-center">
               {item.pictures.map((pic, i) => (
-                  <p key={i}>{pic}</p>
+                  <p className="w-[100px]" key={i}>
+                  <a target="_blank" href={pic} rel="noreferrer">Picture {i+1}</a>
+                </p>
                 ))}
               </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
