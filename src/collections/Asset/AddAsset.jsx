@@ -42,11 +42,11 @@ const AddAsset = ({ collection }) => {
         .then((data) => {
           console.log(data);
           refreshData();
-          setLoading(false)
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
-    };
+    }
   }
 
   return (

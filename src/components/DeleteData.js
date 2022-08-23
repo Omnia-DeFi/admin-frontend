@@ -22,7 +22,7 @@ const DeleteDataFrom = ({ collection, data }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          refreshData()
+          refreshData();
           setLoading(false);
         });
     } catch (error) {
@@ -40,9 +40,15 @@ const DeleteDataFrom = ({ collection, data }) => {
         DELETE
       </button>
       {showModal && (
-      <Modal header="Are you sure" setShowModal={setShowModal} onSubmit={deleteDataFrom} loading={loading} buttonName="Delete">
-        <p className="text-left">Are you sure you want to delete? </p>
-      </Modal>
+        <Modal
+          header="Are you sure"
+          setShowModal={setShowModal}
+          onSubmit={deleteDataFrom}
+          loading={loading}
+          buttonName="Delete"
+        >
+          <p className="text-left">Are you sure you want to delete? </p>
+        </Modal>
       )}
     </>
   );

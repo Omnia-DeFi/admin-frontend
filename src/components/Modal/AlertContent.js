@@ -36,15 +36,14 @@ export const AlertContent = ({
           label={"Alert Type"}
           type={"text"}
         />
-        
       </div>
       <FormItem
-          name={"content"}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          label={"Alert Content"}
-          type={"text"}
-        />
+        name={"content"}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        label={"Alert Content"}
+        type={"text"}
+      />
     </div>
   );
 };

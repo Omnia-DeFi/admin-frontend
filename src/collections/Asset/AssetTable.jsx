@@ -39,30 +39,32 @@ const AssetTable = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr
-              key={item.id}
-              className="bg-white border-b  hover:bg-gray-50"
-            >
+            <tr key={item.id} className="bg-white border-b  hover:bg-gray-50">
               <td
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
               >
                 {item.sender.title}
               </td>
-              <td className="py-4 px-6 text-center"><p className="w-[120px]">{item.sender.content}</p></td>
+              <td className="py-4 px-6 text-center">
+                <p className="w-[120px]">{item.sender.content}</p>
+              </td>
               <td className="py-4 px-6 text-center">
                 <p className="font-bold">{item.sender.type}</p>
               </td>
-              <td className="py-4 px-6 text-center"><p className="w-[100px]">{item.sender.date}</p></td>
+              <td className="py-4 px-6 text-center">
+                <p className="w-[100px]">{item.sender.date}</p>
+              </td>
               <td className="py-4 px-6 text-center">{item.user.email}</td>
-              <td className="py-4 px-6 text-center">{(item.user.issuer).slice(0, 12)} 
+              <td className="py-4 px-6 text-center">
+                {item.user.issuer.slice(0, 12)}
                 {item.user.issuer.length > 17 && (
-                <>
-                  ....
-                  {(item.user.issuer).slice(item.user.issuer.length - 5)}
-                </>
-                )
-                }</td>
+                  <>
+                    ....
+                    {item.user.issuer.slice(item.user.issuer.length - 5)}
+                  </>
+                )}
+              </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-left">
                 <UpdateAsset collection={"asset"} data={item} />

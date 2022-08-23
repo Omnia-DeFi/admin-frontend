@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AlertContent } from "./Modal/AlertContent";
-import  Modal  from "./Modal/Modal";
+import Modal from "./Modal/Modal";
 
-const NotifyModal = ({isOpen, setIsOpen, userId }) => {
+const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
   const [type, setType] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -32,24 +32,24 @@ const NotifyModal = ({isOpen, setIsOpen, userId }) => {
 
   return (
     <>
-     <Modal
-          header={"Notify"}
-          setShowModal={setIsOpen}
-          onSubmit={sendNotification}
-          buttonName="Notify User"
-          loading={loading}
-        >
-          <AlertContent
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            type={type}
-            setType={setType}
-            setContent={setContent}
-            showModal={isOpen}
-            operation={"add"}
-          />
-        </Modal>
+      <Modal
+        header={"Notify"}
+        setShowModal={setIsOpen}
+        onSubmit={sendNotification}
+        buttonName="Notify User"
+        loading={loading}
+      >
+        <AlertContent
+          title={title}
+          setTitle={setTitle}
+          content={content}
+          type={type}
+          setType={setType}
+          setContent={setContent}
+          showModal={isOpen}
+          operation={"add"}
+        />
+      </Modal>
     </>
   );
 };

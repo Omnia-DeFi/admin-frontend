@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { FormItem } from "../Form";
 
-
 export const AssetContent = ({
   email,
   setEmail,
@@ -67,13 +66,12 @@ export const AssetContent = ({
         />
       </div>
       <FormItem
-          name={"content"}
-          value={alertContent}
-          onChange={(e) => setAlertContent(e.target.value)}
-          label={"Alert Content"}
-          type={"text"}
-        />
-
+        name={"content"}
+        value={alertContent}
+        onChange={(e) => setAlertContent(e.target.value)}
+        label={"Alert Content"}
+        type={"text"}
+      />
     </div>
   );
 };
