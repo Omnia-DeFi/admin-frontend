@@ -10,8 +10,8 @@ const DevicePage = ({ data, collectionName }) => {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
-      <div className="mt-[40px]">
+      <Navbar currentPae="device" />
+      <div className="my-10">
         <Device collectionName={collectionName} data={data} />
       </div>
     </>

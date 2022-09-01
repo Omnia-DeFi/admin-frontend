@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
+import { FormItem } from "../Form";
 
 export const UserContent = ({
   issuer,
@@ -23,44 +24,37 @@ export const UserContent = ({
   }, [showModal]);
   return (
     <div>
-      <div className="relative px-6 flex-auto">
-        <label htmlFor="issuer">Issuer</label>
-        <input
-          name="issuer"
-          placeholder={"Issuer"}
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"issuer"}
           value={issuer}
           onChange={(e) => setIssuer(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1 my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Issuer"}
+          type={"text"}
         />
-      </div>
-      <div className="relative px-6 py-4 flex-auto">
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          placeholder={"Email"}
+        <FormItem
+          name={"email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Email"}
+          type={"email"}
         />
       </div>
-      <div className="relative px-6 py-4 flex-auto">
-        <label htmlFor="phone-number">Phone Number</label>
-        <input
-          name="phone-number"
-          placeholder={"Phone Number"}
+
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <FormItem
+          name={"floating_phone"}
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Phone Number"}
+          type={"number"}
         />
-      </div>
-      <div className="relative px-6 py-4 flex-auto">
-        <label htmlFor="public-address">Public Address</label>
-        <input
-          name="public-address"
-          placeholder={"Public Adrress"}
+        <FormItem
+          name={"publicAddress"}
           value={publicAddress}
           onChange={(e) => setPublicAddress(e.target.value)}
-          className="border-2 rounded border-gray-600 p-1    my-[8px] text-slate-500 text-lg leading-relaxed"
+          label={"Public Address"}
+          type={"text"}
         />
       </div>
     </div>

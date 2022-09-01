@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { UserContent } from "../components/Modal/UserContent";
+import { useState } from "react";
+import Modal from "../../components/Modal/Modal";
+import { DeviceContent } from "../../components/Modal/DeviceContent";
 
-const UpdateData = ({ collection, data }) => {
-  const [email, setEmail] = useState(data.email);
-  const [issuer, setIssuer] = useState(data.issuer);
-  const [phoneNumber, setPhoneNumber] = useState(data.phone_number);
-  const [publicAddress, setPublicAddress] = useState(data.public_address);
+const UpdateDevice = ({ collection, data }) => {
+  const [email, setEmail] = useState(data.user.email);
+  const [issuer, setIssuer] = useState(data.user.issuer);
+  const [title, setTitle] = useState(data.reciever.title);
+  const [content, setContent] = useState(data.reciever.content);
+  const [type, setType] = useState(data.reciever.type);
+  const [token, setToken] = useState(data.token);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -17,11 +19,12 @@ const UpdateData = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
+    console.log(data.id);
     e.preventDefault();
-    const newData = { issuer, email, phoneNumber, publicAddress};
+    const newData = { issuer, email, title, content, type, read: true, token };
     try {
-      console.log(data);
-      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
+      console.log(newData);
+      fetch(`/api/${collection}/update/${data.id}`, {
         body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
@@ -50,21 +53,25 @@ const UpdateData = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update"}
+          header={"Update Device"}
           setShowModal={setShowModal}
           data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update User"
+          buttonName="Update Device"
         >
-          <UserContent
+          <DeviceContent
             email={email}
             issuer={issuer}
-            setPhoneNumber={setPhoneNumber}
-            phoneNumber={phoneNumber}
-            publicAddress={publicAddress}
-            setPublicAddress={setPublicAddress}
             setEmail={setEmail}
             setIssuer={setIssuer}
+            title={title}
+            setTitle={setTitle}
+            content={content}
+            token={token}
+            setToken={setToken}
+            type={type}
+            setType={setType}
+            setContent={setContent}
             showModal={showModal}
           />
         </Modal>
@@ -73,4 +80,4 @@ const UpdateData = ({ collection, data }) => {
   );
 };
 
-export default UpdateData;
+export default UpdateDevice;

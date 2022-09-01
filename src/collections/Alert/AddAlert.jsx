@@ -1,15 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../components/Modal/Modal";
-import { KycContent } from "./Modal/KycContent";
+import { AlertContent } from "../../components/Modal/AlertContent";
+import Modal from "../../components/Modal/Modal";
 
-const AddKyc = ({ collection }) => {
+const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
-  const [issuer, setIssuer] = useState("");
-  const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [type, setType] = useState("");
+  const [read, setRead] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const refreshData = () => {
@@ -18,9 +18,10 @@ const AddKyc = ({ collection }) => {
 
   async function create(e) {
     e.preventDefault();
-    const data = { issuer, email, title, content, type, read: true };
+    setLoading(true);
+    const data = { title, content, type, read: true };
     try {
-      fetch(`http://localhost:3000/api/${collection}/create`, {
+      fetch(`/api/${collection}/create`, {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
@@ -36,6 +37,7 @@ const AddKyc = ({ collection }) => {
       console.log(error);
     }
     setShowModal(false);
+    setLoading(false);
   }
 
   return (
@@ -50,16 +52,13 @@ const AddKyc = ({ collection }) => {
 
       {showModal ? (
         <Modal
-          header={"Add Kyc"}
+          header={"Alert"}
           setShowModal={setShowModal}
           onSubmit={create}
-          buttonName="Add Kyc"
+          loading={loading}
+          buttonName={"Add Alert"}
         >
-          <KycContent
-            email={email}
-            issuer={issuer}
-            setEmail={setEmail}
-            setIssuer={setIssuer}
+          <AlertContent
             title={title}
             setTitle={setTitle}
             content={content}
@@ -75,4 +74,4 @@ const AddKyc = ({ collection }) => {
   );
 };
 
-export default AddKyc;
+export default AddData;

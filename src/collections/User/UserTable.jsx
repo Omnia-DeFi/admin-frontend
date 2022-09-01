@@ -1,24 +1,32 @@
 import React from "react";
 import DeleteDataFrom from "../../components/DeleteData";
-import UpdateData from "../../components/UpdateData";
+import NotifyUser from "../../components/NotifyUser";
+import UpdateData from "./UpdateData";
+import NotificationDetails from "../../components/notificationDetails";
 
 const UserTable = ({ data }) => {
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-      <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="py-4">
+      <table className="text-sm text-right text-gray-500">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr className="w-[100px]">
+            <th scope="col" className="py-4 text-center">
               Issuer
             </th>
-            <th scope="col" className="py-3">
+            <th scope="col" className="py-3 text-center">
               Email
             </th>
-            <th scope="col" className="py-3 px-3">
+            <th scope="col" className="py-3 text-center">
               Phone Number
             </th>
-            <th scope="col" className="py-3">
+            <th scope="col" className="py-3 text-center">
               Public Address
+            </th>
+            <th scope="col" className="py-3">
+              <span className="sr-only">Edit</span>
+            </th>
+            <th scope="col" className="py-3">
+              <span className="sr-only">Edit</span>
             </th>
             <th scope="col" className="py-3">
               <span className="sr-only">Edit</span>
@@ -27,25 +35,36 @@ const UserTable = ({ data }) => {
         </thead>
         <tbody>
           {data.map((item) => (
-            <>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {item.issuer}
-                </td>
-                <td className="py-4 px-6">{item.email}</td>
-                <td className="py-4 px-6">{item.phone_number}</td>
-                <td className="py-4 px-6">{item.public_address}</td>
-                <td className="py-4 px-6 text-right">
-                  <UpdateData collection={"user"} data={item} />
-                </td>
-                <td className="py-4 px-6 text-right">
-                  <DeleteDataFrom collection={"user"} data={item} />
-                </td>
-              </tr>
-            </>
+            <tr key={item.id} className="bg-white border-b  hover:bg-gray-50">
+              <td
+                scope="row"
+                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap text-center"
+              >
+                {item.issuer.slice(0, 12)}
+                {item.issuer.length > 17 && (
+                  <>
+                    ....
+                    {item.issuer.slice(item.issuer.length - 5)}
+                  </>
+                )}
+              </td>
+              <td className="py-4 px-6 text-center">{item.email}</td>
+              <td className="py-4 px-6 text-center">{item.phone_number}</td>
+              <td className="py-4 px-6 text-center">
+                {item.public_address?.slice(0, 12)}....
+                {item.public_address?.slice(item.public_address.length - 5)}
+              </td>
+              <td className="py-4 px-2 text-left">
+                <UpdateData collection={"user"} data={item} />
+              </td>
+              <td className="py-4 px-2 text-right">
+                <DeleteDataFrom collection={"user"} data={item} />
+              </td>
+              <td className="py-4 px-2 text-left">
+                <NotifyUser userId={item.id} />
+                <NotificationDetails id={item.id} />
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

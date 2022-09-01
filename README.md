@@ -25,7 +25,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 Example: create a new entry
 
 ```bash
-localhost:3000/api/note/create
+localhost:3000/api  /note/create
 ```
 
 ## Deploy on Vercel

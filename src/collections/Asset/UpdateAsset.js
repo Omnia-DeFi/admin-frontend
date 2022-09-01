@@ -1,14 +1,16 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "./Modal/Modal";
-import { KycContent } from "./Modal/KycContent";
+import Modal from "../../components/Modal/Modal";
+import { AssetContent } from "../../components/Modal/AssetContent";
 
-const UpdatedKyc = ({ collection, data }) => {
+const UpdateAsset = ({ collection, data }) => {
   const [email, setEmail] = useState(data.user.email);
   const [issuer, setIssuer] = useState(data.user.issuer);
-  const [title, setTitle] = useState(data.triggerer.title);
-  const [content, setContent] = useState(data.triggerer.content);
-  const [type, setType] = useState(data.triggerer.type);
+  // const [documents, setDocuments] = useState("");
+  const [alertTitle, setAlertTitle] = useState(data.sender.title);
+  const [alertContent, setAlertContent] = useState(data.sender.content);
+  const [alertType, setAlertType] = useState(data.sender.type);
+  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const router = useRouter();
@@ -18,11 +20,19 @@ const UpdatedKyc = ({ collection, data }) => {
   };
 
   async function saveDataUpdate(e) {
+    setLoading(true);
     e.preventDefault();
-    const newData = { issuer, email, title, content, type, read: true };
+    const newData = {
+      email,
+      issuer,
+      alertTitle,
+      alertType,
+      read: true,
+      alertContent,
+    };
     try {
       console.log(newData);
-      fetch(`http://localhost:3000/api/${collection}/update/${data.id}`, {
+      fetch(`/api/${collection}/update/${data.id}`, {
         body: JSON.stringify(newData),
         headers: {
           "Content-Type": "application/json",
@@ -33,11 +43,11 @@ const UpdatedKyc = ({ collection, data }) => {
         .then((data) => {
           console.log(data);
           refreshData();
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
-    setShowModal(false);
   }
 
   return (
@@ -51,24 +61,25 @@ const UpdatedKyc = ({ collection, data }) => {
       </button>
       {showModal ? (
         <Modal
-          header={"Update Kyc"}
+          header={"Asset"}
           setShowModal={setShowModal}
-          data={data}
           onSubmit={saveDataUpdate}
-          buttonName="Update Kyc"
+          loading={loading}
+          buttonName={"Update Asset"}
         >
-          <KycContent
+          <AssetContent
             email={email}
-            issuer={issuer}
             setEmail={setEmail}
+            issuer={issuer}
             setIssuer={setIssuer}
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            type={type}
-            setType={setType}
-            setContent={setContent}
-            showModal={showModal}
+            alertTitle={alertTitle}
+            setAlertTitle={setAlertTitle}
+            alertContent={alertContent}
+            setAlertContent={setAlertContent}
+            alertType={alertType}
+            setAlertType={setAlertType}
+            // documents={documents}
+            // setDocuments={setDocuments}
           />
         </Modal>
       ) : null}
@@ -76,4 +87,4 @@ const UpdatedKyc = ({ collection, data }) => {
   );
 };
 
-export default UpdatedKyc;
+export default UpdateAsset;
