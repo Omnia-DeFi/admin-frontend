@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../../components/Modal/Modal";
+// import Modal from "../../components/Modal/Modal";
+import { Modal, Button } from "antd";
 import { AssetContent } from "../../components/Modal/AssetContent";
 
 const AddAsset = ({ collection }) => {
@@ -58,44 +59,61 @@ const AddAsset = ({ collection }) => {
 
   return (
     <>
-      <button
-        className="bg-blue-500 text-white active:bg-blue-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Add
-      </button>
+      <Button type="inverted" onClick={() => setShowModal(true)}>Add</Button>
 
       {showModal ? (
-        <Modal
-          header={"Asset"}
-          setShowModal={setShowModal}
-          onSubmit={create}
-          loading={loading}
-          buttonName={"Add Asset"}
-        >
-          <AssetContent
-            email={email}
-            setEmail={setEmail}
-            issuer={issuer}
-            setIssuer={setIssuer}
-            title={title}
-            setTitle={setTitle}
-            description={description}
-            setDescription={setDescription}
-            AVMUrl={AVMUrl}
-            setAVMUrl={setAVMUrl}
-            surveyProofUrl={surveyProofUrl}
-            setSurveyProofUrl={setSurveyProofUrl}
-            otherDocumentsUrls={otherDocumentsUrls}
-            setOtherDocumentsUrls={setOtherDocumentsUrls}
-            videoUrls={videoUrls}
-            setVideoUrls={setVideoUrls}
-            pictureUrls={pictureUrls}
-            setPictureUrls={setPictureUrls}
-            operation={"add"}
+        <Modal okText="Add Asset" title="Add Asset" visible={showModal} onOk={create} onCancel={() => setShowModal(false)}>
+        <AssetContent
+          email={email}
+          setEmail={setEmail}
+          issuer={issuer}
+          setIssuer={setIssuer}
+          title={title}
+          setTitle={setTitle}
+          description={description}
+          setDescription={setDescription}
+          AVMUrl={AVMUrl}
+          setAVMUrl={setAVMUrl}
+          surveyProofUrl={surveyProofUrl}
+          setSurveyProofUrl={setSurveyProofUrl}
+          otherDocumentsUrls={otherDocumentsUrls}
+          setOtherDocumentsUrls={setOtherDocumentsUrls}
+          videoUrls={videoUrls}
+          setVideoUrls={setVideoUrls}
+          pictureUrls={pictureUrls}
+          setPictureUrls={setPictureUrls}
+          operation={"add"}
           />
-        </Modal>
+      </Modal>
+        // <Modal
+        //   header={"Asset"}
+        //   setShowModal={setShowModal}
+        //   onSubmit={create}
+        //   loading={loading}
+        //   buttonName={"Add Asset"}
+        // >
+        //   <AssetContent
+        //     email={email}
+        //     setEmail={setEmail}
+        //     issuer={issuer}
+        //     setIssuer={setIssuer}
+        //     title={title}
+        //     setTitle={setTitle}
+        //     description={description}
+        //     setDescription={setDescription}
+        //     AVMUrl={AVMUrl}
+        //     setAVMUrl={setAVMUrl}
+        //     surveyProofUrl={surveyProofUrl}
+        //     setSurveyProofUrl={setSurveyProofUrl}
+        //     otherDocumentsUrls={otherDocumentsUrls}
+        //     setOtherDocumentsUrls={setOtherDocumentsUrls}
+        //     videoUrls={videoUrls}
+        //     setVideoUrls={setVideoUrls}
+        //     pictureUrls={pictureUrls}
+        //     setPictureUrls={setPictureUrls}
+        //     operation={"add"}
+        //   />
+        // </Modal>
       ) : null}
     </>
   );

@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { FormItem } from "../Form";
+import { Upload, Button } from "antd";
+import { UploadOutlined } from '@ant-design/icons';
+
 import MultiUploadFiles from "../Form/MultiUploadFiles/MultiUploadFiles";
 import UploadFile from "../Form/UploadFile/UploadFile";
 
@@ -37,6 +40,15 @@ export const AssetContent = ({
       // setDocuments("");
     }
   }, [showModal]);
+
+  const props = {  
+    onChange({ file, fileList }) {
+      if (file.status !== 'uploading') {
+        console.log(file, fileList);
+      }
+    },
+  };
+  
   return (
     <div>
       <div className="grid md:grid-cols-2 md:gap-6">
@@ -73,12 +85,15 @@ export const AssetContent = ({
         />
       </div>
       <div className="grid md:grid-cols-2 md:gap-6">
-        <UploadFile label="AVM" url={AVMUrl} setUrl={setAVMUrl} />
+        <Upload {...props}>
+          <Button icon={<UploadOutlined />}>Upload</Button>
+        </Upload>
+        {/* <UploadFile label="AVM" url={AVMUrl} setUrl={setAVMUrl} />
         <UploadFile
           label="Survey Proof"
           url={surveyProofUrl}
           setUrl={setSurveyProofUrl}
-        />
+        /> */}
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
