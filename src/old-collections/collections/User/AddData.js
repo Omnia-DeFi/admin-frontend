@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../../components/Modal/Modal";
-import { UserContent } from "../../components/Modal/UserContent";
+import Modal from "../../../old-components/components/Modal/Modal";
+import { UserContent } from "../../../old-components/components/Modal/UserContent";
 
 const AddData = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);

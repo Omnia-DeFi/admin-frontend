@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/prisma";
+import { prisma } from "../../prisma/prisma";
 import Head from "next/head";
 
 import Navbar from "../components/Navbar";
