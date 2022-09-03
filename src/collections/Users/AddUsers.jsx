@@ -3,8 +3,8 @@ import { useState } from "react";
 import { AddUserForm } from "~/collections";
 
 
-export const AddUsers = ({setUsers, collection}) => {
-  const [showModal, setShowModal] = useState(false);
+export const AddUsers = ({setUsers, collection, showModal, setShowModal}) => {
+  // const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
