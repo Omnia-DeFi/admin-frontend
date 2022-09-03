@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/react";
 import { Disclosure } from "@headlessui/react";
 import { MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { Button } from "antd";
 
 const navigation = [
   { name: "User", href: "/dashboard", current: false },
@@ -15,7 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar({ currentPage }) {
+export function Navbar({ currentPage }) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -85,14 +85,7 @@ export default function Navbar({ currentPage }) {
                   {item.name}
                 </Disclosure.Button>
               ))}
-
-              <button
-                onClick={() => signOut()}
-                type="button"
-                className="text-center text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-"
-              >
-                Sign Out
-              </button>
+            <Button onClick={() => signOut()}>Sign Out</Button>
             </div>
           </Disclosure.Panel>
         </>

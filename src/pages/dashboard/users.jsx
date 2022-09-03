@@ -1,13 +1,17 @@
 import { prisma } from "../../prisma/prisma";
 import Head from "next/head";
-import {Navbar} from "../../components";
+import {Navbar, Heading} from "~/components";
 import { useState } from 'react'
 
 const Users = ({collectionName, data}) => {
   const [users, setUsers] = useState(data);
   return (
     <>
-      <div>Users</div>
+      <Head>
+        <title>Backoffice - Users</title>
+      </Head>
+      <Navbar currentPage="user" />
+      <Heading level={5}>Users</Heading>
     </>
   )
 }
