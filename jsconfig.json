@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/components": ["src/components/index.js"],
+      "~/collections": ["src/components/index.js"],
+      "~/prisma": ["src/prisma/prisma.js"],
+    }
+  }
+}
