@@ -4,6 +4,7 @@ import { Table, Space, Button } from 'antd'
 import { useState } from 'react'
 
 export const Users = ({users, setUsers, collection}) => {
+  const [user, setUser] = useState();
   const [showModal, setShowModal] = useState(false);
   const columns = [
     {
@@ -32,10 +33,11 @@ export const Users = ({users, setUsers, collection}) => {
       render: (_, record) => (
         <Space size="middle">
           <Button onClick={() => {
-            console.log(record)
+            setUser(record)
             setShowModal(true)
           }}>Edit</Button>
           <Button>Delete</Button>
+          <Button>Notify</Button>
         </Space>
       ),
     },
@@ -45,7 +47,7 @@ export const Users = ({users, setUsers, collection}) => {
 
   return (
     <>
-    <AddUsers showModal={showModal} setShowModal={setShowModal} setUsers={setUsers} collection={collection}/>
+    <AddUsers user={user} setUser={setUser} showModal={showModal} setShowModal={setShowModal} setUsers={setUsers} collection={collection}/>
       <div className="mt-8">
         <Table dataSource={dataSource} columns={columns}/>
       </div>

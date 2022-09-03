@@ -3,8 +3,9 @@ import { useState } from "react";
 import { AddUserForm } from "~/collections";
 
 
-export const AddUsers = ({setUsers, collection, showModal, setShowModal}) => {
+export const AddUsers = ({setUsers, collection, showModal, setShowModal, user, setUser}) => {
   // const [showModal, setShowModal] = useState(false);
+  const [key, setKey] = useState(0);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -36,10 +37,10 @@ export const AddUsers = ({setUsers, collection, showModal, setShowModal}) => {
 
   return (
     <div>
-      <Button type="primary" onClick={() => setShowModal(true)}>Add</Button>
+      <Button type="primary" onClick={() => {setShowModal(true); setKey(key + 1)}}>Add</Button>
       {showModal && (
-        <Modal confirmLoading={loading} visible={showModal} title="Add User" okText="Add User" onOk={create} onCancel={() => setShowModal(false)}>
-          <AddUserForm email={email} setEmail={setEmail} issuer={issuer} setIssuer={setIssuer} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} publicAddress={publicAddress} setPublicAddress={setPublicAddress} />
+        <Modal key={key} confirmLoading={loading} visible={showModal} title="Add User" okText="Add User" onOk={create} onCancel={() => {setShowModal(false); setUser({})}}>
+          <AddUserForm user={user} email={email} setEmail={setEmail} issuer={issuer} setIssuer={setIssuer} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} publicAddress={publicAddress} setPublicAddress={setPublicAddress} />
         </Modal>
       )}
     </div>
