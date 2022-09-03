@@ -52,7 +52,9 @@ export function Navbar({ currentPage }) {
                       </a>
                     ))}
                     <div className="flex object-right">
-                    <Button type="primary" onClick={() => signOut()}>Sign Out</Button>
+                      <Button type="primary" onClick={() => signOut()}>
+                        Sign Out
+                      </Button>
                     </div>
                     ;
                   </div>
@@ -79,7 +81,7 @@ export function Navbar({ currentPage }) {
                   {item.name}
                 </Disclosure.Button>
               ))}
-            <Button onClick={() => signOut()}>Sign Out</Button>
+              <Button onClick={() => signOut()}>Sign Out</Button>
             </div>
           </Disclosure.Panel>
         </>

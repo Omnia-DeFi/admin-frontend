@@ -1,10 +1,10 @@
 import { prisma } from "~/prisma";
 import Head from "next/head";
-import {Navbar, Heading} from "~/components";
+import { Navbar, Heading } from "~/components";
 import { Users } from "~/collections";
-import { useState } from 'react'
+import { useState } from "react";
 
-const UsersPage = ({collectionName, data}) => {
+const UsersPage = ({ collectionName, data }) => {
   const [users, setUsers] = useState(data);
 
   return (
@@ -14,12 +14,12 @@ const UsersPage = ({collectionName, data}) => {
       </Head>
       <Navbar currentPage="user" />
       <div className="container mx-auto p-8 text-center">
-      <Heading level={3}>Users</Heading>
-      <Users users={users} setUsers={setUsers} collection={collectionName}/>
+        <Heading level={3}>Users</Heading>
+        <Users users={users} setUsers={setUsers} collection={collectionName} />
       </div>
     </>
-  )
-}
+  );
+};
 
 export default UsersPage;
 

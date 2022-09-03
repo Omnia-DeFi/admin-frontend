@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     otherDocuments,
     videos,
     pictures,
-    read
+    read,
   } = req.body;
 
   try {
@@ -21,10 +21,10 @@ export default async function handler(req, res) {
           owners: {
             create: [
               {
-              email,
-              issuer,
-            },
-          ]
+                email,
+                issuer,
+              },
+            ],
           },
           title,
           description,
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
           surveyProof,
           otherDocuments,
           videos,
-          pictures
+          pictures,
         },
       })
       .catch(console.error)

@@ -10,38 +10,42 @@ const MultiUploadFiles = ({ label, setUrls }) => {
     setFileInputState(e.target.value);
   };
 
-  const onSubmit = async(e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting");
     if (!selectedFiles) return;
-    alert("File added")
+    alert("File added");
     for (const file of selectedFiles) {
-      reader(file)
+      reader(file);
     }
   };
 
   const reader = (file) => {
     const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        console.log("reader rsult", reader.result)
-        uploadFile(reader.result);
-      };
-      reader.onerror = () => {
-        console.log("Error");
-      };
-  }
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log("reader rsult", reader.result);
+      uploadFile(reader.result);
+    };
+    reader.onerror = () => {
+      console.log("Error");
+    };
+  };
 
   const uploadFile = async (base64EncodedImage) => {
-    console.log("BASE", base64EncodedImage)
+    console.log("BASE", base64EncodedImage);
     try {
-        await fetch('/api/upload', {
-            method: 'POST',
-            body: JSON.stringify({ data: base64EncodedImage }),
-            headers: { 'Content-Type': 'application/json' },
-        }).then(res => res.json()).then(data => setUrls(prevUrls => [...prevUrls, data.uploadedResponse.secure_url]));
+      await fetch("/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) =>
+          setUrls((prevUrls) => [...prevUrls, data.uploadedResponse.secure_url])
+        );
     } catch (err) {
-        console.error(err);
+      console.error(err);
     }
   };
 
@@ -79,4 +83,3 @@ const MultiUploadFiles = ({ label, setUrls }) => {
 };
 
 export default MultiUploadFiles;
-

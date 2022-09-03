@@ -2,8 +2,14 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 import { AddUserForm } from "~/collections";
 
-
-export const AddUsers = ({setUsers, collection, showModal, setShowModal, user, setUser}) => {
+export const AddUsers = ({
+  setUsers,
+  collection,
+  showModal,
+  setShowModal,
+  user,
+  setUser,
+}) => {
   // const [showModal, setShowModal] = useState(false);
   const [key, setKey] = useState(0);
   const [email, setEmail] = useState("");
@@ -26,7 +32,7 @@ export const AddUsers = ({setUsers, collection, showModal, setShowModal, user, s
       })
         .then((res) => res.json())
         .then((data) => {
-          setUsers(prevData => [...prevData, data])
+          setUsers((prevData) => [...prevData, data]);
           setLoading(false);
           setShowModal(false);
         });
@@ -37,10 +43,39 @@ export const AddUsers = ({setUsers, collection, showModal, setShowModal, user, s
 
   return (
     <div>
-      <Button type="primary" onClick={() => {setShowModal(true); setKey(key + 1)}}>Add</Button>
+      <Button
+        type="primary"
+        onClick={() => {
+          setShowModal(true);
+          setKey(key + 1);
+        }}
+      >
+        Add
+      </Button>
       {showModal && (
-        <Modal key={key} confirmLoading={loading} visible={showModal} title="Add User" okText="Add User" onOk={create} onCancel={() => {setShowModal(false); setUser({})}}>
-          <AddUserForm user={user} email={email} setEmail={setEmail} issuer={issuer} setIssuer={setIssuer} phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} publicAddress={publicAddress} setPublicAddress={setPublicAddress} />
+        <Modal
+          key={key}
+          confirmLoading={loading}
+          visible={showModal}
+          title="Add User"
+          okText="Add User"
+          onOk={create}
+          onCancel={() => {
+            setShowModal(false);
+            setUser({});
+          }}
+        >
+          <AddUserForm
+            user={user}
+            email={email}
+            setEmail={setEmail}
+            issuer={issuer}
+            setIssuer={setIssuer}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            publicAddress={publicAddress}
+            setPublicAddress={setPublicAddress}
+          />
         </Modal>
       )}
     </div>

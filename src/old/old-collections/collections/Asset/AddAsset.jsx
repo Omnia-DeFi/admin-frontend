@@ -59,62 +59,70 @@ const AddAsset = ({ collection }) => {
 
   return (
     <>
-      <Button type="inverted" onClick={() => setShowModal(true)}>Add</Button>
+      <Button type="inverted" onClick={() => setShowModal(true)}>
+        Add
+      </Button>
 
       {showModal ? (
-        <Modal okText="Add Asset" title="Add Asset" visible={showModal} onOk={create} onCancel={() => setShowModal(false)}>
-        <AssetContent
-          email={email}
-          setEmail={setEmail}
-          issuer={issuer}
-          setIssuer={setIssuer}
-          title={title}
-          setTitle={setTitle}
-          description={description}
-          setDescription={setDescription}
-          AVMUrl={AVMUrl}
-          setAVMUrl={setAVMUrl}
-          surveyProofUrl={surveyProofUrl}
-          setSurveyProofUrl={setSurveyProofUrl}
-          otherDocumentsUrls={otherDocumentsUrls}
-          setOtherDocumentsUrls={setOtherDocumentsUrls}
-          videoUrls={videoUrls}
-          setVideoUrls={setVideoUrls}
-          pictureUrls={pictureUrls}
-          setPictureUrls={setPictureUrls}
-          operation={"add"}
+        <Modal
+          okText="Add Asset"
+          title="Add Asset"
+          visible={showModal}
+          onOk={create}
+          onCancel={() => setShowModal(false)}
+        >
+          <AssetContent
+            email={email}
+            setEmail={setEmail}
+            issuer={issuer}
+            setIssuer={setIssuer}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            AVMUrl={AVMUrl}
+            setAVMUrl={setAVMUrl}
+            surveyProofUrl={surveyProofUrl}
+            setSurveyProofUrl={setSurveyProofUrl}
+            otherDocumentsUrls={otherDocumentsUrls}
+            setOtherDocumentsUrls={setOtherDocumentsUrls}
+            videoUrls={videoUrls}
+            setVideoUrls={setVideoUrls}
+            pictureUrls={pictureUrls}
+            setPictureUrls={setPictureUrls}
+            operation={"add"}
           />
-      </Modal>
-        // <Modal
-        //   header={"Asset"}
-        //   setShowModal={setShowModal}
-        //   onSubmit={create}
-        //   loading={loading}
-        //   buttonName={"Add Asset"}
-        // >
-        //   <AssetContent
-        //     email={email}
-        //     setEmail={setEmail}
-        //     issuer={issuer}
-        //     setIssuer={setIssuer}
-        //     title={title}
-        //     setTitle={setTitle}
-        //     description={description}
-        //     setDescription={setDescription}
-        //     AVMUrl={AVMUrl}
-        //     setAVMUrl={setAVMUrl}
-        //     surveyProofUrl={surveyProofUrl}
-        //     setSurveyProofUrl={setSurveyProofUrl}
-        //     otherDocumentsUrls={otherDocumentsUrls}
-        //     setOtherDocumentsUrls={setOtherDocumentsUrls}
-        //     videoUrls={videoUrls}
-        //     setVideoUrls={setVideoUrls}
-        //     pictureUrls={pictureUrls}
-        //     setPictureUrls={setPictureUrls}
-        //     operation={"add"}
-        //   />
-        // </Modal>
-      ) : null}
+        </Modal>
+      ) : // <Modal
+      //   header={"Asset"}
+      //   setShowModal={setShowModal}
+      //   onSubmit={create}
+      //   loading={loading}
+      //   buttonName={"Add Asset"}
+      // >
+      //   <AssetContent
+      //     email={email}
+      //     setEmail={setEmail}
+      //     issuer={issuer}
+      //     setIssuer={setIssuer}
+      //     title={title}
+      //     setTitle={setTitle}
+      //     description={description}
+      //     setDescription={setDescription}
+      //     AVMUrl={AVMUrl}
+      //     setAVMUrl={setAVMUrl}
+      //     surveyProofUrl={surveyProofUrl}
+      //     setSurveyProofUrl={setSurveyProofUrl}
+      //     otherDocumentsUrls={otherDocumentsUrls}
+      //     setOtherDocumentsUrls={setOtherDocumentsUrls}
+      //     videoUrls={videoUrls}
+      //     setVideoUrls={setVideoUrls}
+      //     pictureUrls={pictureUrls}
+      //     setPictureUrls={setPictureUrls}
+      //     operation={"add"}
+      //   />
+      // </Modal>
+      null}
     </>
   );
 };

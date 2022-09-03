@@ -50,44 +50,53 @@ const AssetTable = ({ data }) => {
                 {item.title}
               </td>
               <td className="py-4 px-6 text-center">
-                <p>
-                  {item.description}</p>
+                <p>{item.description}</p>
               </td>
               <td className="py-4 px-6 text-center">
                 <p className="w-[100px]">
-                <a target="_blank" href={item.AVM} rel="noreferrer">Click to Open</a></p>
+                  <a target="_blank" href={item.AVM} rel="noreferrer">
+                    Click to Open
+                  </a>
+                </p>
               </td>
               <td className="py-4 px-6 text-center">
                 <p className="w-[100px]">
-                <a target="_blank" href={item.surveyProof} rel="noreferrer">Click to Open</a></p>
+                  <a target="_blank" href={item.surveyProof} rel="noreferrer">
+                    Click to Open
+                  </a>
+                </p>
               </td>
               <td className="py-4 px-6 text-center">
-                
                 {item.otherDocuments.map((docu, i) => (
                   <p className="w-[100px]" key={i}>
-                    <a target="_blank" href={docu} rel="noreferrer">Document {i+1}</a>
+                    <a target="_blank" href={docu} rel="noreferrer">
+                      Document {i + 1}
+                    </a>
                   </p>
-                ))}
-                
-                </td>
-              <td className="py-4 px-6 text-center">
-              {item.videos.map((vid, i) => (
-                  <p className="w-[100px]" key={i}>
-                  <a target="_blank" href={vid} rel="noreferrer">Video {i+1}</a>
-                </p>
                 ))}
               </td>
               <td className="py-4 px-6 text-center">
-              {item.pictures.map((pic, i) => (
+                {item.videos.map((vid, i) => (
                   <p className="w-[100px]" key={i}>
-                  <a target="_blank" href={pic} rel="noreferrer">Picture {i+1}</a>
-                </p>
+                    <a target="_blank" href={vid} rel="noreferrer">
+                      Video {i + 1}
+                    </a>
+                  </p>
+                ))}
+              </td>
+              <td className="py-4 px-6 text-center">
+                {item.pictures.map((pic, i) => (
+                  <p className="w-[100px]" key={i}>
+                    <a target="_blank" href={pic} rel="noreferrer">
+                      Picture {i + 1}
+                    </a>
+                  </p>
                 ))}
               </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-left">
                 <UpdateAsset collection={"asset"} data={item} />
-               </td>
+              </td>
               <td className="py-4 px-6 text-left">
                 <DeleteDataFrom collection={"asset"} data={item} />
               </td>

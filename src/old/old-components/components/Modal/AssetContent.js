@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { FormItem } from "../Form";
 import { Upload, Button } from "antd";
-import { UploadOutlined } from '@ant-design/icons';
+import { UploadOutlined } from "@ant-design/icons";
 
 import MultiUploadFiles from "../Form/MultiUploadFiles/MultiUploadFiles";
 import UploadFile from "../Form/UploadFile/UploadFile";
@@ -41,14 +41,14 @@ export const AssetContent = ({
     }
   }, [showModal]);
 
-  const props = {  
+  const props = {
     onChange({ file, fileList }) {
-      if (file.status !== 'uploading') {
+      if (file.status !== "uploading") {
         console.log(file, fileList);
       }
     },
   };
-  
+
   return (
     <div>
       <div className="grid md:grid-cols-2 md:gap-6">
