@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export const Users = ({ users, setUsers, collection }) => {
   const [user, setUser] = useState();
+  const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const columns = [
     {
@@ -35,6 +36,7 @@ export const Users = ({ users, setUsers, collection }) => {
           <Button
             onClick={() => {
               setUser(record);
+              setEditMode(true)
               setShowModal(true);
             }}
           >
@@ -55,7 +57,7 @@ export const Users = ({ users, setUsers, collection }) => {
 
   return (
     <>
-      <AddUsers
+      <AddUsers users={users} editMode={editMode} setEditMode={setEditMode}
         user={user}
         setUser={setUser}
         showModal={showModal}

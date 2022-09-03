@@ -1,8 +1,11 @@
 import { Button, Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddUserForm } from "~/collections";
 
 export const AddUsers = ({
+  users,
+  editMode, 
+  setEditMode,
   setUsers,
   collection,
   showModal,
@@ -10,13 +13,19 @@ export const AddUsers = ({
   user,
   setUser,
 }) => {
-  // const [showModal, setShowModal] = useState(false);
   const [key, setKey] = useState(0);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [publicAddress, setPublicAddress] = useState("");
   const [loading, setLoading] = useState(false);
+
+   useEffect(() => {
+      setEmail(user?.email);
+      setIssuer(user?.issuer);
+      setPhoneNumber(user?.phone_number);
+      setPublicAddress(user?.public_address);
+    }, [user]);
 
   async function create(e) {
     e.preventDefault();
@@ -41,6 +50,34 @@ export const AddUsers = ({
     }
   }
 
+  async function saveDataUpdate(e) {
+    setLoading(true);
+    e.preventDefault();
+    const newData = { issuer, email, phoneNumber: +phoneNumber, publicAddress };
+    try {
+      fetch(`/api/${collection}/update/${user?.id}`, {
+        body: JSON.stringify(newData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setUsers(prevUsers => prevUsers.map(user => {
+            if(user.id === data.id){
+              return data
+            } else return user
+          }))
+          setShowModal(false);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div>
       <Button
@@ -57,16 +94,16 @@ export const AddUsers = ({
           key={key}
           confirmLoading={loading}
           visible={showModal}
-          title="Add User"
-          okText="Add User"
-          onOk={create}
+          title={editMode? "Edit User": "Add User"}
+          okText={editMode? "Edit User": "Add User"}
+          onOk={editMode? saveDataUpdate: create}
           onCancel={() => {
             setShowModal(false);
             setUser({});
+            setEditMode(false);
           }}
         >
           <AddUserForm
-            user={user}
             email={email}
             setEmail={setEmail}
             issuer={issuer}
