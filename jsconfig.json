@@ -5,6 +5,7 @@
       "~/components": ["src/components/index.js"],
       "~/collections": ["src/collections/index.js"],
       "~/prisma": ["src/prisma/prisma.js"],
+      "~/utils": ["src/utils/index.js"],
     }
   }
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AddUserForm } from "~/collections";
 
 
-export const AddUsers = ({setUsers}) => {
+export const AddUsers = ({setUsers, collection}) => {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
@@ -25,8 +25,9 @@ export const AddUsers = ({setUsers}) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setUsers(data)
+          setUsers(prevData => [...prevData, data])
           setLoading(false);
+          setShowModal(false);
         });
     } catch (error) {
       console.log(error);
