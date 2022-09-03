@@ -52,13 +52,7 @@ export function Navbar({ currentPage }) {
                       </a>
                     ))}
                     <div className="flex object-right">
-                      <button
-                        onClick={() => signOut()}
-                        type="button"
-                        className="text-center text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-"
-                      >
-                        Sign Out
-                      </button>
+                    <Button type="primary" onClick={() => signOut()}>Sign Out</Button>
                     </div>
                     ;
                   </div>
