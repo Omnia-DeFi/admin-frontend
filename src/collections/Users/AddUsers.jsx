@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { AddUserForm } from "~/collections";
 
 export const AddUsers = ({
-  users,
   editMode, 
   setEditMode,
   setUsers,
@@ -64,7 +63,6 @@ export const AddUsers = ({
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setUsers(prevUsers => prevUsers.map(user => {
             if(user.id === data.id){
               return data

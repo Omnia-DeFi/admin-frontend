@@ -2,6 +2,7 @@ import { AddUsers } from ".";
 import { shortenString } from "~/utils";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
+import { DeleteData } from "..";
 
 export const Users = ({ users, setUsers, collection }) => {
   const [user, setUser] = useState();
@@ -42,14 +43,14 @@ export const Users = ({ users, setUsers, collection }) => {
           >
             Edit
           </Button>
-          <Button>Delete</Button>
+          <DeleteData users={users} setUsers={setUsers} collection={collection} data={record} />
           <Button>Notify</Button>
         </Space>
       ),
     },
   ];
 
-  const dataSource = users.map((user) => ({
+  const dataSource = users?.length > 0 && users.map((user) => ({
     ...user,
     issuer: shortenString(user.issuer),
     public_address: shortenString(user.public_address),
