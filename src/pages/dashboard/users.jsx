@@ -15,7 +15,7 @@ const UsersPage = ({ collectionName, data }) => {
       <Navbar currentPage="user" />
       <div className="container mx-auto p-8 text-center">
         <Heading level={3}>Users</Heading>
-        <Users setUsers={setUsers} collection={collectionName} />
+        <Users users={users} setUsers={setUsers} collection={collectionName} />
       </div>
     </>
   );
