@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { Form, Input, InputNumber } from "antd";
 import { FormItem } from "~/components";
@@ -15,14 +14,6 @@ export const AddUserForm = ({
   showModal,
   operation,
 }) => {
-  useEffect(() => {
-    if (operation === "add") {
-      setEmail("");
-      setIssuer("");
-      setPhoneNumber("");
-      setPublicAddress("");
-    }
-  }, [showModal]);
   return (
     <Form layout="vertical">
       <div className="grid md:grid-cols-2 md:gap-6">

@@ -58,7 +58,10 @@ export const Users = ({ users, setUsers, collection }) => {
 
   return (
     <>
-      <AddUsers users={users} editMode={editMode} setEditMode={setEditMode}
+      <AddUsers 
+        users={users} 
+        editMode={editMode} 
+        setEditMode={setEditMode}
         user={user}
         setUser={setUser}
         showModal={showModal}
