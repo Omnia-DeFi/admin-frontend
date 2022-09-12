@@ -1,14 +1,13 @@
 import Router from "next/router";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import GoogleBtn from "../components/GoogleBtn";
-import Loading from "../components/Loading";
+import {GoogleBtn} from "~/components";
 
 export default function Home() {
   const { status } = useSession();
 
   if (status === "authenticated") {
-    return Router.push("/dashboard");
+    return Router.push("/dashboard/users");
   } else if (status === "unauthenticated") {
     return (
       <>
@@ -20,7 +19,6 @@ export default function Home() {
         </div>
       </>
     );
-  } else if (status === "loading") {
-    return <Loading />;
-  }
+  } 
+  // Add antd loader here
 }

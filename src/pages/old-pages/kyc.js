@@ -1,8 +1,8 @@
 import { prisma } from "../../prisma/prisma";
 import Head from "next/head";
 
-import Navbar from "../components/Navbar";
-import Kyc from "../collections/Kyc/Kyc";
+import {Navbar} from "~/components";
+import Kyc from "src/old/old-collections/collections/Kyc/Kyc";
 
 const KycPage = ({ data, collectionName }) => {
   return (
@@ -11,7 +11,6 @@ const KycPage = ({ data, collectionName }) => {
         <title>Admin Panel</title>
       </Head>
       <Navbar currentPage="kyc" />
-
       <div className="my-10">
         <Kyc collectionName={collectionName} data={data} />
       </div>

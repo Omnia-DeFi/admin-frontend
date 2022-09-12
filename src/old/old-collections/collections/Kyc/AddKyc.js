@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Modal from "../../components/Modal/Modal";
-import { KycContent } from "../../components/Modal/KycContent";
+import { KycContent } from "src/old/old-components/components/Modal/KycContent";
+import Modal from "src/old/old-components/components/Modal/Modal";
 
 const AddKyc = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);

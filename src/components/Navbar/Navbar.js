@@ -4,11 +4,9 @@ import { MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
 import { Button } from "antd";
 
 const navigation = [
-  { name: "User", href: "/dashboard", current: false },
-  { name: "KYC", href: "/kyc", current: false },
-  // { name: "Device", href: "/device", current: false },
-  // { name: "Alert", href: "/alert", current: false },
-  { name: "Asset", href: "/asset", current: false },
+  { name: "User", href: "/dashboard/users", current: false },
+  { name: "KYC", href: "/old-pages/kyc", current: false },
+  { name: "Asset", href: "/dashboard/assets", current: false },
 ];
 
 function classNames(...classes) {
