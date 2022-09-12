@@ -3,8 +3,9 @@ import { Form, Input, Button, Upload } from "antd";
 import { UploadOutlined } from '@ant-design/icons';
 
 import { FormItem } from "~/components";
-import { FileUploader } from "./FileUploader";
-import { MultiPictureUploader } from "./MultiPicturesUploader";
+import { FileUploader } from "./Uploader/FileUploader";
+import { MultiPictureUploader } from "./Uploader/MultiPicturesUploader";
+import { MultiFileUploader, MultiPicturesUploader } from "./Uploader/MultiFileUploader";
 
 export const AddAssetForm = ({
   email,
@@ -50,21 +51,21 @@ export const AddAssetForm = ({
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">
-          <FileUploader label="AVM"/>
+          <FileUploader label="AVM" setUrl={setAVMUrl}/>
         </Form.Item>
 
         <Form.Item label="Survey Proof">
-          <FileUploader/>
+          <FileUploader setUrl={setSurveyProofUrl}/>
         </Form.Item>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="Videos">
-          <FileUploader label="videos"/>
+          <MultiFileUploader label="videos" setUrls={setVideoUrls}/>
         </Form.Item>
 
         <Form.Item label="Other Documents">
-          <FileUploader label=""/>
+          <MultiFileUploader label="" setUrls={setOtherDocumentsUrls}/>
         </Form.Item>
       </div>
         <Form.Item label="Pictures">

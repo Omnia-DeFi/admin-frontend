@@ -38,7 +38,7 @@ export const MultiPictureUploader = () => {
   );
   return (
     <>
-      <Upload
+      <Upload multiple
         listType="picture-card"
         fileList={fileList}
         onPreview={handlePreview}
@@ -48,7 +48,7 @@ export const MultiPictureUploader = () => {
       </Upload>
       <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
         <img
-          alt="example"
+          alt="image"
           style={{
             width: '100%',
           }}
