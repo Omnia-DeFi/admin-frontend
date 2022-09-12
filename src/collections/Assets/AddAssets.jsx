@@ -41,7 +41,8 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          console.log("Data", data)
+          setAssets((prevData) => [...prevData, data.createdAsset]);
           setLoading(false);
           setShowModal(false);
         });

@@ -1,5 +1,3 @@
-import { prisma } from "../../../prisma/prisma";
-
 const { cloudinary } = require("../../../utils/cloudinary");
 
 export const config = {

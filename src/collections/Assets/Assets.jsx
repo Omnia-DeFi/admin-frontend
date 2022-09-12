@@ -98,7 +98,7 @@ export const Assets = ({ assets, setAssets, collection }) => {
         <Space size="middle">
           <Button
             onClick={() => {
-              setUser(record);
+              setAsset(record);
               setEditMode(true)
               setShowModal(true);
             }}
