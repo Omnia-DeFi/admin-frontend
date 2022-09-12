@@ -12,7 +12,7 @@ export const MultiFileUploader = ({label, setUrls}) => {
   };
 
   const addFiles = (options) => {
-    const { onSuccess, onError, file, fileList, onProgress } = options;
+    const { file } = options;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {

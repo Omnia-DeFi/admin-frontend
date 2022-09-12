@@ -4,7 +4,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { useState } from "react";
 
 
-export const MultiPictureUploader = () => {
+export const MultiPictureUploader = ({setUrls}) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
@@ -36,6 +36,43 @@ export const MultiPictureUploader = () => {
       </div>
     </div>
   );
+
+  const addImages = (options) => {
+    const { file } = options; 
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log("READER", reader.result)
+      uploadImage(options, reader.result);
+    };
+    reader.onerror = () => {
+      console.log("Error");
+    };
+  }
+
+  const uploadImage = async(options, base64EncodedImage) => {
+    const { onSuccess, onError, file, onProgress } = options;
+
+    console.log(base64EncodedImage)
+
+    try {
+      await fetch("/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("DATA", data)
+          setUrls((prevUrls) => [...prevUrls, data.uploadedResponse.secure_url])
+          onSuccess("Ok");
+        });
+    } catch (err) {
+      console.error(err);
+      onError({err});
+    }
+  }
+
   return (
     <>
       <Upload multiple
@@ -43,6 +80,7 @@ export const MultiPictureUploader = () => {
         fileList={fileList}
         onPreview={handlePreview}
         onChange={handleChange}
+        customRequest={addImages}
       >
         {fileList.length >= 8 ? null : uploadButton}
       </Upload>

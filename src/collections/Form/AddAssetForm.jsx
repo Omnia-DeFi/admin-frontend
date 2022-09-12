@@ -69,7 +69,7 @@ export const AddAssetForm = ({
         </Form.Item>
       </div>
         <Form.Item label="Pictures">
-          <MultiPictureUploader/>
+          <MultiPictureUploader setUrls={setPictureUrls}/>
         </Form.Item>
     </Form>
   );
