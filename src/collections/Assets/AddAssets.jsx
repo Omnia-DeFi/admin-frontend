@@ -42,8 +42,8 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          refreshData();
           setLoading(false);
+          setShowModal(false);
         });
     } catch (error) {
       console.log(error);

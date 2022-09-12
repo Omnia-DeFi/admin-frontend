@@ -17,7 +17,6 @@ export const FileUploader = ({label, setUrl}) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      console.log("READER", reader.result)
       uploadFile(options, reader.result);
     };
     reader.onerror = () => {

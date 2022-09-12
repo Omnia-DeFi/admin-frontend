@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import { Form, Input, Button, Upload } from "antd";
-import { UploadOutlined } from '@ant-design/icons';
-
-import { FormItem } from "~/components";
+import { Form, Input } from "antd";
 import { FileUploader } from "./Uploader/FileUploader";
 import { MultiPictureUploader } from "./Uploader/MultiPicturesUploader";
 import { MultiFileUploader, MultiPicturesUploader } from "./Uploader/MultiFileUploader";
