@@ -7,11 +7,14 @@ const AddAsset = ({ collection }) => {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
-  // const [documents, setDocuments] = useState("");
-  const [alertTitle, setAlertTitle] = useState(true);
-  const [alertContent, setAlertContent] = useState(true);
-  const [alertType, setAlertType] = useState(true);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
+  const [AVMUrl, setAVMUrl] = useState("");
+  const [surveyProofUrl, setSurveyProofUrl] = useState("");
+  const [otherDocumentsUrls, setOtherDocumentsUrls] = useState([]);
+  const [videoUrls, setVideoUrls] = useState([]);
+  const [pictureUrls, setPictureUrls] = useState([]);
   const router = useRouter();
 
   const refreshData = () => {
@@ -25,10 +28,14 @@ const AddAsset = ({ collection }) => {
     const data = {
       email,
       issuer,
-      alertTitle,
-      alertType,
+      title,
+      description,
+      AVM: AVMUrl,
+      surveyProof: surveyProofUrl,
+      otherDocuments: otherDocumentsUrls,
+      videos: videoUrls,
+      pictures: pictureUrls,
       read: true,
-      alertContent,
     };
     try {
       fetch(`/api/${collection}/create`, {
@@ -72,14 +79,20 @@ const AddAsset = ({ collection }) => {
             setEmail={setEmail}
             issuer={issuer}
             setIssuer={setIssuer}
-            alertTitle={alertTitle}
-            setAlertTitle={setAlertTitle}
-            alertContent={alertContent}
-            setAlertContent={setAlertContent}
-            alertType={alertType}
-            setAlertType={setAlertType}
-            // documents={documents}
-            // setDocuments={setDocuments}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
+            AVMUrl={AVMUrl}
+            setAVMUrl={setAVMUrl}
+            surveyProofUrl={surveyProofUrl}
+            setSurveyProofUrl={setSurveyProofUrl}
+            otherDocumentsUrls={otherDocumentsUrls}
+            setOtherDocumentsUrls={setOtherDocumentsUrls}
+            videoUrls={videoUrls}
+            setVideoUrls={setVideoUrls}
+            pictureUrls={pictureUrls}
+            setPictureUrls={setPictureUrls}
             operation={"add"}
           />
         </Modal>

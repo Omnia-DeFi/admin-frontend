@@ -4,35 +4,35 @@ export default async function handler(req, res) {
   const {
     email,
     issuer,
-    documents,
-    alertTitle,
+    title,
+    description,
+    AVM,
+    surveyProof,
+    otherDocuments,
+    videos,
+    pictures,
     read,
-    alertContent,
-    alertType,
   } = req.body;
 
   try {
     const createdAsset = await prisma.asset
       .create({
         data: {
-          user: {
-            create: {
-              email,
-              issuer,
-            },
+          owners: {
+            create: [
+              {
+                email,
+                issuer,
+              },
+            ],
           },
-          // documents: {
-          //   create: documents
-          // },
-          sender: {
-            create: {
-              title: alertTitle,
-              date: new Date(),
-              read,
-              content: alertContent,
-              type: alertType,
-            },
-          },
+          title,
+          description,
+          AVM,
+          surveyProof,
+          otherDocuments,
+          videos,
+          pictures,
         },
       })
       .catch(console.error)

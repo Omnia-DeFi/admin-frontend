@@ -12,19 +12,22 @@ const AssetTable = ({ data }) => {
               Title
             </th>
             <th scope="col" className="py-3 text-center">
-              Content
+              Description
             </th>
             <th scope="col" className="py-3 text-center">
-              Type
+              AVM
             </th>
             <th scope="col" className="py-3 text-center">
-              Date
+              surveyProof
             </th>
             <th scope="col" className="py-3 text-center">
-              Email
+              otherDocuments
             </th>
             <th scope="col" className="py-3 text-center">
-              Issuer
+              videos
+            </th>
+            <th scope="col" className="py-3 text-center">
+              pictures
             </th>
             {/* <th scope="col" className="py-3">
               Documents
@@ -44,26 +47,51 @@ const AssetTable = ({ data }) => {
                 scope="row"
                 className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
               >
-                {item.sender.title}
+                {item.title}
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[120px]">{item.sender.content}</p>
+                <p>{item.description}</p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="font-bold">{item.sender.type}</p>
+                <p className="w-[100px]">
+                  <a target="_blank" href={item.AVM} rel="noreferrer">
+                    Click to Open
+                  </a>
+                </p>
               </td>
               <td className="py-4 px-6 text-center">
-                <p className="w-[100px]">{item.sender.date}</p>
+                <p className="w-[100px]">
+                  <a target="_blank" href={item.surveyProof} rel="noreferrer">
+                    Click to Open
+                  </a>
+                </p>
               </td>
-              <td className="py-4 px-6 text-center">{item.user.email}</td>
               <td className="py-4 px-6 text-center">
-                {item.user.issuer.slice(0, 12)}
-                {item.user.issuer.length > 17 && (
-                  <>
-                    ....
-                    {item.user.issuer.slice(item.user.issuer.length - 5)}
-                  </>
-                )}
+                {item.otherDocuments.map((docu, i) => (
+                  <p className="w-[100px]" key={i}>
+                    <a target="_blank" href={docu} rel="noreferrer">
+                      Document {i + 1}
+                    </a>
+                  </p>
+                ))}
+              </td>
+              <td className="py-4 px-6 text-center">
+                {item.videos.map((vid, i) => (
+                  <p className="w-[100px]" key={i}>
+                    <a target="_blank" href={vid} rel="noreferrer">
+                      Video {i + 1}
+                    </a>
+                  </p>
+                ))}
+              </td>
+              <td className="py-4 px-6 text-center">
+                {item.pictures.map((pic, i) => (
+                  <p className="w-[100px]" key={i}>
+                    <a target="_blank" href={pic} rel="noreferrer">
+                      Picture {i + 1}
+                    </a>
+                  </p>
+                ))}
               </td>
               {/* <td className="py-4 px-6">{item.documents}</td> */}
               <td className="py-4 px-6 text-left">
