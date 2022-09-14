@@ -2,7 +2,16 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 import { AddAssetForm } from "../Form";
 
-export const AddAssets = ({editMode, setEditMode, setAssets, collection, showModal, setShowModal, asset, setAsset}) => {
+export const AddAssets = ({
+  editMode,
+  setEditMode,
+  setAssets,
+  collection,
+  showModal,
+  setShowModal,
+  asset,
+  setAsset,
+}) => {
   const [key, setKey] = useState(0);
   const [email, setEmail] = useState("");
   const [issuer, setIssuer] = useState("");
@@ -41,7 +50,7 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("Data", data)
+          console.log("Data", data);
           setAssets((prevData) => [...prevData, data.createdAsset]);
           setLoading(false);
           setShowModal(false);
@@ -52,8 +61,8 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
   }
 
   const saveDataUpdate = () => {
-    console.log("Save Data Update")
-  }
+    console.log("Save Data Update");
+  };
 
   return (
     <div>
@@ -72,9 +81,9 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
           key={key}
           confirmLoading={loading}
           visible={showModal}
-          title={editMode? "Edit Asset": "Add Asset"}
-          okText={editMode? "Edit Asset": "Add Asset"}
-          onOk={editMode? saveDataUpdate: create}
+          title={editMode ? "Edit Asset" : "Add Asset"}
+          okText={editMode ? "Edit Asset" : "Add Asset"}
+          onOk={editMode ? saveDataUpdate : create}
           onCancel={() => {
             setShowModal(false);
             setAsset({});
@@ -104,5 +113,5 @@ export const AddAssets = ({editMode, setEditMode, setAssets, collection, showMod
         </Modal>
       )}
     </div>
-  )
+  );
 };

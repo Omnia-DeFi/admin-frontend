@@ -19,7 +19,9 @@ export const DeleteData = ({ collection, data, setUsers }) => {
         .then((data) => {
           setLoading(false);
           setShowModal(false);
-          setUsers(prevUsers => prevUsers.filter(user => user.id !== data.id))
+          setUsers((prevUsers) =>
+            prevUsers.filter((user) => user.id !== data.id)
+          );
         });
     } catch (error) {
       console.log("delete: ", error);

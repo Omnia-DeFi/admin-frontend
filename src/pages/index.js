@@ -1,7 +1,7 @@
 import Router from "next/router";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import {GoogleBtn} from "~/components";
+import { GoogleBtn } from "~/components";
 
 export default function Home() {
   const { status } = useSession();
@@ -19,6 +19,6 @@ export default function Home() {
         </div>
       </>
     );
-  } 
+  }
   // Add antd loader here
 }

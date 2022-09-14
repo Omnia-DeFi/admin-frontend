@@ -37,30 +37,37 @@ export const Users = ({ users, setUsers, collection }) => {
           <Button
             onClick={() => {
               setUser(record);
-              setEditMode(true)
+              setEditMode(true);
               setShowModal(true);
             }}
           >
             Edit
           </Button>
-          <DeleteData users={users} setUsers={setUsers} collection={collection} data={record} />
+          <DeleteData
+            users={users}
+            setUsers={setUsers}
+            collection={collection}
+            data={record}
+          />
           <Button>Notify</Button>
         </Space>
       ),
     },
   ];
 
-  const dataSource = users?.length > 0 && users.map((user) => ({
-    ...user,
-    issuer: shortenString(user.issuer),
-    public_address: shortenString(user.public_address),
-  }));
+  const dataSource =
+    users?.length > 0 &&
+    users.map((user) => ({
+      ...user,
+      issuer: shortenString(user.issuer),
+      public_address: shortenString(user.public_address),
+    }));
 
   return (
     <>
-      <AddUsers 
-        users={users} 
-        editMode={editMode} 
+      <AddUsers
+        users={users}
+        editMode={editMode}
         setEditMode={setEditMode}
         user={user}
         setUser={setUser}

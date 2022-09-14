@@ -35,9 +35,11 @@ export const Assets = ({ assets, setAssets, collection }) => {
       key: "AVM",
       render: (_, record) => (
         <Link href={record.AVM}>
-          <a target="_blank" rel="noopener noreferrer">AVM</a>
+          <a target="_blank" rel="noopener noreferrer">
+            AVM
+          </a>
         </Link>
-      )
+      ),
     },
     {
       title: "surveyProof",
@@ -45,51 +47,56 @@ export const Assets = ({ assets, setAssets, collection }) => {
       key: "surveyProof",
       render: (_, record) => (
         <Link href={record.surveyProof}>
-          <a target="_blank" rel="noopener noreferrer">Survey Proof</a>
+          <a target="_blank" rel="noopener noreferrer">
+            Survey Proof
+          </a>
         </Link>
-      )
+      ),
     },
     {
       title: "otherDocuments",
       dataIndex: "otherDocuments",
       key: "otherDocuments",
-      render: (_, record) => (
+      render: (_, record) =>
         record.otherDocuments.map((otherDocument, index) => (
           <div key={index}>
-          <Link href={otherDocument}>
-            <a target="_blank" rel="noopener noreferrer">Open Document {index+1} </a>
-          </Link>
+            <Link href={otherDocument}>
+              <a target="_blank" rel="noopener noreferrer">
+                Open Document {index + 1}{" "}
+              </a>
+            </Link>
           </div>
-        ))
-      )
+        )),
     },
     {
       title: "videos",
       dataIndex: "videos",
       key: "videos",
-      render: (_, record) => (
+      render: (_, record) =>
         record.videos.map((videoUrl, index) => (
           <div key={index}>
-          <Link href={videoUrl}>
-            <a target="_blank" rel="noopener noreferrer">Video {index+1} </a>
-          </Link>
+            <Link href={videoUrl}>
+              <a target="_blank" rel="noopener noreferrer">
+                Video {index + 1}{" "}
+              </a>
+            </Link>
           </div>
-        ))
-      )
+        )),
     },
     {
       title: "pictures",
       dataIndex: "pictures",
       key: "pictures",
-      render: (_, record) => (
+      render: (_, record) =>
         record.pictures.map((pictureUrl, index) => (
           <div key={index}>
-          <Link href={pictureUrl}>
-            <a target="_blank" rel="noopener noreferrer">Picture {index+1} </a>
-          </Link>
+            <Link href={pictureUrl}>
+              <a target="_blank" rel="noopener noreferrer">
+                Picture {index + 1}{" "}
+              </a>
+            </Link>
           </div>
-        ))
-      )
+        )),
     },
     {
       title: "Action",
@@ -99,13 +106,18 @@ export const Assets = ({ assets, setAssets, collection }) => {
           <Button
             onClick={() => {
               setAsset(record);
-              setEditMode(true)
+              setEditMode(true);
               setShowModal(true);
             }}
           >
             Edit
           </Button>
-          <DeleteData users={assets} setUsers={setAssets} collection={collection} data={record} />
+          <DeleteData
+            users={assets}
+            setUsers={setAssets}
+            collection={collection}
+            data={record}
+          />
         </Space>
       ),
     },
@@ -115,9 +127,9 @@ export const Assets = ({ assets, setAssets, collection }) => {
 
   return (
     <>
-      <AddAssets 
-        assets={assets} 
-        editMode={editMode} 
+      <AddAssets
+        assets={assets}
+        editMode={editMode}
         setEditMode={setEditMode}
         asset={asset}
         setAsset={setAsset}

@@ -1,7 +1,7 @@
 import { prisma } from "../../prisma/prisma";
 import Head from "next/head";
 
-import {Navbar} from "~/components";
+import { Navbar } from "~/components";
 import Kyc from "src/old/old-collections/collections/Kyc/Kyc";
 
 const KycPage = ({ data, collectionName }) => {

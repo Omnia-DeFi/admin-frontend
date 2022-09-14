@@ -15,7 +15,11 @@ const AssetsPage = ({ collectionName, data }) => {
       <Navbar currentPage="asset" />
       <div className="container mx-auto p-8 text-center">
         <Heading level={3}>Assets</Heading>
-        <Assets assets={assets} setAssets={setAssets} collection={collectionName} />
+        <Assets
+          assets={assets}
+          setAssets={setAssets}
+          collection={collectionName}
+        />
       </div>
     </>
   );

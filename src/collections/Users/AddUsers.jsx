@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { AddUserForm } from "~/collections";
 
 export const AddUsers = ({
-  editMode, 
+  editMode,
   setEditMode,
   setUsers,
   collection,
@@ -19,12 +19,12 @@ export const AddUsers = ({
   const [publicAddress, setPublicAddress] = useState("");
   const [loading, setLoading] = useState(false);
 
-   useEffect(() => {
-      setEmail(user?.email);
-      setIssuer(user?.issuer);
-      setPhoneNumber(user?.phone_number);
-      setPublicAddress(user?.public_address);
-    }, [user]);
+  useEffect(() => {
+    setEmail(user?.email);
+    setIssuer(user?.issuer);
+    setPhoneNumber(user?.phone_number);
+    setPublicAddress(user?.public_address);
+  }, [user]);
 
   async function create(e) {
     e.preventDefault();
@@ -63,11 +63,13 @@ export const AddUsers = ({
       })
         .then((res) => res.json())
         .then((data) => {
-          setUsers(prevUsers => prevUsers.map(user => {
-            if(user.id === data.id){
-              return data
-            } else return user
-          }))
+          setUsers((prevUsers) =>
+            prevUsers.map((user) => {
+              if (user.id === data.id) {
+                return data;
+              } else return user;
+            })
+          );
           setShowModal(false);
           setLoading(false);
         });
@@ -92,9 +94,9 @@ export const AddUsers = ({
           key={key}
           confirmLoading={loading}
           visible={showModal}
-          title={editMode? "Edit User": "Add User"}
-          okText={editMode? "Edit User": "Add User"}
-          onOk={editMode? saveDataUpdate: create}
+          title={editMode ? "Edit User" : "Add User"}
+          okText={editMode ? "Edit User" : "Add User"}
+          onOk={editMode ? saveDataUpdate : create}
           onCancel={() => {
             setShowModal(false);
             setUser({});
