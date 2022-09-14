@@ -36,7 +36,7 @@ export const getServerSideProps = async () => {
       surveyProof: true,
       otherDocuments: true,
       videos: true,
-      pictures:true,
+      pictures: true,
     },
   });
 

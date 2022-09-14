@@ -14,7 +14,7 @@ const UploadFile = ({ label, setUrl }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!selectedFile) return;
-    alert("File added")
+    alert("File added");
     const reader = new FileReader();
     reader.readAsDataURL(selectedFile);
     reader.onloadend = () => {
@@ -28,13 +28,15 @@ const UploadFile = ({ label, setUrl }) => {
   const uploadFile = async (base64EncodedImage) => {
     // console.log("base64EncodedImage", base64EncodedImage);
     try {
-        await fetch('/api/upload', {
-            method: 'POST',
-            body: JSON.stringify({ data: base64EncodedImage }),
-            headers: { 'Content-Type': 'application/json' },
-        }).then(res => res.json()).then(data => setUrl(data.uploadedResponse.secure_url));
+      await fetch("/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => setUrl(data.uploadedResponse.secure_url));
     } catch (err) {
-        console.error(err);
+      console.error(err);
     }
   };
 
