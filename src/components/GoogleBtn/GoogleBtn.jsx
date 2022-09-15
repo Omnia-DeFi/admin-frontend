@@ -1,6 +1,6 @@
 import { signIn } from "next-auth/react";
 
-export function GoogleButton() {
+export const GoogleButton = () => {
   return (
     <button
       onClick={() => signIn("google")}

@@ -19,11 +19,8 @@ export default async function handler(req, res) {
       .create({
         data: {
           owners: {
-            create: [
-              {
-                email,
-                issuer,
-              },
+            connect: [
+              userIds // TODO: Add userIds
             ],
           },
           title,
