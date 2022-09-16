@@ -1,7 +1,7 @@
 import { prisma } from "../../../prisma/prisma";
 import Head from "next/head";
 import React from "react";
-import Navbar from "../../../components/Navbar";
+import { Navbar } from "~/components";
 
 function test({ notifications }) {
   return (
@@ -9,7 +9,7 @@ function test({ notifications }) {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar />
+      <Navbar/>
       <div className="bg-gray-200">
         <div className="flex justify-around bg-yellow-200 p-2">
           <div className="flex-1 font-semibold">Bearer</div>

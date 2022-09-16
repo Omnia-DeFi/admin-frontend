@@ -1,14 +1,13 @@
 import Router from "next/router";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import GoogleBtn from "../components/GoogleBtn";
-import Loading from "../components/Loading";
+import { GoogleButton } from "~/components";
 
 export default function Home() {
   const { status } = useSession();
 
   if (status === "authenticated") {
-    return Router.push("/dashboard");
+    return Router.push("/dashboard/users");
   } else if (status === "unauthenticated") {
     return (
       <>
@@ -16,11 +15,12 @@ export default function Home() {
           <title>Login</title>
         </Head>
         <div className="mt-72 text-center">
-          <GoogleBtn />
+          <GoogleButton />
         </div>
       </>
     );
-  } else if (status === "loading") {
-    return <Loading />;
   }
+  else if (status === "loading") {
+    return <p>loading</p>;
+    }
 }
