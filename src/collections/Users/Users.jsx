@@ -3,8 +3,8 @@ import { shortenString } from "~/utils";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
-import NotifyUser from "src/old/old-components/components/NotifyUser";
-import NotificationDetails from "src/old/old-components/components/notificationDetails";
+import NotifyUser from "src/old/components/NotifyUser";
+import NotificationDetails from "src/old/components/notificationDetails";
 
 export const Users = ({ users, setUsers, collection }) => {
   const [user, setUser] = useState();
