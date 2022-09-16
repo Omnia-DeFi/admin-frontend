@@ -3,6 +3,8 @@ import { shortenString } from "~/utils";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
+import NotifyUser from "src/old/components/NotifyUser";
+import NotificationDetails from "src/old/components/notificationDetails";
 
 export const Users = ({ users, setUsers, collection }) => {
   const [user, setUser] = useState();
@@ -49,7 +51,10 @@ export const Users = ({ users, setUsers, collection }) => {
             collection={collection}
             data={record}
           />
-          <Button>Notify</Button>
+                          <NotifyUser userId={record.id} />
+
+                          <NotificationDetails id={record.id} />
+
         </Space>
       ),
     },

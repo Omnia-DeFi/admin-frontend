@@ -1,6 +1,6 @@
+import { Modal } from "antd";
 import React, { useState } from "react";
 import { AlertContent } from "./Modal/AlertContent";
-import Modal from "./Modal/Modal";
 
 const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
   const [type, setType] = useState("");
@@ -23,6 +23,7 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
+          setIsOpen(false);
           console.log(data);
         });
     } catch (error) {
@@ -33,11 +34,12 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
   return (
     <>
       <Modal
-        header={"Notify"}
-        setShowModal={setIsOpen}
-        onSubmit={sendNotification}
-        buttonName="Notify User"
-        loading={loading}
+        title={"Notify"}
+        visible={isOpen}
+        onOk={sendNotification}
+        okText="Notify User"
+        confirmLoading={loading}
+        onCancel={() => setIsOpen(false)}
       >
         <AlertContent
           title={title}
