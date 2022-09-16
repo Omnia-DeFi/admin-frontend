@@ -4,21 +4,11 @@ import { useState } from "react";
 import { DeleteData } from "..";
 import Link from "next/link";
 
-export const Assets = ({ assets, setAssets, collection }) => {
+export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const columns = [
-    // {
-    //   title: "Email",
-    //   dataIndex: "email",
-    //   key: "email",
-    // },
-    // {
-    //   title: "Issuer",
-    //   dataIndex: "issuer",
-    //   key: "issuer",
-    // },
     {
       title: "Title",
       dataIndex: "title",
@@ -34,7 +24,7 @@ export const Assets = ({ assets, setAssets, collection }) => {
       // dataIndex: "AVM",
       key: "AVM",
       render: (_, record) => (
-        <Link href={record.AVM}>
+        <Link href={record?.AVM}>
           <a target="_blank" rel="noopener noreferrer">
             AVM
           </a>
@@ -128,6 +118,7 @@ export const Assets = ({ assets, setAssets, collection }) => {
   return (
     <>
       <AddAssets
+        users={users}
         assets={assets}
         editMode={editMode}
         setEditMode={setEditMode}

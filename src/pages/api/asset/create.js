@@ -2,8 +2,7 @@ import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
   const {
-    email,
-    issuer,
+    selectedUsers,
     title,
     description,
     AVM,
@@ -19,9 +18,8 @@ export default async function handler(req, res) {
       .create({
         data: {
           owners: {
-            connect: [
-              userIds // TODO: Add userIds
-            ],
+            connect: 
+              selectedUsers
           },
           title,
           description,

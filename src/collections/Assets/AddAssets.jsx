@@ -10,11 +10,11 @@ export const AddAssets = ({
   showModal,
   setShowModal,
   asset,
+  users,
   setAsset,
 }) => {
   const [key, setKey] = useState(0);
-  const [email, setEmail] = useState("");
-  const [issuer, setIssuer] = useState("");
+  const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,8 +29,7 @@ export const AddAssets = ({
     e.preventDefault();
     setLoading(true);
     const data = {
-      email,
-      issuer,
+      selectedUsers,
       title,
       description,
       AVM: AVMUrl,
@@ -91,23 +90,16 @@ export const AddAssets = ({
           }}
         >
           <AddAssetForm
-            email={email}
-            setEmail={setEmail}
-            issuer={issuer}
-            setIssuer={setIssuer}
+            users={users}
+            setSelectedUsers={setSelectedUsers}
             title={title}
             setTitle={setTitle}
             description={description}
             setDescription={setDescription}
-            AVMUrl={AVMUrl}
             setAVMUrl={setAVMUrl}
-            surveyProofUrl={surveyProofUrl}
             setSurveyProofUrl={setSurveyProofUrl}
-            otherDocumentsUrls={otherDocumentsUrls}
             setOtherDocumentsUrls={setOtherDocumentsUrls}
-            videoUrls={videoUrls}
             setVideoUrls={setVideoUrls}
-            pictureUrls={pictureUrls}
             setPictureUrls={setPictureUrls}
           />
         </Modal>

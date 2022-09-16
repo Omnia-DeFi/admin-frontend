@@ -1,48 +1,36 @@
-import { Form, Input } from "antd";
+import { Form, Input, Select } from "antd";
 import { FileUploader } from "./Uploader/FileUploader";
 import { MultiPictureUploader } from "./Uploader/MultiPicturesUploader";
 import {
   MultiFileUploader,
-  MultiPicturesUploader,
 } from "./Uploader/MultiFileUploader";
+import { useState } from "react";
+const { Option } = Select; 
 
 export const AddAssetForm = ({
-  email,
-  setEmail,
-  issuer,
-  setIssuer,
   title,
   setTitle,
   description,
   setDescription,
-  AVMUrl,
   setAVMUrl,
-  surveyProofUrl,
   setSurveyProofUrl,
-  otherDocumentsUrls,
   setOtherDocumentsUrls,
-  videoUrls,
   setVideoUrls,
-  pictureUrls,
   setPictureUrls,
+  setSelectedUsers,
+  users,
 }) => {
+  const handleSelectUserChange = (value) => {
+    setSelectedUsers(value.map(selectedUser => ({id: selectedUser})),
+    )
+  }
   return (
     <Form layout="vertical">
       <div className="grid md:grid-cols-2 md:gap-6">
-        <Form.Item label="Email">
-          <Input
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Item>
-
-        <Form.Item label="Issuer">
-          <Input
-            placeholder="Enter Issuer"
-            value={issuer}
-            onChange={(e) => setIssuer(e.target.value)}
-          />
+      <Form.Item label="Users">
+        <Select mode="multiple" allowClear placeholder="Select users" onChange={handleSelectUserChange}>
+          {users.map(user => (<Option key={user.id}>{user.email}</Option>))}
+        </Select>
         </Form.Item>
       </div>
 

@@ -5,7 +5,7 @@ import { Users } from "~/collections";
 import { useState } from "react";
 import { Assets } from "src/collections/Assets";
 
-const AssetsPage = ({ collectionName, data }) => {
+const AssetsPage = ({ collectionName, data, users }) => {
   const [assets, setAssets] = useState(data);
   return (
     <>
@@ -15,7 +15,7 @@ const AssetsPage = ({ collectionName, data }) => {
       <Navbar currentPage="asset" />
       <div className="container mx-auto p-8 text-center">
         <Heading level={3}>Assets</Heading>
-        <Assets
+        <Assets users={users}
           assets={assets}
           setAssets={setAssets}
           collection={collectionName}
@@ -47,9 +47,17 @@ export const getServerSideProps = async () => {
     },
   });
 
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      email: true,
+    },
+  });
+
   return {
     props: {
       data,
+      users,
       collectionName: "asset",
     },
   };
