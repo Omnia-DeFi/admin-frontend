@@ -38,12 +38,12 @@ export const AlertContent = ({
         </Form.Item>
       </div>
       <Form.Item label="Alert Content">
-          <Input
-            placeholder="Enter Alert Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          />
-        </Form.Item>
+        <Input
+          placeholder="Enter Alert Content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </Form.Item>
     </div>
   );
 };

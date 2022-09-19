@@ -18,8 +18,7 @@ export default async function handler(req, res) {
       .create({
         data: {
           owners: {
-            connect: 
-              selectedUsers
+            connect: selectedUsers,
           },
           title,
           description,

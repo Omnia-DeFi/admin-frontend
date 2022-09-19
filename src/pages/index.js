@@ -19,8 +19,7 @@ export default function Home() {
         </div>
       </>
     );
-  }
-  else if (status === "loading") {
+  } else if (status === "loading") {
     return <p>loading</p>;
-    }
+  }
 }

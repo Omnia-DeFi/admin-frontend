@@ -11,9 +11,7 @@ const NotifyUser = ({ userId }) => {
 
   return (
     <>
-    <Button onClick={nofifyButtonHandler}>
-      Notify
-    </Button>
+      <Button onClick={nofifyButtonHandler}>Notify</Button>
       {isOpen && (
         <NotifyModal isOpen={isOpen} setIsOpen={setIsOpen} userId={userId} />
       )}

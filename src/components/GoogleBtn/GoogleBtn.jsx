@@ -25,4 +25,4 @@ export const GoogleButton = () => {
       Sign in with Google
     </button>
   );
-}
+};
