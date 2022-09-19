@@ -9,7 +9,7 @@ function test({ notifications }) {
       <Head>
         <title>Admin Panel</title>
       </Head>
-      <Navbar/>
+      <Navbar />
       <div className="bg-gray-200">
         <div className="flex justify-around bg-yellow-200 p-2">
           <div className="flex-1 font-semibold">Bearer</div>

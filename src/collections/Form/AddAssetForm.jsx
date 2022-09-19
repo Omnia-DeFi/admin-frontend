@@ -1,11 +1,9 @@
 import { Form, Input, Select } from "antd";
 import { FileUploader } from "./Uploader/FileUploader";
 import { MultiPictureUploader } from "./Uploader/MultiPicturesUploader";
-import {
-  MultiFileUploader,
-} from "./Uploader/MultiFileUploader";
+import { MultiFileUploader } from "./Uploader/MultiFileUploader";
 import { useState } from "react";
-const { Option } = Select; 
+const { Option } = Select;
 
 export const AddAssetForm = ({
   title,
@@ -21,16 +19,22 @@ export const AddAssetForm = ({
   users,
 }) => {
   const handleSelectUserChange = (value) => {
-    setSelectedUsers(value.map(selectedUser => ({id: selectedUser})),
-    )
-  }
+    setSelectedUsers(value.map((selectedUser) => ({ id: selectedUser })));
+  };
   return (
     <Form layout="vertical">
       <div className="grid md:grid-cols-2 md:gap-6">
-      <Form.Item label="Users">
-        <Select mode="multiple" allowClear placeholder="Select users" onChange={handleSelectUserChange}>
-          {users.map(user => (<Option key={user.id}>{user.email}</Option>))}
-        </Select>
+        <Form.Item label="Users">
+          <Select
+            mode="multiple"
+            allowClear
+            placeholder="Select users"
+            onChange={handleSelectUserChange}
+          >
+            {users.map((user) => (
+              <Option key={user.id}>{user.email}</Option>
+            ))}
+          </Select>
         </Form.Item>
       </div>
 

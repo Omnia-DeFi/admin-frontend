@@ -12,11 +12,8 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
     {
       title: "Users",
       key: "owner",
-      render: (_, record) => (
-        record.owners?.map(user => (
-          <p key={user.id}>{user.email}</p>
-        ))
-      ),
+      render: (_, record) =>
+        record.owners?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
       title: "Title",
