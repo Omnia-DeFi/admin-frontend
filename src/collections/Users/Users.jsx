@@ -51,10 +51,9 @@ export const Users = ({ users, setUsers, collection }) => {
             collection={collection}
             data={record}
           />
-                          <NotifyUser userId={record.id} />
+          <NotifyUser userId={record.id} />
 
-                          <NotificationDetails id={record.id} />
-
+          <NotificationDetails id={record.id} />
         </Space>
       ),
     },
