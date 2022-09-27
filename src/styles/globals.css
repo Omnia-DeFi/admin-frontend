@@ -12,3 +12,9 @@
 button {
   background: none;
 }
+
+.alerttype {
+  text-align: center;
+  background-color: lightgrey;
+  pointer-events: none;
+}
