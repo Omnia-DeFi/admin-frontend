@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AlertContent } from "./Modal/AlertContent";
 
 const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
-  const [type, setType] = useState("");
+  const type = "Information";
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,6 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
           setTitle={setTitle}
           content={content}
           type={type}
-          setType={setType}
           setContent={setContent}
           showModal={isOpen}
           operation={"add"}
