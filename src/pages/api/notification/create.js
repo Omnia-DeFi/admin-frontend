@@ -1,6 +1,5 @@
 import { prisma } from "../../../prisma/prisma";
 import Cors from "cors";
-import Pusher from "pusher-js";
 
 const cors = Cors({
   methods: ["GET", "HEAD", "POST"],
@@ -19,23 +18,20 @@ function runMiddleware(req, res, fn) {
 }
 
 export default async function handler(req, res) {
+  await runMiddleware(req, res, cors);
+  const { userId, type, title, content } = req.body;
 
   const Pusher = require("pusher");
 
-    const pusher = new Pusher({
-      appId: "1483322",
-      key: "b2c6e10ed473266b458b",
-      secret: "5f842a05580230ae1197",
-      cluster: "eu",
-      useTLS: true
-    });
-  
-    pusher.trigger("omnia", "new-notification", {
-      message: "hello world from omnia"
-    });
+  const pusher = new Pusher({
+    appId: process.env.NEXT_PUBLIC_PUSHER_APP_ID,
+    key: process.env.NEXT_PUBLIC_PUSHER_APP_KEY,
+    secret: process.env.NEXT_PUBLIC_PUSHER_APP_SECRET,
+    cluster: process.env.NEXT_PUBLIC_PUSHER_APP_CLUSTER,
+    useTLS: true,
+  });
 
-  await runMiddleware(req, res, cors);
-  const { userId, type, title, content } = req.body;
+  pusher.trigger("omnia", "new-notification", "true");
 
   try {
     //Intialize NotificationBearer
