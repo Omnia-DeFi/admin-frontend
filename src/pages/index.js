@@ -1,16 +1,16 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { GoogleButton } from "~/components";
 
 export default function Home() {
-  const { data: session, status } = useSession();
   const router = useRouter();
-  console.log("router is", router);
-
+  const { data: session, status } = useSession();
   if (status === "authenticated") {
-    router.replace("/dashboard/users");
-    // window.location =  "http://localhost:3000/dashboard/hello";
+    console.log("status is:", status);
+    // router.push("/dashboard/users");
+    window.location = "http://localhost:3000/dashboard/users";
   } else if (status === "unauthenticated") {
     console.log("status is:", status);
     return (
@@ -24,6 +24,7 @@ export default function Home() {
       </>
     );
   } else if (status === "loading") {
+    console.log("status is:", status);
     return <p>loading</p>;
   }
 }
