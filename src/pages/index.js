@@ -9,8 +9,8 @@ export default function Home() {
   const { data: session, status } = useSession();
   if (status === "authenticated") {
     console.log("status is:", status);
-    // router.push("/dashboard/users");
-    window.location = "/dashboard/users";
+    router.push("/dashboard/users");
+    // window.location = "/dashboard/users";
   } else if (status === "unauthenticated") {
     console.log("status is:", status);
     return (
