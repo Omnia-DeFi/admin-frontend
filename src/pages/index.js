@@ -10,7 +10,7 @@ export default function Home() {
   if (status === "authenticated") {
     console.log("status is:", status);
     // router.push("/dashboard/users");
-    window.location = "http://localhost:3000/dashboard/users";
+    window.location = "/dashboard/users";
   } else if (status === "unauthenticated") {
     console.log("status is:", status);
     return (
