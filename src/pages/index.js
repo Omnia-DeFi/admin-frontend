@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import { useEffect } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -10,15 +10,14 @@ export default function Home() {
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if(status === 'authenticated') {
-      router.push('/dashboard/users')
+    if (status === "authenticated") {
+      router.push("/dashboard/users");
     }
-  }, [status])
+  }, [status]);
 
-
-  if(status === 'loading') {
+  if (status === "loading") {
     return <p>loading</p>;
-  }else if(status === 'unauthenticated') {
+  } else if (status === "unauthenticated") {
     return (
       <>
         <Head>
@@ -29,7 +28,7 @@ export default function Home() {
         </div>
       </>
     );
-  }else {
-    return <div/>
+  } else {
+    return <div />;
   }
 }
