@@ -63,6 +63,7 @@ export const Users = ({ users, setUsers, collection }) => {
     users?.length > 0 &&
     users.map((user) => ({
       ...user,
+      key: user.id,
       issuer: shortenString(user.issuer),
       public_address: shortenString(user.public_address),
     }));
