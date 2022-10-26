@@ -36,7 +36,7 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
     <>
       <Modal
         title={"Notify"}
-        visible={isOpen}
+        open={isOpen}
         onOk={sendNotification}
         okText="Notify User"
         confirmLoading={loading}
