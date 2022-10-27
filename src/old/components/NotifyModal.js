@@ -1,7 +1,6 @@
 import { Modal } from "antd";
 import React, { useState } from "react";
 import { AlertContent } from "./Modal/AlertContent";
-import Pusher from "pusher-js";
 
 const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
   const type = "Information";
@@ -13,24 +12,12 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
     const data = { userId, type, title, content };
     setLoading(true);
 
-    const pusher = new Pusher({
-      appId: "1483322",
-      key: "b2c6e10ed473266b458b",
-      secret: "5f842a05580230ae1197",
-      cluster: "eu",
-      useTLS: true
-    });
-
-    pusher.trigger("omnia", "new-notification", {
-      message: "hello world from Omnia"
-    });
-
     try {
       fetch(`/api/notification/create`, {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost:3000/"
+          "Access-Control-Allow-Origin": "http://localhost:3000/",
         },
         method: "POST",
       })
