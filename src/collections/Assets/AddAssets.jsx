@@ -79,7 +79,7 @@ export const AddAssets = ({
         <Modal
           key={key}
           confirmLoading={loading}
-          visible={showModal}
+          open={showModal}
           title={editMode ? "Edit Asset" : "Add Asset"}
           okText={editMode ? "Edit Asset" : "Add Asset"}
           onOk={editMode ? saveDataUpdate : create}

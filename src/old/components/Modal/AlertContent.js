@@ -8,7 +8,6 @@ export const AlertContent = ({
   content,
   setContent,
   type,
-  setType,
   showModal,
   operation,
 }) => {
@@ -16,7 +15,6 @@ export const AlertContent = ({
     if (operation === "add") {
       setTitle("");
       setContent("");
-      setType("");
     }
   }, [showModal]);
   return (
@@ -30,11 +28,7 @@ export const AlertContent = ({
           />
         </Form.Item>
         <Form.Item label="Alert Type">
-          <Input
-            placeholder="Enter Alert Type"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-          />
+          <Input className="alerttype" value={type} />
         </Form.Item>
       </div>
       <Form.Item label="Alert Content">

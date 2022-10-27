@@ -1,13 +1,22 @@
-import Router from "next/router";
+import { useEffect } from "react";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { GoogleButton } from "~/components";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const { status } = useSession();
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
-  if (status === "authenticated") {
-    return Router.push("/dashboard/users");
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard/users");
+    }
+  }, [status]);
+
+  if (status === "loading") {
+    return <p>loading</p>;
   } else if (status === "unauthenticated") {
     return (
       <>
@@ -19,7 +28,7 @@ export default function Home() {
         </div>
       </>
     );
-  } else if (status === "loading") {
-    return <p>loading</p>;
+  } else {
+    return <div />;
   }
 }

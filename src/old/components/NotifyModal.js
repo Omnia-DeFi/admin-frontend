@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AlertContent } from "./Modal/AlertContent";
 
 const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
-  const [type, setType] = useState("");
+  const type = "Information";
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,6 +17,7 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:3000/",
         },
         method: "POST",
       })
@@ -35,7 +36,7 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
     <>
       <Modal
         title={"Notify"}
-        visible={isOpen}
+        open={isOpen}
         onOk={sendNotification}
         okText="Notify User"
         confirmLoading={loading}
@@ -46,7 +47,6 @@ const NotifyModal = ({ isOpen, setIsOpen, userId }) => {
           setTitle={setTitle}
           content={content}
           type={type}
-          setType={setType}
           setContent={setContent}
           showModal={isOpen}
           operation={"add"}
