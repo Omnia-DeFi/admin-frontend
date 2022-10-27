@@ -35,7 +35,7 @@ export const DeleteData = ({ collection, data, setUsers }) => {
         <Modal
           title="Confirm Delete"
           okText="Delete"
-          visible={showModal}
+          open={showModal}
           confirmLoading={loading}
           onOk={deleteDataFrom}
           onCancel={() => {

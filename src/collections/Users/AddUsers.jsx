@@ -93,7 +93,7 @@ export const AddUsers = ({
         <Modal
           key={key}
           confirmLoading={loading}
-          visible={showModal}
+          open={showModal}
           title={editMode ? "Edit User" : "Add User"}
           okText={editMode ? "Edit User" : "Add User"}
           onOk={editMode ? saveDataUpdate : create}
