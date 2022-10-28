@@ -12,13 +12,14 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
     {
       title: "Users",
       key: "owner",
-      render: (_, record) =>
-        record.owners?.map((user) => <p key={user.id}>{user.email}</p>),
+      render: (_, record) => console.log("hello inside", record),
+      // record.owners?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      // sorter: (a, b) => a.firstName.localeCompare(b.firstName),
     },
     {
       title: "Description",
@@ -136,7 +137,17 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         collection={collection}
       />
       <div className="mt-8">
-        <Table dataSource={dataSource} columns={columns} />
+        <Table
+          scroll={{ x: true }}
+          dataSource={dataSource}
+          columns={columns}
+          pagination={{
+            position: ["bottomCenter"],
+            pageSize: 20,
+            showSizeChanger: true,
+            hideOnSinglePage: true
+          }}
+        />
       </div>
     </>
   );
