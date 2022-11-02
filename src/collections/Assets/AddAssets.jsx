@@ -17,12 +17,20 @@ export const AddAssets = ({
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [floorArea, setFloorArea] = useState("");
+  const [bedrooms, setBedrooms] = useState("");
+  const [bathrooms, setBathrooms] = useState("");
+  const [otherRooms, setOtherRooms] = useState("");
+  const [floorPrice, setFloorPrice] = useState("");
+  const [saleTimeframe, setSaleTimeframe] = useState("");
+  const [extraConditionsLabels, setExtraConditionsLabels] = useState("");
+  const [extraConditionsDescriptions, setExtraConditionsDescriptions] = useState("");
+  // const [floorArea, setFloorArea] = useState("");
   const [loading, setLoading] = useState(false);
   const [AVMUrl, setAVMUrl] = useState("");
   const [surveyProofUrl, setSurveyProofUrl] = useState("");
-  const [otherDocumentsUrls, setOtherDocumentsUrls] = useState([]);
-  const [videoUrls, setVideoUrls] = useState([]);
-  const [pictureUrls, setPictureUrls] = useState([]);
+  const [landRegistryUrl, setLandRegistryUrl] = useState("");  
+  const [imageUrls, setImageUrls] = useState([]);
 
   async function create(e) {
     setLoading(true);
@@ -32,11 +40,19 @@ export const AddAssets = ({
       selectedUsers,
       title,
       description,
+      floorArea,
+      bedrooms,
+      bathrooms,
+      otherRooms,
+      floorPrice,
+      saleTimeframe,  
+      extraConditionsLabels,
+      extraConditionsDescriptions,  
+      // floorArea,
       AVM: AVMUrl,
       surveyProof: surveyProofUrl,
-      otherDocuments: otherDocumentsUrls,
-      videos: videoUrls,
-      pictures: pictureUrls,
+      landRegistry: landRegistryUrl,
+      images: imageUrls,
       read: true,
     };
     try {
@@ -96,11 +112,28 @@ export const AddAssets = ({
             setTitle={setTitle}
             description={description}
             setDescription={setDescription}
+            floorArea={floorArea}
+            setFloorArea={setFloorArea}
+            bedrooms={bedrooms}
+            setBedrooms={setBedrooms}
+            bathrooms={bathrooms}
+            setBathrooms={setBathrooms}
+            otherRooms={otherRooms}
+            setOtherRooms={setOtherRooms}
+            floorPrice={floorPrice}
+            setFloorPrice={setFloorPrice}
+            saleTimeframe={saleTimeframe}
+            setSaleTimeframe={setSaleTimeframe}
+            extraConditionsLabels={extraConditionsLabels}
+            setExtraConditionsLabels={setExtraConditionsLabels}
+            extraConditionsDescriptions={extraConditionsDescriptions}
+            setExtraConditionsDescriptions={setExtraConditionsDescriptions}
+            // floorArea={floorArea}
+            // setFloorArea={setFloorArea}
             setAVMUrl={setAVMUrl}
             setSurveyProofUrl={setSurveyProofUrl}
-            setOtherDocumentsUrls={setOtherDocumentsUrls}
-            setVideoUrls={setVideoUrls}
-            setPictureUrls={setPictureUrls}
+            setLandRegistryUrl={setLandRegistryUrl}
+            setImageUrls={setImageUrls}
           />
         </Modal>
       )}

@@ -5,11 +5,17 @@ export default async function handler(req, res) {
     selectedUsers,
     title,
     description,
+    floorArea,
+    bedrooms,
+    bathrooms,
+    otherRooms,
+    floorPrice,
+    saleTimeframe,  
+    extraConditionsLabels,
+    extraConditionsDescriptions, 
     AVM,
     surveyProof,
-    otherDocuments,
-    videos,
-    pictures,
+    images,
     read,
   } = req.body;
 
@@ -17,16 +23,20 @@ export default async function handler(req, res) {
     const createdAsset = await prisma.asset
       .create({
         data: {
-          owners: {
-            connect: selectedUsers,
-          },
+          selectedUsers,
           title,
           description,
+          floorArea,
+          bedrooms,
+          bathrooms,
+          otherRooms,
+          floorPrice,
+          saleTimeframe,  
+          extraConditionsLabels,
+          extraConditionsDescriptions, 
           AVM,
           surveyProof,
-          otherDocuments,
-          videos,
-          pictures,
+          images,
         },
       })
       .catch(console.error)

@@ -13,7 +13,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       title: "User Id",
       dataIndex: "userId",
       key: "userId",
-      // render: (_, record) =>
+      render: (_, record) => console.log("record is", record),
       // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
@@ -34,7 +34,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       render: (_, record) => (
         <Link href={record.landRegistry}>
           <a target="_blank" rel="noopener noreferrer">
-            LandRegistry Image
+          LandRegistry Image
           </a>
         </Link>
       ),
@@ -108,9 +108,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "images",
       key: "images",
       render: (_, record) =>
-        record.images.map((imageUrl, index) => (
+        record.images.map((imageUrls, index) => (
           <div key={index}>
-            <Link href={imageUrl}>
+            <Link href={imageUrls}>
               <a target="_blank" rel="noopener noreferrer">
                 Image {index + 1}{" "}
               </a>
@@ -168,7 +168,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
             position: ["bottomCenter"],
             pageSize: 20,
             showSizeChanger: true,
-            hideOnSinglePage: true,
+            hideOnSinglePage: true
           }}
         />
       </div>
