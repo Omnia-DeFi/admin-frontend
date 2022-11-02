@@ -24,12 +24,13 @@ export const AddAssets = ({
   const [floorPrice, setFloorPrice] = useState("");
   const [saleTimeframe, setSaleTimeframe] = useState("");
   const [extraConditionsLabels, setExtraConditionsLabels] = useState("");
-  const [extraConditionsDescriptions, setExtraConditionsDescriptions] = useState("");
+  const [extraConditionsDescriptions, setExtraConditionsDescriptions] =
+    useState("");
   // const [floorArea, setFloorArea] = useState("");
   const [loading, setLoading] = useState(false);
   const [AVMUrl, setAVMUrl] = useState("");
   const [surveyProofUrl, setSurveyProofUrl] = useState("");
-  const [landRegistryUrl, setLandRegistryUrl] = useState("");  
+  const [landRegistryUrl, setLandRegistryUrl] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
 
   async function create(e) {
@@ -45,9 +46,9 @@ export const AddAssets = ({
       bathrooms,
       otherRooms,
       floorPrice,
-      saleTimeframe,  
+      saleTimeframe,
       extraConditionsLabels,
-      extraConditionsDescriptions,  
+      extraConditionsDescriptions,
       // floorArea,
       AVM: AVMUrl,
       surveyProof: surveyProofUrl,

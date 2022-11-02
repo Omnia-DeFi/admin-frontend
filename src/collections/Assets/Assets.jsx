@@ -34,7 +34,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       render: (_, record) => (
         <Link href={record.landRegistry}>
           <a target="_blank" rel="noopener noreferrer">
-          LandRegistry Image
+            LandRegistry Image
           </a>
         </Link>
       ),
@@ -168,7 +168,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
             position: ["bottomCenter"],
             pageSize: 20,
             showSizeChanger: true,
-            hideOnSinglePage: true
+            hideOnSinglePage: true,
           }}
         />
       </div>

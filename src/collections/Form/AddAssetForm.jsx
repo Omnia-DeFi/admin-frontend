@@ -153,7 +153,7 @@ export const AddAssetForm = ({
         </Form.Item>
       </div>
 
-       {/* <div className="grid md:grid-cols-2 md:gap-6">
+      {/* <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="Floor Area">
           <Input
             placeholder="Enter Floor Area"
@@ -183,13 +183,15 @@ export const AddAssetForm = ({
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="LandRegistry">
-          <MultiFileUploader label="landRegistry" setUrls={setLandRegistryUrl} />
+          <MultiFileUploader
+            label="landRegistry"
+            setUrls={setLandRegistryUrl}
+          />
         </Form.Item>
 
         <Form.Item label="Pictures">
-        <MultiPictureUploader setUrls={setImageUrls} />
-      </Form.Item>
-
+          <MultiPictureUploader setUrls={setImageUrls} />
+        </Form.Item>
       </div>
     </Form>
   );
