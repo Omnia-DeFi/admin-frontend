@@ -11,9 +11,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
   const columns = [
     {
       title: "User Id",
-      dataIndex: "userId",
+      // dataIndex: "userId",
       key: "userId",
-      // render: (_, record) =>
+      render: (_, record) => ( record.userId )
       // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
@@ -46,8 +46,8 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
     },
     {
       title: "Has Outdoor Space",
-      dataIndex: "hasOutdoorSpace",
       key: "hasOutdoorSpace",
+      render: (_, record) => String(record.hasOutdoorSpace),
     },
     {
       title: "Bedrooms",
@@ -108,9 +108,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "images",
       key: "images",
       render: (_, record) =>
-        record.images.map((imageUrl, index) => (
+        record.images.map((imageUrls, index) => (
           <div key={index}>
-            <Link href={imageUrl}>
+            <Link href={imageUrls}>
               <a target="_blank" rel="noopener noreferrer">
                 Image {index + 1}{" "}
               </a>
