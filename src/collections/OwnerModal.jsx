@@ -2,12 +2,18 @@ import { Button, Modal } from "antd";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-export const DeleteData = ({ collection, data, setUsers }) => {
+export const OwnerModal = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setIsModalVisible(true)}>Delete</Button>
+      <a
+        onClick={() => {
+          setIsModalVisible(true);
+        }}
+      >
+        {data.userId}
+      </a>
       {isModalVisible && (
         <Modal
           title="Owner Details"
