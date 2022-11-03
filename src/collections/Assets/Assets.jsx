@@ -1,19 +1,53 @@
 import { AddAssets } from ".";
-import { Table, Space, Button } from "antd";
+import { Table, Space, Button, Modal } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
+import { OwnerModal } from "..";
 import Link from "next/link";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const columns = [
     {
       title: "User Id",
       // dataIndex: "userId",
       key: "userId",
-      render: (_, record) => ( record.userId )
+      // render: (_, record) => record.userId,
+      render: (_, record) => (
+        <>
+          <a
+            onClick={() => {
+              setIsModalVisible(true);
+            }}
+          >
+            {record.userId}
+          </a>
+          <Modal
+            title="Owner Details"
+            open={isModalVisible}
+            onOk={() => {
+              setIsModalVisible(false);
+            }}
+            onCancel={() => {
+              setIsModalVisible(false);
+            }}
+          >
+            <div className="grid md:grid-cols-2 md:gap-6">
+              <p>Company Registration Number</p>
+              <p>Company Legal Name</p>
+            </div>
+            <div className="grid md:grid-cols-2 md:gap-6">
+              <p>Incorporation Data</p>
+              <p>Jurisdiction</p>
+            </div>
+            <hr></hr>
+            <p>Identified Users</p>
+          </Modal>
+        </>
+      ),
       // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
