@@ -33,12 +33,9 @@ export const AddAssetForm = ({
   setLandRegistryUrl,
   setImageUrls,
 }) => {
-
   return (
     <Form layout="vertical">
-      <div className="grid md:grid-cols-2 md:gap-6">
-        
-      </div>
+      <div className="grid md:grid-cols-2 md:gap-6"></div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="Title">
@@ -148,11 +145,23 @@ export const AddAssetForm = ({
 
       <div className="grid md:grid-cols-1 md:gap-6">
         <Form.Item label="Has Outdoor Space">
-          <label>True
-            <input type="radio" name="hasOutdoorSpace" value="true" onChange={(e) => setHasOutdoorSpace(e.target.value)} />
-          </label> 
-          <label>False
-            <input type="radio" name="hasOutdoorSpace" value="false" onChange={(e) => setHasOutdoorSpace(e.target.value)} />
+          <label>
+            True
+            <input
+              type="radio"
+              name="hasOutdoorSpace"
+              value="true"
+              onChange={(e) => setHasOutdoorSpace(e.target.value)}
+            />
+          </label>
+          <label>
+            False
+            <input
+              type="radio"
+              name="hasOutdoorSpace"
+              value="false"
+              onChange={(e) => setHasOutdoorSpace(e.target.value)}
+            />
           </label>
         </Form.Item>
       </div>
