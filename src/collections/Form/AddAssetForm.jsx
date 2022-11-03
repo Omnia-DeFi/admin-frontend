@@ -20,49 +20,24 @@ export const AddAssetForm = ({
   setOtherRooms,
   floorPrice,
   setFloorPrice,
+  hasOutdoorSpace,
+  setHasOutdoorSpace,
   saleTimeframe,
   setSaleTimeframe,
   extraConditionsLabels,
   setExtraConditionsLabels,
   extraConditionsDescriptions,
   setExtraConditionsDescriptions,
-  // floorArea,
-  // setFloorArea,
-  // floorArea,
-  // setFloorArea,
-  // floorArea,
-  // setFloorArea,
-  // floorArea,
-  // setFloorArea,
-  // floorArea,
-  // setFloorArea,
-  // floorArea,
-  // setFloorArea,
   setAVMUrl,
   setSurveyProofUrl,
   setLandRegistryUrl,
   setImageUrls,
-  setSelectedUsers,
-  users,
 }) => {
-  const handleSelectUserChange = (value) => {
-    setSelectedUsers(value.map((selectedUser) => ({ id: selectedUser })));
-  };
+
   return (
     <Form layout="vertical">
       <div className="grid md:grid-cols-2 md:gap-6">
-        <Form.Item label="Users">
-          <Select
-            mode="multiple"
-            allowClear
-            placeholder="Select users"
-            onChange={handleSelectUserChange}
-          >
-            {users.map((user) => (
-              <Option key={user.id}>{user.email}</Option>
-            ))}
-          </Select>
-        </Form.Item>
+        
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
@@ -171,6 +146,17 @@ export const AddAssetForm = ({
         </Form.Item>
       </div> */}
 
+      <div className="grid md:grid-cols-1 md:gap-6">
+        <Form.Item label="Has Outdoor Space">
+          <label>True
+            <input type="radio" name="hasOutdoorSpace" value="true" onChange={(e) => setHasOutdoorSpace(e.target.value)} />
+          </label> 
+          <label>False
+            <input type="radio" name="hasOutdoorSpace" value="false" onChange={(e) => setHasOutdoorSpace(e.target.value)} />
+          </label>
+        </Form.Item>
+      </div>
+
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">
           <FileUploader label="AVM" setUrl={setAVMUrl} />
@@ -183,10 +169,7 @@ export const AddAssetForm = ({
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="LandRegistry">
-          <MultiFileUploader
-            label="landRegistry"
-            setUrls={setLandRegistryUrl}
-          />
+          <FileUploader setUrl={setLandRegistryUrl} />
         </Form.Item>
 
         <Form.Item label="Pictures">

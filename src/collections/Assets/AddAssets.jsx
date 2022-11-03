@@ -14,7 +14,6 @@ export const AddAssets = ({
   setAsset,
 }) => {
   const [key, setKey] = useState(0);
-  const [selectedUsers, setSelectedUsers] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [floorArea, setFloorArea] = useState("");
@@ -22,6 +21,7 @@ export const AddAssets = ({
   const [bathrooms, setBathrooms] = useState("");
   const [otherRooms, setOtherRooms] = useState("");
   const [floorPrice, setFloorPrice] = useState("");
+  const [hasOutdoorSpace, setHasOutdoorSpace] = useState("");
   const [saleTimeframe, setSaleTimeframe] = useState("");
   const [extraConditionsLabels, setExtraConditionsLabels] = useState("");
   const [extraConditionsDescriptions, setExtraConditionsDescriptions] =
@@ -38,7 +38,6 @@ export const AddAssets = ({
     e.preventDefault();
     setLoading(true);
     const data = {
-      selectedUsers,
       title,
       description,
       floorArea,
@@ -49,7 +48,7 @@ export const AddAssets = ({
       saleTimeframe,
       extraConditionsLabels,
       extraConditionsDescriptions,
-      // floorArea,
+      hasOutdoorSpace,
       AVM: AVMUrl,
       surveyProof: surveyProofUrl,
       landRegistry: landRegistryUrl,
@@ -108,7 +107,6 @@ export const AddAssets = ({
         >
           <AddAssetForm
             users={users}
-            setSelectedUsers={setSelectedUsers}
             title={title}
             setTitle={setTitle}
             description={description}
@@ -123,6 +121,8 @@ export const AddAssets = ({
             setOtherRooms={setOtherRooms}
             floorPrice={floorPrice}
             setFloorPrice={setFloorPrice}
+            hasOutdoorSpace={hasOutdoorSpace}
+            setHasOutdoorSpace={setHasOutdoorSpace}
             saleTimeframe={saleTimeframe}
             setSaleTimeframe={setSaleTimeframe}
             extraConditionsLabels={extraConditionsLabels}
