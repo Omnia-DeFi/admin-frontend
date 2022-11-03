@@ -1,3 +1,20 @@
+## Milestones
+
+### [COMPLETED] M1
+
+User CRUD → save address linked to KYC, device ID, device, OS & PNS token no fancy UI to manage users, only raw data display
+
+### [COMPLETED] M2
+
+Muinmos KYC wrap up. Remote background notifications with SaaS (Batch, Azure hub, OneSignal…)  
+_Note: bypass KYC with a mocked flow as we do not need a real user verification for the prototype_
+
+### [IN REVIEW] M3
+
+KYC remote background notifications with SaaS (Batch, Azure hub,  
+OneSignal…). <br>
+_Note: As KYC has been bypassed notifications won't be sent for KYC. Though, real-time notifications have been added with socket.io_
+
 ## Getting Started
 
 ### Run
