@@ -1,15 +1,17 @@
 import { AddAssets } from ".";
-import { Table, Space, Button, Modal } from "antd";
+import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
 import { OwnerModal } from "..";
 import Link from "next/link";
+import axios from "axios";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
   const columns = [
     {
       title: "User Id",
