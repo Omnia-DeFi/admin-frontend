@@ -10,33 +10,32 @@ export const AddAssetForm = ({
   setTitle,
   description,
   setDescription,
+  floorArea,
+  setFloorArea,
+  bedrooms,
+  setBedrooms,
+  bathrooms,
+  setBathrooms,
+  otherRooms,
+  setOtherRooms,
+  floorPrice,
+  setFloorPrice,
+  hasOutdoorSpace,
+  setHasOutdoorSpace,
+  saleTimeframe,
+  setSaleTimeframe,
+  extraConditionsLabels,
+  setExtraConditionsLabels,
+  extraConditionsDescriptions,
+  setExtraConditionsDescriptions,
   setAVMUrl,
   setSurveyProofUrl,
-  setOtherDocumentsUrls,
-  setVideoUrls,
-  setPictureUrls,
-  setSelectedUsers,
-  users,
+  setLandRegistryUrl,
+  setImageUrls,
 }) => {
-  const handleSelectUserChange = (value) => {
-    setSelectedUsers(value.map((selectedUser) => ({ id: selectedUser })));
-  };
   return (
     <Form layout="vertical">
-      <div className="grid md:grid-cols-2 md:gap-6">
-        <Form.Item label="Users">
-          <Select
-            mode="multiple"
-            allowClear
-            placeholder="Select users"
-            onChange={handleSelectUserChange}
-          >
-            {users.map((user) => (
-              <Option key={user.id}>{user.email}</Option>
-            ))}
-          </Select>
-        </Form.Item>
-      </div>
+      <div className="grid md:grid-cols-2 md:gap-6"></div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="Title">
@@ -56,6 +55,117 @@ export const AddAssetForm = ({
         </Form.Item>
       </div>
 
+      <div className="grid md:grid-cols-3 md:gap-3">
+        <Form.Item label="Floor Area">
+          <Input
+            placeholder="Enter Floor Area"
+            value={floorArea}
+            onChange={(e) => setFloorArea(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Bedrooms">
+          <Input
+            placeholder="No. of BedRooms"
+            value={bedrooms}
+            onChange={(e) => setBedrooms(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Bathrooms">
+          <Input
+            placeholder="No. of Bathrooms"
+            value={bathrooms}
+            onChange={(e) => setBathrooms(e.target.value)}
+          />
+        </Form.Item>
+      </div>
+
+      <div className="grid md:grid-cols-3 md:gap-3">
+        <Form.Item label="Other Rooms">
+          <Input
+            placeholder="No. of Other Rooms"
+            value={otherRooms}
+            onChange={(e) => setOtherRooms(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Floor Price">
+          <Input
+            placeholder="Enter Floor Price"
+            value={floorPrice}
+            onChange={(e) => setFloorPrice(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Sale Time Frame">
+          <Input
+            placeholder="Enter Sale Time Frame"
+            value={saleTimeframe}
+            onChange={(e) => setSaleTimeframe(e.target.value)}
+          />
+        </Form.Item>
+      </div>
+
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <Form.Item label="Extra Conditions Labels">
+          <Input
+            placeholder="Add Extra Conditions Labels"
+            value={extraConditionsLabels}
+            onChange={(e) => setExtraConditionsLabels(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Extra Conditions Descriptions">
+          <Input
+            placeholder="Enter Extra Conditions Descriptions"
+            value={extraConditionsDescriptions}
+            onChange={(e) => setExtraConditionsDescriptions(e.target.value)}
+          />
+        </Form.Item>
+      </div>
+
+      {/* <div className="grid md:grid-cols-2 md:gap-6">
+        <Form.Item label="Floor Area">
+          <Input
+            placeholder="Enter Floor Area"
+            value={floorArea}
+            onChange={(e) => setFloorArea(e.target.value)}
+          />
+        </Form.Item>
+
+        <Form.Item label="Description">
+          <Input
+            placeholder="Enter Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </Form.Item>
+      </div> */}
+
+      <div className="grid md:grid-cols-1 md:gap-6">
+        <Form.Item label="Has Outdoor Space">
+          <label>
+            True
+            <input
+              type="radio"
+              name="hasOutdoorSpace"
+              value="true"
+              onChange={(e) => setHasOutdoorSpace(e.target.value)}
+            />
+          </label>
+          <label>
+            False
+            <input
+              type="radio"
+              name="hasOutdoorSpace"
+              value="false"
+              onChange={(e) => setHasOutdoorSpace(e.target.value)}
+            />
+          </label>
+        </Form.Item>
+      </div>
+
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">
           <FileUploader label="AVM" setUrl={setAVMUrl} />
@@ -67,17 +177,14 @@ export const AddAssetForm = ({
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
-        <Form.Item label="Videos">
-          <MultiFileUploader label="videos" setUrls={setVideoUrls} />
+        <Form.Item label="LandRegistry">
+          <FileUploader setUrl={setLandRegistryUrl} />
         </Form.Item>
 
-        <Form.Item label="Other Documents">
-          <MultiFileUploader label="" setUrls={setOtherDocumentsUrls} />
+        <Form.Item label="Pictures">
+          <MultiPictureUploader setUrls={setImageUrls} />
         </Form.Item>
       </div>
-      <Form.Item label="Pictures">
-        <MultiPictureUploader setUrls={setPictureUrls} />
-      </Form.Item>
     </Form>
   );
 };
