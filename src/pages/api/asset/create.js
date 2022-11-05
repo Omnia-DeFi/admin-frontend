@@ -2,14 +2,22 @@ import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
   const {
-    selectedUsers,
+    user,
     title,
     description,
+    floorArea,
+    bedrooms,
+    bathrooms,
+    otherRooms,
+    floorPrice,
+    saleTimeframe,
+    extraConditionsLabels,
+    extraConditionsDescriptions,
+    hasOutdoorSpace,
+    landRegistry,
     AVM,
     surveyProof,
-    otherDocuments,
-    videos,
-    pictures,
+    images,
     read,
   } = req.body;
 
@@ -17,21 +25,28 @@ export default async function handler(req, res) {
     const createdAsset = await prisma.asset
       .create({
         data: {
-          owners: {
-            connect: selectedUsers,
-          },
+          user,
           title,
           description,
+          floorArea,
+          bedrooms,
+          bathrooms,
+          otherRooms,
+          floorPrice,
+          saleTimeframe,
+          extraConditionsLabels,
+          extraConditionsDescriptions,
+          hasOutdoorSpace,
+          landRegistry,
           AVM,
           surveyProof,
-          otherDocuments,
-          videos,
-          pictures,
+          images,
         },
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
     res.status(200).json({ message: "Asset created", createdAsset });
+    console.log("createdAsset", createdAsset);
   } catch (error) {
     console.log("Failure");
   }
