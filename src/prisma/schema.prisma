@@ -130,25 +130,27 @@ model Notifications {
   read      Boolean
 }
 
-// model Kyc {
-//   id               String      @id @default(auto()) @map("_id") @db.ObjectId
-//   user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   userId           String @db.ObjectId
-//   type             String
-//   supportiveData   Json
-//   status           String
-//   requestedAt      DateTime
-//   approvedAt       DateTime
-// }
-
-
 model Kyc {
   id               String      @id @default(auto()) @map("_id") @db.ObjectId
   user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId           String @unique @db.ObjectId
+  userId           String @db.ObjectId
+  type             String
+  supportiveData   Json
+  status           String
+  requestedAt      DateTime
+  approvedAt       DateTime
   triggerer        Alert   @relation(fields: [triggererId], references:  [id])
   triggererId      String @unique @db.ObjectId
-} 
+}
+
+
+// model Kyc {
+//   id               String      @id @default(auto()) @map("_id") @db.ObjectId
+//   user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId           String @unique @db.ObjectId
+//   triggerer        Alert   @relation(fields: [triggererId], references:  [id])
+//   triggererId      String @unique @db.ObjectId
+// } 
 
 model Asset {
   id String @id @default(auto()) @map("_id") @db.ObjectId

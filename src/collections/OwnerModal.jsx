@@ -1,28 +1,42 @@
 import { Button, Modal } from "antd";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const OwnerModal = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [name, setName] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  async function fetchProducts() {
+  useEffect(() => {
+    setUserId(data?.userId);
+  }, [data]);
+
+  async function OwnerModalForm() {
     try {
-      const response = await fetch("/api/kyb/getCompanyDetails");
+      // console.log("---", userId);
+      const response = await fetch(
+        `http://localhost:3000/api/kyb/getCompanyDetails/${userId}`
+      );
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error(`Could not get products: ${error}`);
+      console.error(`Could not get owner details: ${error}`);
     }
   }
 
-  const promise = fetchProducts();
-  promise.then((data) => setName(data[5].title));
+  // const promise = OwnerModalForm();
+  // promise.then((result) => {
+  // if (result.length){
+  //   console.log("result", result[0].supportiveData.name)
+  // }
 
-  console.log("Started request…");
+  // });
+  // setName(data[0])
+
+  // console.log("Started request…");
 
   return (
     <>
@@ -45,11 +59,11 @@ export const OwnerModal = ({ data }) => {
           <div className="grid md:grid-cols-2 md:gap-6">
             <div>
               <p className="mb-0">Company Registration Number</p>
-              <p>{name}</p>
+              <p>21357868</p>
             </div>
             <div>
               <p className="mb-0">Company Legal Name</p>
-              <p>Legal Name LTD</p>
+              <p>name</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 md:gap-6">

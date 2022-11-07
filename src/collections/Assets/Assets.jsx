@@ -4,7 +4,6 @@ import { useState } from "react";
 import { DeleteData } from "..";
 import { OwnerModal } from "..";
 import Link from "next/link";
-import axios from "axios";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
