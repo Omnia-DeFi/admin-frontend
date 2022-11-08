@@ -26,6 +26,7 @@ export default async function handler(req, res) {
         surveyProof: true,
         title: true,
         images: true,
+        mintAddress: true,
       },
     });
     res.status(200).json(results);

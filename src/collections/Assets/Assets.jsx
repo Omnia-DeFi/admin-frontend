@@ -1,4 +1,5 @@
 import { AddAssets } from ".";
+import { EditMintAddress } from ".";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
@@ -8,12 +9,33 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showMintAddressModal, setShowMintAddressModal] = useState(false);
+  const [selectedAssetId, setSelectedAssetId] = useState();
+  const [selectedMintAddress, setSelectedMintAddress] = useState();
+
+  const closeMintAddressModal = () => {
+    setShowMintAddressModal(false);
+  };
+
+  const realTimeUpdate = (data) => {
+    let index;
+    for (let i = 0; i < assets.length; i++) {
+      if (assets[i].id == selectedAssetId) {
+        index = i;
+        break;
+      }
+    }
+    if (index) {
+      assets[index].mintAddress = data;
+    }
+  };
+
   const columns = [
     {
       title: "User Id",
       // dataIndex: "userId",
       key: "userId",
-      render: (_, record) => ( record.userId )
+      render: (_, record) => record.userId,
       // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
@@ -119,6 +141,26 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         )),
     },
     {
+      title: "Mint Address",
+      // dataIndex: "mintAddress",
+      key: "mintAddress",
+      render: (_, record) => (
+        <p>
+          <span
+            className="glyphicon"
+            onClick={() => {
+              setSelectedAssetId(record.id);
+              setSelectedMintAddress(record.mintAddress);
+              setShowMintAddressModal(true);
+            }}
+          >
+            &#x270f;
+          </span>
+          {record.mintAddress}
+        </p>
+      ),
+    },
+    {
       title: "Action",
       key: "action",
       render: (_, record) => (
@@ -142,11 +184,18 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       ),
     },
   ];
-
   const dataSource = assets;
 
   return (
     <>
+      {showMintAddressModal && (
+        <EditMintAddress
+          closeMintAddressModal={closeMintAddressModal}
+          selectedAssetId={selectedAssetId}
+          selectedMintAddress={selectedMintAddress}
+          realTimeUpdate={realTimeUpdate}
+        />
+      )}
       <AddAssets
         users={users}
         assets={assets}

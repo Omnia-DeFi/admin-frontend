@@ -150,6 +150,29 @@ model Kyc {
   triggererId      String @unique @db.ObjectId
 } 
 
+enum SaleStatus {
+  NO_OFFER
+  BUY_REQUEST
+  BUYER_DEPOSIT
+  SELLER_DEPOSIT
+  SIGNATURES
+  CONSUMMATED
+  CANCELLED
+}
+
+enum VerificationState {
+  VOID
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ListingStatus {
+  NOT_LISTED
+  LISTED
+  UNLISTED_BY_DEPOSIT
+}
+
 model Asset {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   user              User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -167,11 +190,11 @@ model Asset {
   otherRooms        Int
   floorPrice        Int
   saleTimeframe     Int
-  // assetFolderLink   String
-  // mintAddress       String
-  // saleStatus        String
-  // verificationState String
-  // outdoorSpaceSize  Int
+  saleStatus        SaleStatus  @default(NO_OFFER)
+  mintAddress       String @default("")
+  verificationState VerificationState @default(VOID)
+  listingStatus     ListingStatus @default(NOT_LISTED)
+  outdoorSpaceSize  Int @default(0)
   extraConditionsLabels  String[]
   extraConditionsDescriptions String[]
 }
