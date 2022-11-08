@@ -15,7 +15,6 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       title: "User Id",
       key: "userId",
       render: (_, record) => <OwnerModal data={record}></OwnerModal>,
-      // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
       title: "Title",
@@ -160,6 +159,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         <Table
           scroll={{ x: true }}
           dataSource={dataSource}
+          rowKey="id"
           columns={columns}
           pagination={{
             position: ["bottomCenter"],
