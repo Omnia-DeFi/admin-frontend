@@ -54,7 +54,7 @@ export const EditMintAddress = ({
         onCancel={closeModal}
       >
         <Form layout="vertical">
-          <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="grid  md:gap-6">
             <Form.Item label="Mint address">
               <Input
                 placeholder="Mint Address"
