@@ -14,9 +14,7 @@ export const OwnerModal = ({ data }) => {
   async function OwnerModalForm() {
     try {
       // console.log("---", userId);
-      const response = await fetch(
-        `/api/kyb/getCompanyDetails/${userId}`
-      );
+      const response = await fetch(`/api/kyb/getCompanyDetails/${userId}`);
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
