@@ -15,12 +15,13 @@ export const OwnerModal = ({ data }) => {
     try {
       // console.log("---", userId);
       const response = await fetch(
-        `http://localhost:3000/api/kyb/getCompanyDetails/${userId}`
+        `/api/kyb/getCompanyDetails/${userId}`
       );
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
+      console.log("data==", data);
       return data;
     } catch (error) {
       console.error(`Could not get owner details: ${error}`);

@@ -5,6 +5,7 @@ import { Users } from "~/collections";
 import { useState } from "react";
 import { Assets } from "src/collections/Assets";
 import axios from "axios";
+import absoluteUrl from 'next-absolute-url'
 
 const AssetsPage = ({ collectionName, data, users }) => {
   const [assets, setAssets] = useState(data);
@@ -29,9 +30,10 @@ const AssetsPage = ({ collectionName, data, users }) => {
 
 export default AssetsPage;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({req}) => {
+  const { origin } = absoluteUrl(req);
   const { data } = await axios.get(
-    process.env.NEXTAUTH_URL + `/api/asset/get/getAsset`
+    `${origin}/api/asset/get/getAsset`
   );
 
   const users = await prisma.user.findMany({

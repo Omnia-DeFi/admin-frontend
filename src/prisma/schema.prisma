@@ -126,8 +126,8 @@ model Notifications {
   type      String
   title     String
   content   String
-  createdAt DateTime
-  read      Boolean
+  createdAt DateTime @default(now())
+  read      Boolean @default(false)
 }
 
 model Kyc {
