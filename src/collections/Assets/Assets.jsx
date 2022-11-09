@@ -146,8 +146,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       key: "mintAddress",
       render: (_, record) => (
         <p>
+          {record.mintAddress}
           <span
-            className="glyphicon"
+            className="glyphicon editbutton"
             onClick={() => {
               setSelectedAssetId(record.id);
               setSelectedMintAddress(record.mintAddress);
@@ -156,7 +157,6 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
           >
             &#x270f;
           </span>
-          {record.mintAddress}
         </p>
       ),
     },
@@ -208,7 +208,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         setAssets={setAssets}
         collection={collection}
       />
-      <div className="mt-8">
+      <div className="mt-8 theme-table">
         <Table
           scroll={{ x: true }}
           dataSource={dataSource}

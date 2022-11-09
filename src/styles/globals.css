@@ -18,3 +18,26 @@ button {
   background-color: lightgrey;
   pointer-events: none;
 }
+.editbutton {
+  transform: scaleX(-1);
+  position: relative;
+  font-size: 11px;
+  cursor: pointer;
+  margin-left: 4px;
+  display: inline-block;
+}
+
+.theme-table table {
+  width: auto;
+  min-width: 100%;
+  table-layout: auto;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.theme-table .ant-table-thead > tr > th,
+.theme-table .ant-table-tbody > tr > td,
+.theme-table .ant-table tfoot > tr > th,
+.theme-table .ant-table tfoot > tr > td {
+  padding: 10px;
+}
