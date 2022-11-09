@@ -43,11 +43,11 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "floorArea",
       key: "floorArea",
     },
-    // {
-    //   title: "Has Outdoor Space",
-    //   dataIndex: "hasOutdoorSpace",
-    //   key: "hasOutdoorSpace",
-    // },
+    {
+      title: "Has Outdoor Space",
+      dataIndex: "hasOutdoorSpace",
+      key: "hasOutdoorSpace",
+    },
     {
       title: "Bedrooms",
       dataIndex: "bedrooms",

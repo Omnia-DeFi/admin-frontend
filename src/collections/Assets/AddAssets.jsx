@@ -22,7 +22,7 @@ export const AddAssets = ({
   const [bathrooms, setBathrooms] = useState("");
   const [otherRooms, setOtherRooms] = useState("");
   const [floorPrice, setFloorPrice] = useState("");
-  // const [hasOutdoorSpace, setHasOutdoorSpace] = useState("");
+  const [hasOutdoorSpace, setHasOutdoorSpace] = useState("");
   const [saleTimeframe, setSaleTimeframe] = useState("");
   const [extraConditionsLabels, setExtraConditionsLabels] = useState("");
   const [extraConditionsDescriptions, setExtraConditionsDescriptions] =
@@ -50,7 +50,7 @@ export const AddAssets = ({
       saleTimeframe,
       extraConditionsLabels,
       extraConditionsDescriptions,
-      // hasOutdoorSpace,
+      hasOutdoorSpace,
       AVM: AVMUrl,
       surveyProof: surveyProofUrl,
       landRegistry: landRegistryUrl,
@@ -124,8 +124,8 @@ export const AddAssets = ({
             setOtherRooms={setOtherRooms}
             floorPrice={floorPrice}
             setFloorPrice={setFloorPrice}
-            // hasOutdoorSpace={hasOutdoorSpace}
-            // setHasOutdoorSpace={setHasOutdoorSpace}
+            hasOutdoorSpace={hasOutdoorSpace}
+            setHasOutdoorSpace={setHasOutdoorSpace}
             saleTimeframe={saleTimeframe}
             setSaleTimeframe={setSaleTimeframe}
             extraConditionsLabels={extraConditionsLabels}

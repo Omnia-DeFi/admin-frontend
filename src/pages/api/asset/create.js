@@ -1,5 +1,4 @@
 import { prisma } from "../../../prisma/prisma";
-
 export default async function handler(req, res) {
   const {
     selectedUsers,
@@ -13,36 +12,39 @@ export default async function handler(req, res) {
     saleTimeframe,
     extraConditionsLabels,
     extraConditionsDescriptions,
-    // hasOutdoorSpace,
+    hasOutdoorSpace,
     landRegistry,
     AVM,
     surveyProof,
     images,
     // read,
   } = req.body;
-
   try {
     console.log("selectedUsers", selectedUsers[0]["id"]);
-    const createdAsset = await prisma.asset
-      .create({
-        data: {
-          userId: selectedUsers[0]["id"],
-          title,
-          description,
-          floorArea,
-          bedrooms: +bedrooms,
-          bathrooms: +bathrooms,
-          otherRooms: +otherRooms,
-          floorPrice: +floorPrice,
-          saleTimeframe: +saleTimeframe,
-          extraConditionsLabels,
-          extraConditionsDescriptions,
-          // hasOutdoorSpace,
-          landRegistry,
-          AVM,
-          surveyProof,
-          images,
-        },
+    const data = []
+for(let i = 0; i < selectedUsers.length; i++) {
+    data.push({
+        userId: selectedUsers[i]["id"],
+        title,
+        description,
+        floorArea,
+        bedrooms: +bedrooms,
+        bathrooms: +bathrooms,
+        otherRooms: +otherRooms,
+        floorPrice: +floorPrice,
+        saleTimeframe: +saleTimeframe,
+        extraConditionsLabels,
+        extraConditionsDescriptions,
+        hasOutdoorSpace: hasOutdoorSpace === "True" ? true : false,
+        landRegistry,
+        AVM,
+        surveyProof,
+        images,
+      })
+    }
+    const createdAsset = await prisma.Asset
+      .createMany({ 
+        data: data,
       })
       .catch(console.error)
       .finally(() => prisma.$disconnect());

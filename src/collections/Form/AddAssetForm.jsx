@@ -20,8 +20,8 @@ export const AddAssetForm = ({
   setOtherRooms,
   floorPrice,
   setFloorPrice,
-  // hasOutdoorSpace,
-  // setHasOutdoorSpace,
+  hasOutdoorSpace,
+  setHasOutdoorSpace,
   saleTimeframe,
   setSaleTimeframe,
   extraConditionsLabels,
@@ -143,14 +143,14 @@ export const AddAssetForm = ({
         </Form.Item>
       </div>
 
-      {/* <div className="grid md:grid-cols-1 md:gap-6">
+      <div className="grid md:grid-cols-1 md:gap-6">
         <Form.Item label="Has Outdoor Space">
           <label>
             True
             <input
               type="radio"
               name="hasOutdoorSpace"
-              value="true"
+              value={hasOutdoorSpace}
               onChange={(e) => setHasOutdoorSpace(e.target.value)}
             />
           </label>
@@ -159,12 +159,12 @@ export const AddAssetForm = ({
             <input
               type="radio"
               name="hasOutdoorSpace"
-              value="false"
+              value={hasOutdoorSpace}
               onChange={(e) => setHasOutdoorSpace(e.target.value)}
             />
           </label>
         </Form.Item>
-      </div> */}
+      </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">

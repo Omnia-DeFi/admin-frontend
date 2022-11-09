@@ -161,7 +161,7 @@ model Asset {
   surveyProof       String
   landRegistry      String
   floorArea         String
-  // hasOutdoorSpace   Boolean
+  hasOutdoorSpace   Boolean
   bedrooms          Int
   bathrooms         Int
   otherRooms        Int
