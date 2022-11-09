@@ -21,9 +21,9 @@ export default async function handler(req, res) {
   } = req.body;
   try {
     console.log("selectedUsers", selectedUsers[0]["id"]);
-    const data = []
-for(let i = 0; i < selectedUsers.length; i++) {
-    data.push({
+    const data = [];
+    for (let i = 0; i < selectedUsers.length; i++) {
+      data.push({
         userId: selectedUsers[i]["id"],
         title,
         description,
@@ -40,12 +40,11 @@ for(let i = 0; i < selectedUsers.length; i++) {
         AVM,
         surveyProof,
         images,
-      })
+      });
     }
-    const createdAsset = await prisma.Asset
-      .createMany({ 
-        data: data,
-      })
+    const createdAsset = await prisma.Asset.createMany({
+      data: data,
+    })
       .catch(console.error)
       .finally(() => prisma.$disconnect());
     res.status(200).json({ message: "Asset created", createdAsset });
