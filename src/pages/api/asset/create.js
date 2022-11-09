@@ -2,7 +2,7 @@ import { prisma } from "../../../prisma/prisma";
 
 export default async function handler(req, res) {
   const {
-    user,
+    selectedUsers,
     title,
     description,
     floorArea,
@@ -13,30 +13,31 @@ export default async function handler(req, res) {
     saleTimeframe,
     extraConditionsLabels,
     extraConditionsDescriptions,
-    hasOutdoorSpace,
+    // hasOutdoorSpace,
     landRegistry,
     AVM,
     surveyProof,
     images,
-    read,
+    // read,
   } = req.body;
 
   try {
+    console.log("selectedUsers", selectedUsers[0]["id"]);
     const createdAsset = await prisma.asset
       .create({
         data: {
-          user,
+          userId: selectedUsers[0]["id"],
           title,
           description,
           floorArea,
-          bedrooms,
-          bathrooms,
-          otherRooms,
-          floorPrice,
-          saleTimeframe,
+          bedrooms: +bedrooms,
+          bathrooms: +bathrooms,
+          otherRooms: +otherRooms,
+          floorPrice: +floorPrice,
+          saleTimeframe: +saleTimeframe,
           extraConditionsLabels,
           extraConditionsDescriptions,
-          hasOutdoorSpace,
+          // hasOutdoorSpace,
           landRegistry,
           AVM,
           surveyProof,

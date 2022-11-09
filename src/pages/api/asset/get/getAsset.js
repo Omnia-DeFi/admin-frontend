@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         description: true,
         landRegistry: true,
         floorArea: true,
-        hasOutdoorSpace: true,
+        // hasOutdoorSpace: true,
         bedrooms: true,
         bathrooms: true,
         otherRooms: true,

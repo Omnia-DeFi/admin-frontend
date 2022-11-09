@@ -13,7 +13,6 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       title: "User Id",
       dataIndex: "userId",
       key: "userId",
-      render: (_, record) => console.log("record is", record),
       // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
@@ -44,11 +43,11 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "floorArea",
       key: "floorArea",
     },
-    {
-      title: "Has Outdoor Space",
-      dataIndex: "hasOutdoorSpace",
-      key: "hasOutdoorSpace",
-    },
+    // {
+    //   title: "Has Outdoor Space",
+    //   dataIndex: "hasOutdoorSpace",
+    //   key: "hasOutdoorSpace",
+    // },
     {
       title: "Bedrooms",
       dataIndex: "bedrooms",
@@ -164,6 +163,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
           scroll={{ x: true }}
           dataSource={dataSource}
           columns={columns}
+          rowKey="id"
           pagination={{
             position: ["bottomCenter"],
             pageSize: 20,

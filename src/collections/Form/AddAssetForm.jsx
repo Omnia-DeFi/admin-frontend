@@ -20,8 +20,8 @@ export const AddAssetForm = ({
   setOtherRooms,
   floorPrice,
   setFloorPrice,
-  hasOutdoorSpace,
-  setHasOutdoorSpace,
+  // hasOutdoorSpace,
+  // setHasOutdoorSpace,
   saleTimeframe,
   setSaleTimeframe,
   extraConditionsLabels,
@@ -32,10 +32,28 @@ export const AddAssetForm = ({
   setSurveyProofUrl,
   setLandRegistryUrl,
   setImageUrls,
+  setSelectedUsers,
+  users,
 }) => {
+  const handleSelectUserChange = (value) => {
+    setSelectedUsers(value.map((selectedUser) => ({ id: selectedUser })));
+  };
   return (
     <Form layout="vertical">
-      <div className="grid md:grid-cols-2 md:gap-6"></div>
+      <div className="grid md:grid-cols-2 md:gap-6">
+        <Form.Item label="Users">
+          <Select
+            mode="multiple"
+            allowClear
+            placeholder="Select users"
+            onChange={handleSelectUserChange}
+          >
+            {users.map((user) => (
+              <Option key={user.id}>{user.email}</Option>
+            ))}
+          </Select>
+        </Form.Item>
+      </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="Title">
@@ -125,25 +143,7 @@ export const AddAssetForm = ({
         </Form.Item>
       </div>
 
-      {/* <div className="grid md:grid-cols-2 md:gap-6">
-        <Form.Item label="Floor Area">
-          <Input
-            placeholder="Enter Floor Area"
-            value={floorArea}
-            onChange={(e) => setFloorArea(e.target.value)}
-          />
-        </Form.Item>
-
-        <Form.Item label="Description">
-          <Input
-            placeholder="Enter Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </Form.Item>
-      </div> */}
-
-      <div className="grid md:grid-cols-1 md:gap-6">
+      {/* <div className="grid md:grid-cols-1 md:gap-6">
         <Form.Item label="Has Outdoor Space">
           <label>
             True
@@ -164,7 +164,7 @@ export const AddAssetForm = ({
             />
           </label>
         </Form.Item>
-      </div>
+      </div> */}
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">
