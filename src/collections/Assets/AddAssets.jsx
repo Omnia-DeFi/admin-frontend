@@ -1,5 +1,5 @@
 import { Button, Modal } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AddAssetForm } from "../Form";
 
 export const AddAssets = ({
@@ -32,6 +32,24 @@ export const AddAssets = ({
   const [surveyProofUrl, setSurveyProofUrl] = useState("");
   const [landRegistryUrl, setLandRegistryUrl] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
+
+  useEffect(() => {
+    setTitle(asset?.title);
+    setDescription(asset?.description);
+    setFloorArea(asset?.floorArea);
+    setBedrooms(asset?.bedrooms);
+    setBathrooms(asset?.bathrooms);
+    setOtherRooms(asset?.otherRooms);
+    setFloorPrice(asset?.floorPrice);
+    setHasOutdoorSpace(asset?.hasOutdoorSpace);
+    setSaleTimeframe(asset?.saleTimeframe);
+    setExtraConditionsLabels(asset?.extraConditionsLabels);
+    setExtraConditionsDescriptions(asset?.extraConditionsDescriptions);
+    setAVMUrl(asset?.AVM);
+    setSurveyProofUrl(asset?.surveyProof);
+    setLandRegistryUrl(asset?.landRegistry);
+    setImageUrls(asset?.images);
+  }, [asset]);
 
   async function create(e) {
     setLoading(true);
@@ -110,8 +128,12 @@ export const AddAssets = ({
           setAssets((prevAssets) =>
             prevAssets.map((asset) => {
               if (asset.id === data.id) {
+                console.log("data", data);
                 return data;
-              } else return asset;
+              } else {
+                console.log("asset is", asset);
+                return asset;
+              }
             })
           );
           console.log("data", data);
