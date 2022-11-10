@@ -45,8 +45,8 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
     },
     {
       title: "Has Outdoor Space",
-      dataIndex: "hasOutdoorSpace",
       key: "hasOutdoorSpace",
+      render: (_, record) => String(record.hasOutdoorSpace),
     },
     {
       title: "Bedrooms",

@@ -3,41 +3,48 @@ import { prisma } from "../../../../prisma/prisma";
 export default async function handler(req, res) {
   const assetId = req.query.id;
   const {
-    email,
-    issuer,
-    documents,
-    alertTitle,
-    read,
-    alertContent,
-    alertType,
+    title,
+    description,
+    floorArea,
+    bedrooms,
+    bathrooms,
+    otherRooms,
+    floorPrice,
+    saleTimeframe,
+    extraConditionsLabels,
+    extraConditionsDescriptions,
+    hasOutdoorSpace,
+    AVM,
+    surveyProof,
+    landRegistry,
+    images,
   } = req.body;
 
   try {
     let updatedAsset;
     if (req.method === "PUT") {
-      updatedAsset = await prisma.asset
-        .update({
-          where: {
-            id: assetId,
-          },
-          data: {
-            user: {
-              update: {
-                email,
-                issuer,
-              },
-            },
-            sender: {
-              update: {
-                title: alertTitle,
-                content: alertContent,
-                type: alertType,
-                date: new Date(),
-                read: true,
-              },
-            },
-          },
-        })
+      updatedAsset = await prisma.Asset.update({
+        where: {
+          id: assetId,
+        },
+        data: {
+          title,
+          description,
+          floorArea,
+          bedrooms: bedrooms,
+          bathrooms: bathrooms,
+          otherRooms: otherRooms,
+          floorPrice: floorPrice,
+          saleTimeframe: saleTimeframe,
+          extraConditionsLabels,
+          extraConditionsDescriptions,
+          hasOutdoorSpace: hasOutdoorSpace === "True" ? true : false,
+          AVM,
+          surveyProof,
+          landRegistry,
+          images,
+        },
+      })
         .catch(console.error)
         .finally(() => prisma.$disconnect());
     }

@@ -76,7 +76,51 @@ export const AddAssets = ({
     }
   }
 
-  const saveDataUpdate = () => {
+  const saveDataUpdate = (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const newData = {
+      title,
+      description,
+      floorArea,
+      bedrooms: +bedrooms,
+      bathrooms: +bathrooms,
+      otherRooms: +otherRooms,
+      floorPrice: +floorPrice,
+      saleTimeframe: +saleTimeframe,
+      extraConditionsLabels,
+      extraConditionsDescriptions,
+      hasOutdoorSpace,
+      AVM: AVMUrl,
+      surveyProof: surveyProofUrl,
+      landRegistry: landRegistryUrl,
+      images: imageUrls,
+    };
+    try {
+      console.log("asset", asset);
+      fetch(`/api/${collection}/update/${asset?.id}`, {
+        body: JSON.stringify(newData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setAssets((prevAssets) =>
+            prevAssets.map((asset) => {
+              if (asset.id === data.id) {
+                return data;
+              } else return asset;
+            })
+          );
+          console.log("data", data);
+          setShowModal(false);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
     console.log("Save Data Update");
   };
 
