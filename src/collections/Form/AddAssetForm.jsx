@@ -1,4 +1,4 @@
-import { Form, Input, Select } from "antd";
+import { Form, Input, Select, Radio } from "antd";
 import { FileUploader } from "./Uploader/FileUploader";
 import { MultiPictureUploader } from "./Uploader/MultiPicturesUploader";
 import { MultiFileUploader } from "./Uploader/MultiFileUploader";
@@ -144,26 +144,15 @@ export const AddAssetForm = ({
       </div>
 
       <div className="grid md:grid-cols-1 md:gap-6">
-        <Form.Item label="Has Outdoor Space">
-          <label>
-            True
-            <input
-              type="radio"
-              name="hasOutdoorSpace"
-              value={hasOutdoorSpace}
-              onChange={(e) => setHasOutdoorSpace(e.target.value)}
-            />
-          </label>
-          <label>
-            False
-            <input
-              type="radio"
-              name="hasOutdoorSpace"
-              value={hasOutdoorSpace}
-              onChange={(e) => setHasOutdoorSpace(e.target.value)}
-            />
-          </label>
-        </Form.Item>
+        <Radio.Group
+          onChange={(e) => {
+            setHasOutdoorSpace(e.target.value);
+          }}
+          value={hasOutdoorSpace}
+        >
+          <Radio value={"True"}>True</Radio>
+          <Radio value={"False"}>False</Radio>
+        </Radio.Group>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">

@@ -22,12 +22,11 @@ export const AddAssets = ({
   const [bathrooms, setBathrooms] = useState("");
   const [otherRooms, setOtherRooms] = useState("");
   const [floorPrice, setFloorPrice] = useState("");
-  const [hasOutdoorSpace, setHasOutdoorSpace] = useState("");
+  const [hasOutdoorSpace, setHasOutdoorSpace] = useState("False");
   const [saleTimeframe, setSaleTimeframe] = useState("");
   const [extraConditionsLabels, setExtraConditionsLabels] = useState("");
   const [extraConditionsDescriptions, setExtraConditionsDescriptions] =
     useState("");
-  // const [floorArea, setFloorArea] = useState("");
   const [loading, setLoading] = useState(false);
   const [AVMUrl, setAVMUrl] = useState("");
   const [surveyProofUrl, setSurveyProofUrl] = useState("");

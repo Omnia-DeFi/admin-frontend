@@ -20,7 +20,6 @@ export default async function handler(req, res) {
     // read,
   } = req.body;
   try {
-    console.log("selectedUsers", selectedUsers[0]["id"]);
     const data = [];
     for (let i = 0; i < selectedUsers.length; i++) {
       data.push({
@@ -48,7 +47,6 @@ export default async function handler(req, res) {
       .catch(console.error)
       .finally(() => prisma.$disconnect());
     res.status(200).json({ message: "Asset created", createdAsset });
-    console.log("createdAsset", createdAsset);
   } catch (error) {
     console.log("Failure");
   }
