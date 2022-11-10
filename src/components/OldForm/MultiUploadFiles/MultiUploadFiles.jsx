@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const MultiUploadFiles = ({ label, setUrls }) => {
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedFiles, setSelectedFiles] = useState("");
 
   const handleFileInputChange = (e) => {
     const files = e.target.files;

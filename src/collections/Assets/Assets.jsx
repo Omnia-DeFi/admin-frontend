@@ -161,6 +161,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
           dataSource={dataSource}
           rowKey="id"
           columns={columns}
+          rowKey="id"
           pagination={{
             position: ["bottomCenter"],
             pageSize: 20,
