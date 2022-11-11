@@ -19,7 +19,7 @@ export const OwnerModal = ({ data }) => {
         `http://localhost:3000/api/kyb/getCompanyDetails/${userId}`
       );
       if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        console.log(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
       if (data && data.supportiveData) {
