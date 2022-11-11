@@ -2,18 +2,19 @@ import { AddAssets } from ".";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
-import Link from "next/link";
+import { OwnerModal } from "..";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const columns = [
     {
       title: "User Id",
-      dataIndex: "userId",
       key: "userId",
-      // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
+      render: (_, record) => <OwnerModal data={record}></OwnerModal>,
     },
     {
       title: "Title",
@@ -31,11 +32,13 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "landRegistry",
       key: "landRegistry",
       render: (_, record) => (
-        <Link href={record.landRegistry}>
-          <a target="_blank" rel="noopener noreferrer">
-            LandRegistry Image
-          </a>
-        </Link>
+        <a
+          href={record?.landRegistry}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LandRegistry Image
+        </a>
       ),
     },
     {
@@ -45,8 +48,8 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
     },
     {
       title: "Has Outdoor Space",
-      dataIndex: "hasOutdoorSpace",
       key: "hasOutdoorSpace",
+      render: (_, record) => String(record.hasOutdoorSpace),
     },
     {
       title: "Bedrooms",
@@ -83,11 +86,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       // dataIndex: "AVM",
       key: "AVM",
       render: (_, record) => (
-        <Link href={record?.AVM}>
-          <a target="_blank" rel="noopener noreferrer">
-            AVM
-          </a>
-        </Link>
+        <a href={record?.AVM} target="_blank" rel="noopener noreferrer">
+          AVM
+        </a>
       ),
     },
     {
@@ -95,11 +96,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       dataIndex: "surveyProof",
       key: "surveyProof",
       render: (_, record) => (
-        <Link href={record.surveyProof}>
-          <a target="_blank" rel="noopener noreferrer">
-            Survey Proof
-          </a>
-        </Link>
+        <a href={record?.surveyProof} target="_blank" rel="noopener noreferrer">
+          Survey Proof
+        </a>
       ),
     },
     {
@@ -109,11 +108,9 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       render: (_, record) =>
         record.images.map((imageUrls, index) => (
           <div key={index}>
-            <Link href={imageUrls}>
-              <a target="_blank" rel="noopener noreferrer">
-                Image {index + 1}{" "}
-              </a>
-            </Link>
+            <a href={imageUrls} target="_blank" rel="noopener noreferrer">
+              Image {index + 1}{" "}
+            </a>
           </div>
         )),
     },
@@ -162,6 +159,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         <Table
           scroll={{ x: true }}
           dataSource={dataSource}
+          rowKey="id"
           columns={columns}
           rowKey="id"
           pagination={{
