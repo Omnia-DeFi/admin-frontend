@@ -128,10 +128,8 @@ export const AddAssets = ({
           setAssets((prevAssets) =>
             prevAssets.map((asset) => {
               if (asset.id === data.id) {
-                console.log("data", data);
                 return data;
               } else {
-                console.log("asset is", asset);
                 return asset;
               }
             })
@@ -173,6 +171,7 @@ export const AddAssets = ({
           }}
         >
           <AddAssetForm
+            editMode={editMode}
             users={users}
             setSelectedUsers={setSelectedUsers}
             title={title}

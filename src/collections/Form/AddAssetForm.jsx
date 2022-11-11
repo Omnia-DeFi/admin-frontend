@@ -6,6 +6,7 @@ import { useState } from "react";
 const { Option } = Select;
 
 export const AddAssetForm = ({
+  editMode,
   title,
   setTitle,
   description,
@@ -40,7 +41,10 @@ export const AddAssetForm = ({
   };
   return (
     <Form layout="vertical">
-      <div className="grid md:grid-cols-2 md:gap-6">
+      <div
+        className="grid md:grid-cols-2 md:gap-6"
+        style={{ display: editMode ? "none" : "block" }}
+      >
         <Form.Item label="Users">
           <Select
             mode="multiple"
