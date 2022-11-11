@@ -2,18 +2,19 @@ import { AddAssets } from ".";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
-import Link from "next/link";
+import { OwnerModal } from "..";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const columns = [
     {
-      title: "Users",
-      key: "owner",
-      render: (_, record) => console.log("hello inside", record),
-      // record.owners?.map((user) => <p key={user.id}>{user.email}</p>),
+      title: "User Id",
+      key: "userId",
+      render: (_, record) => <OwnerModal data={record}></OwnerModal>,
     },
     {
       title: "Title",
@@ -27,71 +28,89 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       key: "description",
     },
     {
+      title: "Land Registery",
+      dataIndex: "landRegistry",
+      key: "landRegistry",
+      render: (_, record) => (
+        <a
+          href={record?.landRegistry}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LandRegistry Image
+        </a>
+      ),
+    },
+    {
+      title: "Floor Area",
+      dataIndex: "floorArea",
+      key: "floorArea",
+    },
+    {
+      title: "Has Outdoor Space",
+      key: "hasOutdoorSpace",
+      render: (_, record) => String(record.hasOutdoorSpace),
+    },
+    {
+      title: "Bedrooms",
+      dataIndex: "bedrooms",
+      key: "bedrooms",
+    },
+    {
+      title: "Bathrooms",
+      dataIndex: "bathrooms",
+      key: "bathrooms",
+    },
+    {
+      title: "Other Rooms",
+      dataIndex: "otherRooms",
+      key: "otherRooms",
+    },
+    {
+      title: "Sale Time Frame",
+      dataIndex: "saleTimeframe",
+      key: "saleTimeframe",
+    },
+    {
+      title: "Extra Conditions Labels",
+      dataIndex: "extraConditionsLabels",
+      key: "extraConditionsLabels",
+    },
+    {
+      title: "Extra Conditions Descriptions",
+      dataIndex: "extraConditionsDescriptions",
+      key: "extraConditionsDescriptions",
+    },
+    {
       title: "AVM",
       // dataIndex: "AVM",
       key: "AVM",
       render: (_, record) => (
-        <Link href={record?.AVM}>
-          <a target="_blank" rel="noopener noreferrer">
-            AVM
-          </a>
-        </Link>
+        <a href={record?.AVM} target="_blank" rel="noopener noreferrer">
+          AVM
+        </a>
       ),
     },
     {
-      title: "surveyProof",
+      title: "Survey Proof",
       dataIndex: "surveyProof",
       key: "surveyProof",
       render: (_, record) => (
-        <Link href={record.surveyProof}>
-          <a target="_blank" rel="noopener noreferrer">
-            Survey Proof
-          </a>
-        </Link>
+        <a href={record?.surveyProof} target="_blank" rel="noopener noreferrer">
+          Survey Proof
+        </a>
       ),
     },
     {
-      title: "otherDocuments",
-      dataIndex: "otherDocuments",
-      key: "otherDocuments",
+      title: "Images",
+      dataIndex: "images",
+      key: "images",
       render: (_, record) =>
-        record.otherDocuments.map((otherDocument, index) => (
+        record.images.map((imageUrls, index) => (
           <div key={index}>
-            <Link href={otherDocument}>
-              <a target="_blank" rel="noopener noreferrer">
-                Open Document {index + 1}{" "}
-              </a>
-            </Link>
-          </div>
-        )),
-    },
-    {
-      title: "videos",
-      dataIndex: "videos",
-      key: "videos",
-      render: (_, record) =>
-        record.videos.map((videoUrl, index) => (
-          <div key={index}>
-            <Link href={videoUrl}>
-              <a target="_blank" rel="noopener noreferrer">
-                Video {index + 1}{" "}
-              </a>
-            </Link>
-          </div>
-        )),
-    },
-    {
-      title: "pictures",
-      dataIndex: "pictures",
-      key: "pictures",
-      render: (_, record) =>
-        record.pictures.map((pictureUrl, index) => (
-          <div key={index}>
-            <Link href={pictureUrl}>
-              <a target="_blank" rel="noopener noreferrer">
-                Picture {index + 1}{" "}
-              </a>
-            </Link>
+            <a href={imageUrls} target="_blank" rel="noopener noreferrer">
+              Image {index + 1}{" "}
+            </a>
           </div>
         )),
     },
@@ -140,12 +159,14 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
         <Table
           scroll={{ x: true }}
           dataSource={dataSource}
+          rowKey="id"
           columns={columns}
+          rowKey="id"
           pagination={{
             position: ["bottomCenter"],
             pageSize: 20,
             showSizeChanger: true,
-            hideOnSinglePage: true
+            hideOnSinglePage: true,
           }}
         />
       </div>
