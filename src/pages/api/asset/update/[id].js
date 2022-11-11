@@ -38,7 +38,7 @@ export default async function handler(req, res) {
           saleTimeframe: saleTimeframe,
           extraConditionsLabels,
           extraConditionsDescriptions,
-          hasOutdoorSpace: hasOutdoorSpace === "True" ? true : false,
+          hasOutdoorSpace: hasOutdoorSpace === "true" ? true : false,
           AVM,
           surveyProof,
           landRegistry,

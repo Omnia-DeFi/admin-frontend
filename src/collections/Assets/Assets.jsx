@@ -30,18 +30,24 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       title: "Land Registery",
       dataIndex: "landRegistry",
       key: "landRegistry",
-      render: (_, record) => (
-        <Link href={record.landRegistry}>
-          <a target="_blank" rel="noopener noreferrer">
-            LandRegistry Image
-          </a>
-        </Link>
-      ),
+      render: (_, record) =>
+        record?.landRegistry ? (
+          <Link href={record.landRegistry}>
+            <a target="_blank" rel="noopener noreferrer">
+              LandRegistry Image
+            </a>
+          </Link>
+        ) : null,
     },
     {
       title: "Floor Area",
       dataIndex: "floorArea",
       key: "floorArea",
+    },
+    {
+      title: "Floor Price",
+      dataIndex: "floorPrice",
+      key: "floorPrice",
     },
     {
       title: "Has Outdoor Space",
@@ -82,25 +88,27 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       title: "AVM",
       // dataIndex: "AVM",
       key: "AVM",
-      render: (_, record) => (
-        <Link href={record?.AVM}>
-          <a target="_blank" rel="noopener noreferrer">
-            AVM
-          </a>
-        </Link>
-      ),
+      render: (_, record) =>
+        record?.AVM ? (
+          <Link href={record?.AVM}>
+            <a target="_blank" rel="noopener noreferrer">
+              AVM
+            </a>
+          </Link>
+        ) : null,
     },
     {
       title: "Survey Proof",
       dataIndex: "surveyProof",
       key: "surveyProof",
-      render: (_, record) => (
-        <Link href={record.surveyProof}>
-          <a target="_blank" rel="noopener noreferrer">
-            Survey Proof
-          </a>
-        </Link>
-      ),
+      render: (_, record) =>
+        record?.surveyProof ? (
+          <Link href={record?.surveyProof}>
+            <a target="_blank" rel="noopener noreferrer">
+              Survey Proof
+            </a>
+          </Link>
+        ) : null,
     },
     {
       title: "Images",

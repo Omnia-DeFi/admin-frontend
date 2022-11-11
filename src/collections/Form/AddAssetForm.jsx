@@ -29,9 +29,13 @@ export const AddAssetForm = ({
   setExtraConditionsLabels,
   extraConditionsDescriptions,
   setExtraConditionsDescriptions,
+  AVMUrl,
   setAVMUrl,
+  surveyProofUrl,
   setSurveyProofUrl,
+  landRegistryUrl,
   setLandRegistryUrl,
+  imageUrls,
   setImageUrls,
   setSelectedUsers,
   users,
@@ -39,6 +43,7 @@ export const AddAssetForm = ({
   const handleSelectUserChange = (value) => {
     setSelectedUsers(value.map((selectedUser) => ({ id: selectedUser })));
   };
+
   return (
     <Form layout="vertical">
       <div
@@ -148,14 +153,15 @@ export const AddAssetForm = ({
       </div>
 
       <div className="grid md:grid-cols-1 md:gap-6">
+        <label>Has Outdoor Space</label>
         <Radio.Group
           onChange={(e) => {
             setHasOutdoorSpace(e.target.value);
           }}
-          value={hasOutdoorSpace}
+          value={String(hasOutdoorSpace)}
         >
-          <Radio value={"True"}>True</Radio>
-          <Radio value={"False"}>False</Radio>
+          <Radio value={"true"}>True</Radio>
+          <Radio value={"false"}>False</Radio>
         </Radio.Group>
       </div>
 

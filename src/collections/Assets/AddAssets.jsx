@@ -196,6 +196,7 @@ export const AddAssets = ({
             setExtraConditionsLabels={setExtraConditionsLabels}
             extraConditionsDescriptions={extraConditionsDescriptions}
             setExtraConditionsDescriptions={setExtraConditionsDescriptions}
+            AVMUrl={AVMUrl}
             setAVMUrl={setAVMUrl}
             setSurveyProofUrl={setSurveyProofUrl}
             setLandRegistryUrl={setLandRegistryUrl}
