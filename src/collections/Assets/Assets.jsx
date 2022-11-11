@@ -2,29 +2,81 @@ import { AddAssets } from ".";
 import { Table, Space, Button } from "antd";
 import { useState } from "react";
 import { DeleteData } from "..";
+import { OwnerModal } from "..";
 import Link from "next/link";
 
 export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   const columns = [
     {
-      title: "Users",
-      key: "owner",
-      render: (_, record) => console.log("hello inside", record),
-      // record.owners?.map((user) => <p key={user.id}>{user.email}</p>),
+      title: "Company Name",
+      key: "companyName",
+      render: (_, record) => <OwnerModal data={record}></OwnerModal>,
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      // sorter: (a, b) => a.firstName.localeCompare(b.firstName),
     },
     {
       title: "Description",
       dataIndex: "description",
       key: "description",
+    },
+    {
+      title: "Land Registery",
+      dataIndex: "landRegistry",
+      key: "landRegistry",
+      render: (_, record) => (
+        <Link href={record.landRegistry}>
+          <a target="_blank" rel="noopener noreferrer">
+            LandRegistry Image
+          </a>
+        </Link>
+      ),
+    },
+    {
+      title: "Floor Area",
+      dataIndex: "floorArea",
+      key: "floorArea",
+    },
+    {
+      title: "Has Outdoor Space",
+      key: "hasOutdoorSpace",
+      render: (_, record) => String(record.hasOutdoorSpace),
+    },
+    {
+      title: "Bedrooms",
+      dataIndex: "bedrooms",
+      key: "bedrooms",
+    },
+    {
+      title: "Bathrooms",
+      dataIndex: "bathrooms",
+      key: "bathrooms",
+    },
+    {
+      title: "Other Rooms",
+      dataIndex: "otherRooms",
+      key: "otherRooms",
+    },
+    {
+      title: "Sale Time Frame",
+      dataIndex: "saleTimeframe",
+      key: "saleTimeframe",
+    },
+    {
+      title: "Extra Conditions Labels",
+      dataIndex: "extraConditionsLabels",
+      key: "extraConditionsLabels",
+    },
+    {
+      title: "Extra Conditions Descriptions",
+      dataIndex: "extraConditionsDescriptions",
+      key: "extraConditionsDescriptions",
     },
     {
       title: "AVM",
@@ -39,7 +91,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       ),
     },
     {
-      title: "surveyProof",
+      title: "Survey Proof",
       dataIndex: "surveyProof",
       key: "surveyProof",
       render: (_, record) => (
@@ -51,45 +103,15 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
       ),
     },
     {
-      title: "otherDocuments",
-      dataIndex: "otherDocuments",
-      key: "otherDocuments",
+      title: "Images",
+      dataIndex: "images",
+      key: "images",
       render: (_, record) =>
-        record.otherDocuments.map((otherDocument, index) => (
+        record.images.map((imageUrls, index) => (
           <div key={index}>
-            <Link href={otherDocument}>
+            <Link href={imageUrls}>
               <a target="_blank" rel="noopener noreferrer">
-                Open Document {index + 1}{" "}
-              </a>
-            </Link>
-          </div>
-        )),
-    },
-    {
-      title: "videos",
-      dataIndex: "videos",
-      key: "videos",
-      render: (_, record) =>
-        record.videos.map((videoUrl, index) => (
-          <div key={index}>
-            <Link href={videoUrl}>
-              <a target="_blank" rel="noopener noreferrer">
-                Video {index + 1}{" "}
-              </a>
-            </Link>
-          </div>
-        )),
-    },
-    {
-      title: "pictures",
-      dataIndex: "pictures",
-      key: "pictures",
-      render: (_, record) =>
-        record.pictures.map((pictureUrl, index) => (
-          <div key={index}>
-            <Link href={pictureUrl}>
-              <a target="_blank" rel="noopener noreferrer">
-                Picture {index + 1}{" "}
+                Image {index + 1}{" "}
               </a>
             </Link>
           </div>
@@ -145,7 +167,7 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
             position: ["bottomCenter"],
             pageSize: 20,
             showSizeChanger: true,
-            hideOnSinglePage: true
+            hideOnSinglePage: true,
           }}
         />
       </div>

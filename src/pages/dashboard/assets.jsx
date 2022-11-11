@@ -4,6 +4,7 @@ import { Navbar, Heading } from "~/components";
 import { Users } from "~/collections";
 import { useState } from "react";
 import { Assets } from "src/collections/Assets";
+import axios from "axios";
 
 const AssetsPage = ({ collectionName, data, users }) => {
   const [assets, setAssets] = useState(data);
@@ -29,24 +30,9 @@ const AssetsPage = ({ collectionName, data, users }) => {
 export default AssetsPage;
 
 export const getServerSideProps = async () => {
-  const data = await prisma.asset.findMany({
-    select: {
-      id: true,
-      owners: {
-        select: {
-          issuer: true,
-          email: true,
-        },
-      },
-      title: true,
-      description: true,
-      AVM: true,
-      surveyProof: true,
-      otherDocuments: true,
-      videos: true,
-      pictures: true,
-    },
-  });
+  const { data } = await axios.get(
+    process.env.NEXTAUTH_URL + `/api/asset/get/getAsset`
+  );
 
   const users = await prisma.user.findMany({
     select: {
