@@ -11,9 +11,9 @@ export default async function handler(req, res) {
       pipeline: [
         {
           $lookup: {
-            from: "User",
+            from: "Kyc",
             localField: "userId",
-            foreignField: "_id",
+            foreignField: "userId",
             as: "userData",
           },
         },
@@ -36,24 +36,27 @@ export default async function handler(req, res) {
             surveyProof: 1,
             title: 1,
             images: 1,
-            "userData.email": 1,
+            "userData.supportiveData.name": 1,
           },
         },
       ],
     });
 
-    const filteredData = results.map((item) => {
-      item.email =
-        item.userData && item.userData.length && item.userData[0].email
-          ? item.userData[0].email
-          : "";
+    results.map((item) => {
+      item.companyName =
+        item.userData &&
+        item.userData.length &&
+        item.userData[0].supportiveData &&
+        item.userData[0].supportiveData.name
+          ? item.userData[0].supportiveData.name
+          : "-";
       item.userId = item.userId["$oid"];
       item._id = item._id["$oid"];
       item.images = item.images ? item.images : [];
       delete item.userData;
       return item;
     });
-    res.status(200).json(filteredData);
+    res.status(200).json(results);
   } catch (error) {
     console.log("Error while fetching assets: ", error);
     res.status(500).json({ message: "Unable to get assets" });

@@ -12,8 +12,8 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
 
   const columns = [
     {
-      title: "email",
-      key: "email",
+      title: "Company Name",
+      key: "companyName",
       render: (_, record) => <OwnerModal data={record}></OwnerModal>,
     },
     {

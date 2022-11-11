@@ -52,7 +52,7 @@ export const OwnerModal = ({ data }) => {
           setIsModalVisible(true);
         }}
       >
-        {data.email}
+        {data.companyName}
       </a>
       {isModalVisible && (
         <Modal
