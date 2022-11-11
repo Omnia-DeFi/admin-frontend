@@ -19,10 +19,43 @@ export default async function handler(req, res) {
           supportiveData: true,
           status: true,
         },
+        orderBy: {
+          approvedAt: "desc",
+        },
+        skip: 0,
+        take: 1,
       });
-      res.status(200).json(results);
+      let userIds = [];
+      let identifiedUsers = [];
       if (results.length) {
-        console.log("result", results);
+        userIds = await prisma.kyc.findRaw({
+          filter: {
+            "supportiveData.registrationNumber":
+              results[0].supportiveData.registrationNumber,
+            "supportiveData.jurisdiction":
+              results[0].supportiveData.jurisdiction,
+            "supportiveData.name": results[0].supportiveData.name,
+          },
+          options: { projection: { _id: true } },
+        });
+        if (userIds.length) {
+          userIds = userIds.map((item) => item._id["$oid"]);
+          identifiedUsers = await prisma.user.findMany({
+            where: {
+              id: {
+                in: userIds,
+              },
+            },
+            select: {
+              email: true,
+              issuer: true,
+            },
+          });
+        }
+        results.identifiedUsers = identifiedUsers;
+        res.status(200).json({ ...results[0], identifiedUsers });
+      } else {
+        res.status(404).json({ message: "User ID not found or Incorrect" });
       }
     } else {
       console.log("Error while fetching owner details: ", error);

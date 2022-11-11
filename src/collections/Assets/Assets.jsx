@@ -9,20 +9,17 @@ export const Assets = ({ assets, setAssets, collection, users }) => {
   const [asset, setAsset] = useState();
   const [editMode, setEditMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const columns = [
     {
-      title: "User Id",
-      key: "userId",
+      title: "email",
+      key: "email",
       render: (_, record) => <OwnerModal data={record}></OwnerModal>,
-      // record.userId?.map((user) => <p key={user.id}>{user.email}</p>),
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      // sorter: (a, b) => a.firstName.localeCompare(b.firstName),
     },
     {
       title: "Description",

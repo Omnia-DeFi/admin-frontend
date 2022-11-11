@@ -1,19 +1,20 @@
 import { Button, Modal } from "antd";
-import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+const jurisdictions = require("../utils/jurisdiction.json");
 
 export const OwnerModal = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [name, setName] = useState(null);
+  const [ownerDetails, setOwnerDetails] = useState({});
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     setUserId(data?.userId);
   }, [data]);
 
-  async function OwnerModalForm() {
+  useEffect(() => {}, [ownerDetails]);
+
+  const getData = async () => {
     try {
-      // console.log("---", userId);
       const response = await fetch(
         `http://localhost:3000/api/kyb/getCompanyDetails/${userId}`
       );
@@ -21,31 +22,37 @@ export const OwnerModal = ({ data }) => {
         throw new Error(`HTTP error: ${response.status}`);
       }
       const data = await response.json();
-      return data;
+      if (data && data.supportiveData) {
+        data = { ...data, ...data.supportiveData };
+        delete data.supportiveData;
+
+        if (data.jurisdiction) {
+          const jurisdiction = jurisdictions.filter(
+            (item) => item.id == data.jurisdiction
+          );
+          data.jurisdiction =
+            jurisdiction.length && jurisdiction[0].jurisdiction
+              ? jurisdiction[0].jurisdiction
+              : "-";
+        } else {
+          data.jurisdiction = "-";
+        }
+        setOwnerDetails(data);
+      }
     } catch (error) {
       console.error(`Could not get owner details: ${error}`);
     }
-  }
-
-  // const promise = OwnerModalForm();
-  // promise.then((result) => {
-  // if (result.length){
-  //   console.log("result", result[0].supportiveData.name)
-  // }
-
-  // });
-  // setName(data[0])
-
-  // console.log("Started request…");
+  };
 
   return (
     <>
       <a
-        onClick={() => {
+        onClick={async () => {
+          await getData();
           setIsModalVisible(true);
         }}
       >
-        {data.userId}
+        {data.email}
       </a>
       {isModalVisible && (
         <Modal
@@ -59,25 +66,52 @@ export const OwnerModal = ({ data }) => {
           <div className="grid md:grid-cols-2 md:gap-6">
             <div>
               <p className="mb-0">Company Registration Number</p>
-              <p>21357868</p>
+              <p>
+                {ownerDetails && ownerDetails.registrationNumber
+                  ? ownerDetails.registrationNumber
+                  : "-"}
+              </p>
             </div>
             <div>
               <p className="mb-0">Company Legal Name</p>
-              <p>name</p>
+              <p>
+                {ownerDetails && ownerDetails.name ? ownerDetails.name : "-"}
+              </p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 md:gap-6">
             <div>
               <p className="mb-0">Incorporation Data</p>
-              <p>31/09/2022</p>
+              <p>
+                {ownerDetails && ownerDetails.incorporationDate
+                  ? ownerDetails.incorporationDate
+                  : "-"}
+              </p>
             </div>
             <div>
               <p className="mb-0">Jurisdiction</p>
-              <p>United Kingdom</p>
+              <p>
+                {ownerDetails && ownerDetails.jurisdiction
+                  ? ownerDetails.jurisdiction
+                  : "-"}
+              </p>
             </div>
           </div>
           <hr></hr>
           <p>Identified Users</p>
+          <ul className="identifies-users">
+            {ownerDetails &&
+            ownerDetails.identifiedUsers &&
+            ownerDetails.identifiedUsers.length ? (
+              ownerDetails.identifiedUsers.map((item, index) => (
+                <li key={item.id} title={`${item.issuer}      ${item.email}`}>
+                  {`User${index + 1}`}
+                </li>
+              ))
+            ) : (
+              <li>No Identified Users available</li>
+            )}
+          </ul>
         </Modal>
       )}
     </>
