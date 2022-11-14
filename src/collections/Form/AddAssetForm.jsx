@@ -167,21 +167,40 @@ export const AddAssetForm = ({
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="AVM">
-          <FileUploader label="AVM" Url={AVMUrl} setUrl={setAVMUrl} editMode={editMode} />
+          <FileUploader
+            label="AVM"
+            Url={AVMUrl}
+            setUrl={setAVMUrl}
+            editMode={editMode}
+          />
         </Form.Item>
 
         <Form.Item label="Survey Proof">
-          <FileUploader label="SurveyProof" Url={surveyProofUrl} setUrl={setSurveyProofUrl} editMode={editMode} />
+          <FileUploader
+            label="SurveyProof"
+            Url={surveyProofUrl}
+            setUrl={setSurveyProofUrl}
+            editMode={editMode}
+          />
         </Form.Item>
       </div>
 
       <div className="grid md:grid-cols-2 md:gap-6">
         <Form.Item label="LandRegistry">
-          <FileUploader label="LandRegistry" Url={landRegistryUrl} setUrl={setLandRegistryUrl} editMode={editMode} />
+          <FileUploader
+            label="LandRegistry"
+            Url={landRegistryUrl}
+            setUrl={setLandRegistryUrl}
+            editMode={editMode}
+          />
         </Form.Item>
 
         <Form.Item label="Pictures">
-          <MultiPictureUploader Urls={imageUrls} setUrls={setImageUrls} editMode={editMode}/>
+          <MultiPictureUploader
+            Urls={imageUrls}
+            setUrls={setImageUrls}
+            editMode={editMode}
+          />
         </Form.Item>
       </div>
     </Form>

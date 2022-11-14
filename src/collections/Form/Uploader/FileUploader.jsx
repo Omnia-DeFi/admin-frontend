@@ -5,13 +5,15 @@ import { useState } from "react";
 export const FileUploader = ({ label, Url, setUrl, editMode }) => {
   console.log("Url", Url);
   const fileList = [
-    Url ? {
+    Url
+      ? {
           uid: "1",
           name: label + ".png",
           status: "done",
           response: '{"status": "success"}',
           url: Url,
-    } : "",
+        }
+      : "",
   ];
   const props = {
     maxCount: 1,
@@ -20,7 +22,7 @@ export const FileUploader = ({ label, Url, setUrl, editMode }) => {
         console.log(info.file, info.fileList);
       }
     },
-    fileList: fileList
+    fileList: fileList,
   };
 
   const showUploadList = editMode ? true : false;

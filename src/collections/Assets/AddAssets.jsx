@@ -114,7 +114,7 @@ export const AddAssets = ({
       landRegistry: landRegistryUrl,
       images: imageUrls,
     };
-    console.log("New data",newData);
+    console.log("New data", newData);
     try {
       console.log("asset", asset);
       fetch(`/api/${collection}/update/${asset?.id}`, {
