@@ -2,7 +2,17 @@ import { Button, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-export const FileUploader = ({ label, setUrl }) => {
+export const FileUploader = ({ label, Url, setUrl, editMode }) => {
+  console.log("Url", Url);
+  const fileList = [
+    Url ? {
+          uid: "1",
+          name: label + ".png",
+          status: "done",
+          response: '{"status": "success"}',
+          url: Url,
+    } : "",
+  ];
   const props = {
     maxCount: 1,
     onChange(info) {
@@ -10,7 +20,10 @@ export const FileUploader = ({ label, setUrl }) => {
         console.log(info.file, info.fileList);
       }
     },
+    fileList: fileList
   };
+
+  const showUploadList = editMode ? true : false;
 
   const addFile = (options) => {
     const { file } = options;
@@ -47,7 +60,7 @@ export const FileUploader = ({ label, setUrl }) => {
     }
   };
   return (
-    <Upload {...props} customRequest={addFile}>
+    <Upload {...props} customRequest={addFile} showUploadList={showUploadList}>
       <Button icon={<UploadOutlined />}>Click to Upload (Max: 1) </Button>
     </Upload>
   );

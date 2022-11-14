@@ -51,6 +51,7 @@ export default async function handler(req, res) {
 
     res.status(200).json(updatedAsset, { message: "Updated Asset" });
   } catch (error) {
+    console.log("error", error);
     console.log("Update failure");
   }
 }

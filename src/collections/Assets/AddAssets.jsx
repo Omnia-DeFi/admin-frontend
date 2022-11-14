@@ -114,6 +114,7 @@ export const AddAssets = ({
       landRegistry: landRegistryUrl,
       images: imageUrls,
     };
+    console.log("New data",newData);
     try {
       console.log("asset", asset);
       fetch(`/api/${collection}/update/${asset?.id}`, {
@@ -198,8 +199,11 @@ export const AddAssets = ({
             setExtraConditionsDescriptions={setExtraConditionsDescriptions}
             AVMUrl={AVMUrl}
             setAVMUrl={setAVMUrl}
+            surveyProofUrl={surveyProofUrl}
             setSurveyProofUrl={setSurveyProofUrl}
+            landRegistryUrl={landRegistryUrl}
             setLandRegistryUrl={setLandRegistryUrl}
+            imageUrls={imageUrls}
             setImageUrls={setImageUrls}
           />
         </Modal>

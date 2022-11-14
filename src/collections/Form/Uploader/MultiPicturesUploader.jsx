@@ -2,8 +2,9 @@
 import { Upload, Modal } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import { useState } from "react";
+// import type { UploadFile } from 'antd/es/upload/interface';
 
-export const MultiPictureUploader = ({ setUrls }) => {
+export const MultiPictureUploader = ({ Urls, setUrls, editMode }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
