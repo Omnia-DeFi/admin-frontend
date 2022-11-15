@@ -13,8 +13,9 @@ export const FileUploader = ({ label, Url, setUrl, editMode }) => {
           response: '{"status": "success"}',
           url: Url,
         }
-      : "",
+      : {},
   ];
+  const fileExists = Object.keys(fileList[0]).length;
   const props = {
     maxCount: 1,
     onChange(info) {
@@ -26,6 +27,9 @@ export const FileUploader = ({ label, Url, setUrl, editMode }) => {
   };
 
   const showUploadList = editMode ? true : false;
+  if(showUploadList){
+    showUploadList = fileExists > 0 ? true : false;
+  } 
 
   const addFile = (options) => {
     const { file } = options;
