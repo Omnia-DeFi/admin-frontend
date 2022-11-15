@@ -27,9 +27,9 @@ export const FileUploader = ({ label, Url, setUrl, editMode }) => {
   };
 
   const showUploadList = editMode ? true : false;
-  if(showUploadList){
+  if (showUploadList) {
     showUploadList = fileExists > 0 ? true : false;
-  } 
+  }
 
   const addFile = (options) => {
     const { file } = options;
